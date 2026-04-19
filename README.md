@@ -63,7 +63,7 @@ public class SpringMvc11_BTApplication {
 
 #### 핵심 아키텍처 및 흐름
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="1000" />
+  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="800" />
 </p>
 ▪ SecurityConfiguration: URL 접근 권한, 커스텀 로그인 페이지, 암호화 빈(Bean) 등을 설정. <br>
 ▪ UerDetailsServiceImpl: 사용자가 로그인을 시도할 때 DB(MemberRepository)에서 사용자 정보를 꺼내오는 역할. <br>
