@@ -38,17 +38,17 @@ public class SpringMvc11_BTApplication {
 ▪ ORM/Data Access: Spring Data JPA, MyBatis <br>
 
 ### 2-2. Database
-▪ RDBMS: MySQL <br><br>
-▪ Connector: MySQL Connector Java <br><br>
+▪ RDBMS: MySQL <br>
+▪ Connector: MySQL Connector Java <br>
 
 ### 2-3. Frontend & View
-▪ View Engine: JSP (Java Server Pages) <br><br>
-▪ Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br><br>
-▪ Embedded Server: Tomcat (with Jasper for JSP rendering) <br><br>
+▪ View Engine: JSP (Java Server Pages) <br>
+▪ Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
+▪ Embedded Server: Tomcat (with Jasper for JSP rendering) <br>
 
 ### 2-4. Tools & Utilities
-▪ Lombok <br><br>
-▪ Spring DevTools <br><br>
+▪ Lombok <br>
+▪ Spring DevTools <br>
 
 
 ## 3. 주요기능 구성 
