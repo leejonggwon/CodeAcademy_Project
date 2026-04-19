@@ -63,7 +63,6 @@ public class SpringMvc11_BTApplication {
 
 ### 3-1. 핵심 아키텍처 및 흐름
 
-<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="800" />
 </p>
