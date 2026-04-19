@@ -48,7 +48,7 @@ public class SpringMvc11_BTApplication {
 
 ### 2-4. Tools & Utilities
 ▪ Lombok <br>
-▪ Spring DevTools <br>
+▪ Spring DevTools <br><br>
 
 
 ## 3. 주요기능 구성 
