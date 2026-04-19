@@ -1,6 +1,25 @@
+
+```
+@SpringBootApplication
+@MapperScan("kr.spring.mapper") //마이바티스(MyBatis) 매퍼 인터페이스가 어디 있는지 자동으로 찾아내서 빈(Bean)으로 등록해 주는 도구
+public class SpringMvc11_BTApplication {
+
+	public static void main(String[] args) {
+		//Spring Boot를 구동 및 실행하는 클래스 
+		SpringApplication.run(SpringMvc11_BTApplication.class, args);
+		
+	} 
+}
+
+```
+
+
+
+
+
 ## 1. 서비스소개 
 ### 서비스명
-▪ MVC Communication 
+▪ Spring Security와 JWT를 활용한 RESTful 게시판 API 서비스
 ### 서비스설명
 ▪ 본 프로젝트는 스프링(Spring) 프레임워크와 MVC 3Tier 아키텍처를 기반으로 한 커뮤니케이션 프로젝트입니다. <br>
 ▪ 사용자 간 손쉽게 소통하고, 효율적으로 커뮤니티 기능을 활용할 수 있는 웹 애플리케이션 개발을 목표로 합니다. <br>
@@ -10,18 +29,30 @@
 <br>
 
 
-## 2. 개발환경
-▪ 개발 언어: Java 1.8 <br><br>
-▪ 프레임워크: Spring Framework 5.0.7.RELEASE <br><br>
-▪ 데이터베이스: MySQL 5.1 + MyBatis 3.4.6 <br><br>
-▪ 웹 레이어: JSP, JSTL, Servlet 3.1, jQuery, AJAX, HTML/CSS <br><br>
-▪ 로깅/유틸: SLF4J, Log4j, Lombok <br><br>
-▪ 데이터베이스 연결: HikariCP, Spring JDBC <br><br>
-▪ 개발 도구: eGovFrame 4.0.0, Eclipse, Apache Tomcat 9 <br><br>
-<br>
+## 2. 기술스택 
+### 2-1. Backend
+▪ Framework: Spring Boot 2.7.3 <br><br>
+▪ Language: Java 8 (JDK 1.8) <br><br>
+▪ Build Tool: Maven <br><br>
+▪ Security: Spring Security (Role-based Access Control) <br><br>
+▪ ORM/Data Access: Spring Data JPA, MyBatis <br><br>
+
+### 2-2. Database
+▪ RDBMS: MySQL <br><br>
+▪ Connector: MySQL Connector Java <br><br>
+
+### 2-3. Frontend & View
+▪ View Engine: JSP (Java Server Pages) <br><br>
+▪ Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br><br>
+▪ Embedded Server: Tomcat (with Jasper for JSP rendering) <br><br>
+
+### 2-4. Tools & Utilities
+▪ Lombok <br><br>
+▪ Spring DevTools <br><br>
+
 
 ## 3. 주요기능 구성 
-### 3Tier 아키텍처
+### 3Tier 아키텍처 구
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/60435bdd-9784-43a1-a2c1-194e88dab72d" width="500" />
