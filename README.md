@@ -85,8 +85,11 @@ public class SpringMvc11_BTApplication {
 ▪ 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
 
 #### 로그인/회원가입 프로세스 요약
-
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="750" />
+</p>
+<br>
+<br>
 
 
 ### SecurityConfiguration
