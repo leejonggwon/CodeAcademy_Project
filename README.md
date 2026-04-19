@@ -19,15 +19,18 @@ public class SpringMvc11_BTApplication {
 
 ## 1. 서비스소개 
 ### 서비스명
-▪ Spring Security와 JWT를 활용한 RESTful 게시판 API 서비스
+▪ Spring Security와 JWT를 활용한 RESTful 게시판 API 서비스 <br>
+
 ### 서비스설명
 ▪ 본 프로젝트는 스프링(Spring) 프레임워크와 MVC 3Tier 아키텍처를 기반으로 한 커뮤니케이션 프로젝트입니다. <br>
 ▪ 사용자 간 손쉽게 소통하고, 효율적으로 커뮤니티 기능을 활용할 수 있는 웹 애플리케이션 개발을 목표로 합니다. <br>
 ▪ 그룹 채팅, 메시지, 게시글 작성, 좋아요, 댓글·답글, 조회수, 검색, 페이징, 게시글 작성자 프로필, 좌석 발권, 자료 검색, 회원 관리 등의 기능을 제공합니다. <br>
 ▪ WebSocket과 비동기 통신(AJAX)을 활용한 실시간 갱신을 구현했습니다. <br>
 ▪ Bootstrap 3과 직관적인 JSP 기반 UI를 통해 사용자 친화적인 화면을 구성했습니다. <br>
-<br>
 
+### 프로젝트기간
+▪ 2026.02 ~ 2026.04 <br>
+<br>
 
 ## 2. 기술스택 
 ### 2-1. Backend
@@ -49,6 +52,57 @@ public class SpringMvc11_BTApplication {
 ### 2-4. Tools & Utilities
 ▪ Lombok <br>
 ▪ Spring DevTools <br><br>
+
+
+
+## 3. Authentication & Security (Spring Security + JPA)
+본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
+사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
+
+### 3-1. 주요보안 기능 구현
+
+#### 핵심 아키텍처 및 흐름
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="1000" />
+</p>
+
+#### 비밀번호 암호화 ((BCrypt)
+▪ 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호함. <br>
+▪ 회원가입 컨트롤러: @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리. <br>
+▪ 로그인 검증: 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행. <br>
+
+#### 권한별 접근 제어 (Authorization)
+▪ 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다. <br>
+▪ PermitAll: 메인 페이지 및 회원 관련 기능(/member/**)은 비로그인 사용자도 접근 가능. <br>
+▪ Authenticated: 게시판 관련 기능(/board/**)은 로그인한 인증된 사용자만 접근 가능. <br>
+
+#### 커스텀 유저 디테일 서비스
+▪ 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 CustomUser를 구현 <br>
+▪ SecurityContextHolder에 저장된 CustomUser를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있습니다. <br>
+▪ 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
+
+#### 로그인/회원가입 프로세스 요약
+
+
+
+
+### SecurityConfiguration
+▪ RDBMS: MySQL <br>
+▪ Connector: MySQL Connector Java <br>
+
+### 2-3. Frontend & View
+▪ View Engine: JSP (Java Server Pages) <br>
+▪ Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
+▪ Embedded Server: Tomcat (with Jasper for JSP rendering) <br>
+
+### 2-4. Tools & Utilities
+▪ Lombok <br>
+▪ Spring DevTools <br><br>
+
+
+
+
+
 
 
 ## 3. 주요기능 구성 
