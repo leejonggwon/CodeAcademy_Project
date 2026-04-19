@@ -31,11 +31,11 @@ public class SpringMvc11_BTApplication {
 
 ## 2. 기술스택 
 ### 2-1. Backend
-▪ Framework: Spring Boot 2.7.3 <br><br>
-▪ Language: Java 8 (JDK 1.8) <br><br>
-▪ Build Tool: Maven <br><br>
-▪ Security: Spring Security (Role-based Access Control) <br><br>
-▪ ORM/Data Access: Spring Data JPA, MyBatis <br><br>
+▪ Framework: Spring Boot 2.7.3 <br>
+▪ Language: Java 8 (JDK 1.8) <br>
+▪ Build Tool: Maven <br>
+▪ Security: Spring Security (Role-based Access Control) <br>
+▪ ORM/Data Access: Spring Data JPA, MyBatis <br>
 
 ### 2-2. Database
 ▪ RDBMS: MySQL <br><br>
