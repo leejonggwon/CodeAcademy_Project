@@ -65,6 +65,9 @@ public class SpringMvc11_BTApplication {
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="1000" />
 </p>
+▪ SecurityConfiguration: URL 접근 권한, 커스텀 로그인 페이지, 암호화 빈(Bean) 등을 설정. <br>
+▪ UerDetailsServiceImpl: 사용자가 로그인을 시도할 때 DB(MemberRepository)에서 사용자 정보를 꺼내오는 역할. <br>
+▪ CustomUser: 우리 프로젝트의 Member 엔티티를 Spring Security가 이해할 수 있는 UserDetails 형태로 변환해 주는 어댑터 클래스. <br>
 
 #### 비밀번호 암호화 ((BCrypt)
 ▪ 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호함. <br>
