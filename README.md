@@ -119,7 +119,7 @@ public class SpringMvc11_BTApplication {
 <br>
 
 
-## 5. DataBase 설계
+## 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6bc555a7-54d4-4f2f-a2b4-e19410141885" width="800" />
 </p>
