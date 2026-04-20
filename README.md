@@ -55,13 +55,13 @@ public class SpringMvc11_BTApplication {
 
 
 
-## 3. Authentication & Security (Spring Security + JPA)
+## 3. Authentication & Security (Spring Security)
 ▪ 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
 ▪ 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
 
 
 
-### 3-1. 핵심 아키텍처 및 흐름
+### 3-1. Spring Security 시스템 아키텍처
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="800" />
