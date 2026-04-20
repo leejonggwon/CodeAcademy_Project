@@ -119,15 +119,12 @@ public class SpringMvc11_BTApplication {
 <br>
 
 
-
-
-
-
-
-
-
-## 3. 시스템 아키텍처
-
+## 5. DataBase 설계
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6bc555a7-54d4-4f2f-a2b4-e19410141885" width="800" />
+</p>
+<br>
+<br>
 
 
 ### 1) Controller / RestController
