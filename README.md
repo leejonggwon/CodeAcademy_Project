@@ -128,7 +128,7 @@ public class SpringMvc11_BTApplication {
 
 ## 6. 서비스 흐름도
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0bfa8858-1c77-43ee-8fba-4231de1a9fe5" width="800" />
+  <img src="https://github.com/user-attachments/assets/0bfa8858-1c77-43ee-8fba-4231de1a9fe5" width="500" />
 </p>
 <br>
 <br>
