@@ -114,7 +114,7 @@ public class SpringMvc11_BTApplication {
 ▪ MyBatis 흐름 : Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="1000" />
+  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="800" />
 </p>
 <br>
 
