@@ -1,6 +1,7 @@
 ## 1. 서비스소개 
 ### 서비스명
-▪ Spring Security와 JWT를 활용한 RESTful 게시판 API 서비스 <br>
+▪ Spring Boot Security를 이용한 코딩 교육 플랫폼 <br>
+▪ (부제) Spring Boot Security와 JWT를 활용한 RESTful 게시판 API 서비스 <br>
 
 ### 서비스설명
 ▪ 본 프로젝트는 스프링(Spring) 프레임워크와 MVC 3Tier 아키텍처를 기반으로 한 커뮤니케이션 프로젝트입니다. <br>
