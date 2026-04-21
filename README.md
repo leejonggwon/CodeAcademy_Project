@@ -35,14 +35,18 @@
 ▪ Spring DevTools <br><br>
 
 
-
 ## 3. Authentication & Security (Spring Security 스프링보안)
 ▪ 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
 ▪ 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
 
 
-
-### 3-1. Spring Security 시스템 아키텍처
+### 3-1. Spring Security  핵심 아키텍처 및 흐름
+1. 사용자가 로그인 폼에 ID/PW 입력 후 제출 → <br>
+2. UerDetailsServiceImpl에서 DB의 회원 정보를 조회 → <br>
+3. 조회된 정보를 CustomUser에 담아 반환 → <br>
+4. Spring Security가 입력된 PW와 DB의 암호화된 PW를 비교(PasswordEncoder) → <br>
+5. 인증 성공 시 SecurityContextHolder에 유저 정보 저장 후 세션 생성 → <br>
+6. defaultSuccessUrl인 /board/list로 이동 <br>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="800" />
@@ -50,7 +54,30 @@
 
 <br>
 
-### 3-2. 주요보안 기능 구현
+### 3-2. 클래스별 상세 역할
+#### 1) SecurityConfiguration (보안 설정)
+▪ 비밀번호 암호화 : BCrypt 방식 등을 지원하는 DelegatingPasswordEncoder 사용 <br>
+▪ 권한별 접근 제어 :<br>
+&nbsp;&nbsp;&nbsp; ▪ /, /member/** : 누구나 접근 가능 <br>
+&nbsp;&nbsp;&nbsp; ▪ /board/** : 로그인한 사용자만 접근 가능 <br>
+▪ 커스텀 로그인/로그아웃 : 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
+▪ CSRF 비활성화 : REST API 및 테스트 편의를 위해 설정 <br>
+
+#### 2) SecurityConfiguration (보안 설정)
+▪ UserDetailsService 인터페이스를 구현 <br>
+▪ memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
+▪ 예외처리 :
+&nbsp;&nbsp;&nbsp; ▪ 사용자가 없을 경우 UsernameNotFoundException 발생 <br>
+&nbsp;&nbsp;&nbsp; ▪ 탈퇴한 계정(enabled=false)일 경우 DisabledException 발생 <br>
+
+#### 3) CustomUser (Security 전용 유저 객체)
+▪ Spring Security의 User 클래스를 상속받아 구현 <br>
+▪ DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 합니다 <br>
+▪ 사용자의 권한을 ROLE_ADMIN, ROLE_STUDENT와 같은 형태로 변환하여 부여한다 <br><br>
+
+
+
+### 3-2. 주요보안 기능 구현 세부사항 
 
 #### 비밀번호 암호화 ((BCrypt)
 ▪ 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호함. <br>
@@ -62,7 +89,7 @@
 ▪ PermitAll: 메인 페이지 및 회원 관련 기능(/member/**)은 비로그인 사용자도 접근 가능. <br>
 ▪ Authenticated: 게시판 관련 기능(/board/**)은 로그인한 인증된 사용자만 접근 가능. <br>
 
-#### CustomUser
+#### 커스텀 유저 디테일 서비스
 ▪ 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 CustomUser를 구현 <br>
 ▪ SecurityContextHolder에 저장된 CustomUser를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있습니다. <br>
 ▪ 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
