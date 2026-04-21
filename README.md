@@ -36,7 +36,7 @@
 
 
 
-## 3. Authentication & Security (Spring Security)
+## 3. Authentication & Security (Spring Security 스프링보안)
 ▪ 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
 ▪ 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
 
