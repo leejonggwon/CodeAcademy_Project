@@ -79,22 +79,22 @@
 
 ### 3-3. 주요보안 기능 구현 세부사항 
 
-#### 비밀번호 암호화 ((BCrypt)
+#### 1) 비밀번호 암호화 ((BCrypt)
 ▪ 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호함. <br>
 ▪ 회원가입 컨트롤러: @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리. <br>
 ▪ 로그인 검증: 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행. <br>
 
-#### 권한별 접근 제어 (Authorization)
+#### 2) 권한별 접근 제어 (Authorization)
 ▪ 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다. <br>
 ▪ PermitAll: 메인 페이지 및 회원 관련 기능(/member/**)은 비로그인 사용자도 접근 가능. <br>
 ▪ Authenticated: 게시판 관련 기능(/board/**)은 로그인한 인증된 사용자만 접근 가능. <br>
 
-#### 커스텀 유저 디테일 서비스
+#### 3) 커스텀 유저 디테일 서비스
 ▪ 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 CustomUser를 구현 <br>
 ▪ SecurityContextHolder에 저장된 CustomUser를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있습니다. <br>
 ▪ 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
 
-#### 로그인/회원가입 프로세스 요약
+#### 4) 로그인/회원가입 프로세스 요약
 <p align="center">
   <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="600" />
 </p>
