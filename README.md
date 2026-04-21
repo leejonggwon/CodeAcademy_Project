@@ -75,8 +75,6 @@
 ▪ DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 합니다 <br>
 ▪ 사용자의 권한을 ROLE_ADMIN, ROLE_STUDENT와 같은 형태로 변환하여 부여한다 <br><br>
 
-
-
 ### 3-3. 주요보안 기능 구현 세부사항 
 
 #### 1) 비밀번호 암호화 ((BCrypt)
@@ -119,9 +117,6 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0bfa8858-1c77-43ee-8fba-4231de1a9fe5" width="500" />
 </p>
-<br>
-<br>
-
 
 
 ## 5. 주요기능설명
