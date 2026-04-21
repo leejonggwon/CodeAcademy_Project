@@ -72,22 +72,6 @@
   <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="600" />
 </p>
 <br>
-<br>
-
-
-### SecurityConfiguration
-▪ RDBMS: MySQL <br>
-▪ Connector: MySQL Connector Java <br>
-
-### 2-3. Frontend & View
-▪ View Engine: JSP (Java Server Pages) <br>
-▪ Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
-▪ Embedded Server: Tomcat (with Jasper for JSP rendering) <br>
-
-### 2-4. Tools & Utilities
-▪ Lombok <br>
-▪ Spring DevTools <br><br>
-
 
 
 ## 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
