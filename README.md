@@ -109,13 +109,10 @@
   <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="600" />
 </p>
 
-
-
 ## 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6bc555a7-54d4-4f2f-a2b4-e19410141885" width="800" />
 </p>
-<br>
 <br>
 
 ## 6. 서비스 흐름도
