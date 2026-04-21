@@ -96,7 +96,7 @@
 
 #### 4) 로그인/회원가입 프로세스 요약
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="600" />
+  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="500" />
 </p>
 <br>
 
