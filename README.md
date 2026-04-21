@@ -62,14 +62,14 @@
 ▪ PermitAll: 메인 페이지 및 회원 관련 기능(/member/**)은 비로그인 사용자도 접근 가능. <br>
 ▪ Authenticated: 게시판 관련 기능(/board/**)은 로그인한 인증된 사용자만 접근 가능. <br>
 
-#### 커스텀 유저 디테일 서비스
+#### CustomUser
 ▪ 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 CustomUser를 구현 <br>
 ▪ SecurityContextHolder에 저장된 CustomUser를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있습니다. <br>
 ▪ 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
 
 #### 로그인/회원가입 프로세스 요약
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="700" />
+  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="600" />
 </p>
 <br>
 <br>
