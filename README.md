@@ -106,9 +106,10 @@
 ▪ MyBatis 흐름 : Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="800" />
+  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="700" />
 </p>
 <br>
+
 
 
 ## 5. DataBase E-R Diagram
@@ -128,34 +129,7 @@
 
 
 
-### 1) Controller / RestController
-▪ MainController <br>
-▪ MemberController / MemeberRestController <br>
-▪ BoardController / BoardRestController <br>
-▪ SeatController / SeatRestController <br>
-▪ ChatController <br>
-▪ CommentRestController <br>
-▪ LikeRestController <br>
 
-### 2) Service / ServiceImpl
-▪ MemberService / MemberServiceImpl <br>
-▪ BoardService / BoardServiceImpl <br>
-▪ SeatService / SeatServiceImpl <br>
-▪ CommentService / CommentServiceImpl <br>
-▪ LikeService / LikeServiceImpl <br>
-
-### 3) Mapper / mapper.xml
-▪ MemberMapper / MemberMapper.xml <br>
-▪ BoardMapper / BoardMapper.xml <br>
-▪ SeatMapper / SeatMapper.xml <br>
-▪ CommentMapper /CommentMapper.xml <br>
-▪ LikeMapper /LikeMapper.xml <br>
-
-### 4) socket
-▪ MySocketHandler_Group <br>
-▪ WebSocketCoonfig
-
-<br>
 
 ## 4. 개발 포인트
 ▪ Spring MVC Framework와 3-Tier Structure의 Controller - Service - Model 계층 구조로 설계 <br>
