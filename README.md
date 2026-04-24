@@ -67,7 +67,7 @@
 #### 2) SecurityConfiguration (보안 설정)
 ▪ UserDetailsService 인터페이스를 구현 <br>
 ▪ memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
-▪ 예외처리 :
+▪ 예외처리 : <br>
 &nbsp;&nbsp;&nbsp; ▪ 사용자가 없을 경우 UsernameNotFoundException 발생 <br>
 &nbsp;&nbsp;&nbsp; ▪ 탈퇴한 계정(enabled=false)일 경우 DisabledException 발생 <br>
 
