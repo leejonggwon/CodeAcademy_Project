@@ -65,7 +65,7 @@
 ▪ CSRF 비활성화 : REST API 및 테스트 편의를 위해 설정 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3b6063b9-0420-47c4-bfe4-c73486bd603e" width="400" />
+  <img src="https://github.com/user-attachments/assets/3b6063b9-0420-47c4-bfe4-c73486bd603e" width="600" />
 </p>
 
 #### 2) UerDetailsServiceImpl
