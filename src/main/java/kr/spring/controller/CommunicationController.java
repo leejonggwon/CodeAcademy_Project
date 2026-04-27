@@ -7,9 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -29,24 +26,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriUtils;
 
 import kr.spring.entity.Board;
+import kr.spring.entity.Communication;
 import kr.spring.entity.Criteria;
 import kr.spring.entity.PageMaker;
-import kr.spring.service.BoardService;
+import kr.spring.service.CommunicationService;
 
 @Controller
-@RequestMapping("/board/*")
-public class BoardController {
+@RequestMapping("/communication/*")
+public class CommunicationController {
 	
 	@Autowired
-	private BoardService service;
+	private CommunicationService service;
 	
 	//게시글 전체조회	
 	//Criteria: 현재 몇 번째 페이지를 보고 있는지, 한 페이지에 몇 개의 게시글을 보여줄 것인지에 대한 정보가 필요하다
 	//PageMaker: 몇 번 페이지에 하단에 보여줄 페이지 버튼을 몇 개  만들지, 이전/다음 버튼을 표시할지 등 '계산기' 같은 역할
-	@RequestMapping("/list")
+	@RequestMapping("/communication_list")
 	public String list(Model model, Criteria cri) { 
 		
-		List<Board> list = service.getList(cri); 
+		List<Communication> list = service.getList(cri); 
 		
 		PageMaker pageMaker = new PageMaker();
 		
@@ -61,14 +59,14 @@ public class BoardController {
 		//페이지 정보를 가지고 있는 객체를 전달한다(Criteria정보, 총게시글수)
 		model.addAttribute("pageMaker", pageMaker);
 		
-		return "board/list";
+		return "communication/communication_list";
 	}
 	
 	
 	//게시글등록
 	
 	@PostMapping("/register")
-	public String register(Board vo, 
+	public String register(Communication vo, 
 			@RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2, @RequestParam("uploadFile3") MultipartFile file3,
 			RedirectAttributes rttr) {
 		
@@ -114,12 +112,12 @@ public class BoardController {
         } catch (IOException e) {
             e.printStackTrace();
             rttr.addFlashAttribute("msg", "파일 업로드 실패");
-            return "redirect:/board/list";
+            return "redirect:/communication/communication_list";
         }
 
 	    // DB 저장 실행
 	    service.register(vo);
-	    return "redirect:/board/list";
+	    return "redirect:/communication/communication_list";
 	}
 	
 	
@@ -184,10 +182,9 @@ public class BoardController {
 	// RestController를 만들거나 ResponseBody 어노테이션을 붙여줘야한다
 	//Board의 idx는 Long 타입이다 
 	@GetMapping("/get")
-	public @ResponseBody Board get(@RequestParam("idx") Long idx) {
-		Board vo = service.get(idx);
+	public @ResponseBody Communication get(@RequestParam("idx") Long idx) {
+		Communication vo = service.get(idx);
 		service.boardCount(idx); //조회수+1 가능
-		
 		return vo;
 	}
 	
@@ -197,11 +194,12 @@ public class BoardController {
 		service.delete(idx, role);
 		
 		rttr.addAttribute("page",cri.getPage());
-		rttr.addAttribute("perPageNum",cri.getPerPageNum());	
+		rttr.addAttribute("perPageNum",cri.getPerPageNum());
+		
 		rttr.addAttribute("type",cri.getType());
 		rttr.addAttribute("keyword",cri.getKeyword());
 		
-		return "redirect:/board/list";
+		return "redirect:/communication/communication_list";
 	}
 	
 	
@@ -209,13 +207,13 @@ public class BoardController {
 	//수정기능
 	//RedirectAttributes: redirect 할 때 데이터를 담아서 보내는 용도 
 	@PostMapping("/modify") 
-	public String modify(Board vo, @RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2, @RequestParam("uploadFile3") MultipartFile file3, Criteria cri, RedirectAttributes rttr) {
+	public String modify(Communication vo, @RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2, @RequestParam("uploadFile3") MultipartFile file3, Criteria cri, RedirectAttributes rttr) {
 		
 		rttr.addAttribute("page",cri.getPage());
 		rttr.addAttribute("perPageNum",cri.getPerPageNum());		
 		rttr.addAttribute("type",cri.getType());
 		rttr.addAttribute("keyword",cri.getKeyword());
-		
+
 	        try {
 	            String savePath = "C:/boot_upload/board_upload/";
 	            File dir = new File(savePath);
@@ -237,7 +235,7 @@ public class BoardController {
 		            String saveFilename2 = System.currentTimeMillis() + "=" + originalFilename2;
 		            file2.transferTo(new File(savePath + saveFilename2));
 		            vo.setAttached_data2(saveFilename2);
-	            } 
+	            }
 	            
 	            if (file3 != null && !file3.isEmpty()) {
 		            String originalFilename3 = file3.getOriginalFilename();
@@ -249,7 +247,7 @@ public class BoardController {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	            rttr.addFlashAttribute("msg", "파일 업로드 실패");
-	            return "redirect:/board/list";
+	            return "redirect:/communication/communication_list";
 	        }
 	    
 		
@@ -257,7 +255,7 @@ public class BoardController {
 		
 		service.update(vo);
 
-		return "redirect:/board/list";
+		return "redirect:/communication/communication_list";
 	}
 	
 
@@ -265,23 +263,23 @@ public class BoardController {
 	//비동기
 	//조회수실시간반영
 	@GetMapping("/showCount")
-	public @ResponseBody Board showCount(@RequestParam("idx") Long idx) {
+	public @ResponseBody Communication showCount(@RequestParam("idx") Long idx) {
 		
-		Board vo = service.get(idx);			
+		Communication vo = service.get(idx);			
 		return vo;
 	}
 	
 	//공감수 실시간반영
 	@GetMapping("/showLike_count")
-	public @ResponseBody Board showLike_count(@RequestParam("idx") Long idx){
-		Board vo = service.get(idx);			
+	public @ResponseBody Communication showLike_count(@RequestParam("idx") Long idx){
+		Communication vo = service.get(idx);			
 		return vo;
 	}	
 	
 
 	//댓글기능
 	@PostMapping("/reply")
-	public String reply(Board vo, @RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2, @RequestParam("uploadFile3") MultipartFile file3, Criteria cri, RedirectAttributes rttr) {
+	public String reply(Communication vo, @RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2, @RequestParam("uploadFile3") MultipartFile file3, Criteria cri, RedirectAttributes rttr) {
 		
 		rttr.addAttribute("page",cri.getPage());
 		rttr.addAttribute("perPageNum",cri.getPerPageNum());
@@ -316,20 +314,18 @@ public class BoardController {
 	            String saveFilename3 = System.currentTimeMillis() + "=" + originalFilename3;
 	            file3.transferTo(new File(savePath + saveFilename3));
 	            vo.setAttached_data3(saveFilename3);
-            }		
-            
+            }	
         } catch (IOException e) {
             e.printStackTrace();
             rttr.addFlashAttribute("msg", "파일 업로드 실패");
-            return "redirect:/board/list";
+            return "redirect:/communication/communication_list";
         }
-	    
 		
 		rttr.addFlashAttribute("result", vo.getIdx());
 		
 		service.reply(vo);
 
-		return "redirect:/board/list";
+		return "redirect:/communication/communication_list";
 	}
 	
 	

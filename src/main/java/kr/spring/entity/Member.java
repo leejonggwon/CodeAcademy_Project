@@ -33,7 +33,7 @@ public class Member {
 	@Enumerated(EnumType.STRING) //@Enumerated → 열거형(권한이 여러개이기 떄문에)
 	private Role role;
 	
-	private String cource; 
+	private String course; 
 	
 	private String name; //이름
 	private String nick_name; //닉네임

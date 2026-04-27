@@ -13,6 +13,9 @@
 		<if test="type =='name'">
 			AND NAME LIKE CONCAT('%', #{keyword},'%')
 		</if>
+		<if test="type =='role'">
+			AND ROLE LIKE CONCAT(#{keyword})
+		</if>
 	</sql>
 
 	<!-- 회원권한전체조회 -->
@@ -31,9 +34,9 @@
 	</select>
 
 	<!--회원권한/교육과정수정-->
-	<update id="roleCourceUpdate" parameterType="kr.spring.entity.Member">
+	<update id="roleCourseUpdate" parameterType="kr.spring.entity.Member">
 		UPDATE BT_MEMBER
-    	SET ROLE = #{role}, COURCE = #{cource}
+    	SET ROLE = #{role}, COURSE = #{course}
    		WHERE USERNAME = #{username}
 	</update>
 	
@@ -59,8 +62,8 @@
 	
 	<!-- insert는 resultType을 못쓰지만, mapper 인터페이스에서 리턴 타입을 int로 주면 MyBatis가 자동으로 성공한 행 수를 돌려준다 -->
 	<insert id="join" parameterType="kr.spring.entity.Member"> 
-		INSERT INTO BT_MEMBER(USERNAME, PASSWORD, ROLE, COURCE, NAME, NICK_NAME, AGE, GENDER, EMAIL, PROFILE, ENABLED, USER_CODE) 
-		VALUES (#{username}, #{password}, #{role}, #{cource}, #{name}, #{nick_name}, #{age}, #{gender}, #{email}, #{profile}, #{enabled}, #{user_code})
+		INSERT INTO BT_MEMBER(USERNAME, PASSWORD, ROLE, COURSE, NAME, NICK_NAME, AGE, GENDER, EMAIL, PROFILE, ENABLED, USER_CODE) 
+		VALUES (#{username}, #{password}, #{role}, #{course}, #{name}, #{nick_name}, #{age}, #{gender}, #{email}, #{profile}, #{enabled}, #{user_code})
 	</insert>
 	
 	<!--회원권한수정  -->

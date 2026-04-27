@@ -21,12 +21,23 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="${cpath}/resources/css/btnStyle.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${cpath}/resources/css/btnStyle.css">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  
+  
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
 </head>
 <style>
 .table-cnt {
@@ -69,10 +80,10 @@ input[type="radio"] {
 								<tr>
 									<td style="width: 180px; vertical-align: middle;">현재 비밀번호 입력</td>
 									<td><input required="required" type="password" name="passwordCheck" id="passwordCheck" class="form-control" required="required" maxlength="20"></td>
-													
+									<td style="width: 200px;"><button id="passwordCheckBtn" type="button" onclick="pwdShow(event)" class="btn btn-custom"><i id="passwordCheckBtn_icon" class="fas fa-eye" style="color: rgb(255, 255, 255);"></i>&nbsp;&nbsp;<span id="passwordCheckBtn_text">비밀번호 보이기</span></button></td>				
 								</tr>										
 								<tr>
-									<td colspan="2">								
+									<td colspan="3">								
 										<button type="button" data-oper="passwordCheck" class="btn btn-custom pull-right" >확인</button>									
 									</td>
 								</tr>
@@ -184,6 +195,30 @@ input[type="radio"] {
 	  });
 	  
   	});//ready
+  	
+  	
+  //비밀번호보이기 기능
+	function pwdShow(e) {
+  		
+		e.preventDefault(); //버튼 클릭 시 <form>이 제출되는 기본 동작을 막는다
+		
+		const passwordCheck = $("#passwordCheck");	
+		const btn = $("#passwordCheckBtn"); 
+		const btn_icon = $("#passwordCheckBtn_icon"); 
+		const btn_text = $("#passwordCheckBtn_text"); 
+				
+	    if (passwordCheck.attr("type") == "password") {      	
+	    	passwordCheck.attr("type", "text");
+	    	btn_text.text("비밀번호 숨기기");
+	    	btn_icon.attr("class","fas fa-eye-slash").attr("style","color: rgb(0, 0, 0);");	    	
+	        btn.attr("class","btn btn-light");	   	        
+	    } else {     
+	    	passwordCheck.attr("type", "password");    
+	    	btn_text.text("비밀번호 보이기");   
+	    	btn_icon.attr("class","fas fa-eye").attr("style","color: rgb(255, 255, 255);");
+	        btn.attr("class","btn btn-custom");        
+	    }
+	}
 
   	
   </script>

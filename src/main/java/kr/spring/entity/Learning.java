@@ -34,6 +34,8 @@ public class Learning { //Board VO가 ORM기능을 통해서 알아서 TABLE로 
 	@Enumerated(EnumType.STRING) //@Enumerated → 열거형(권한이 여러개이기 떄문에)
 	private Role role;
 	
+	private String lecture;
+	
 	private String title;
 	
 	@Column(length = 2200) //길이지정 → 길이지정 따로 안할떄는 길이 255

@@ -14,7 +14,7 @@ public interface MemberMapper {
 
 	List<Member> memberList(Criteria cri); //회원권한전체조회
 
-	void roleCourceUpdate(Member member);//회원권한/교육과정수정
+	void roleCourseUpdate(Member member);//회원권한/교육과정수정
 
 	Member getMember(String username);
 

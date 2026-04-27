@@ -68,8 +68,14 @@ public class MemberController {
 	
 	//회원정보수정페이지 이동
 	@GetMapping("/memberUpdateForm")
-	public String updateForm() {
+	public String memberUpdateForm() {
 		return "member/memberUpdateForm";
+	}
+	
+	//회원정보수정페이지 이동
+	@GetMapping("/passwordUpdateForm")
+	public String passwordUpdateForm() {
+		return "member/passwordUpdateForm";
 	}
 	
 	
@@ -117,7 +123,11 @@ public class MemberController {
 	//회원권한전체조회
 	//현재페이지, 한 페이지당 몇개 게시글 보일지, 몇 페이지에 가져올 게시글범위를 위해 Criteria 객체가 필요하다 
 	@RequestMapping("/memberList")  
-	public @ResponseBody Map<String, Object> memberList(Criteria cri) {    
+	public @ResponseBody Map<String, Object> memberList(Criteria cri) {   
+		
+		//System.out.println("타입: " + cri.getType());
+		//System.out.println("키워드: " + cri.getKeyword());
+		
 		List<Member> list = service.memberList(cri);//게시글 목록 전체보는 기능
 		
 		//페이징처리에 필요한 PageMaker객체생성 
@@ -136,16 +146,16 @@ public class MemberController {
 	
 
 	//회원권한/교육과정수정
-	@PostMapping("/roleCourceUpdate")  
-	public @ResponseBody void roleCourceUpdate(Member member) {   		
-		service.roleCourceUpdate(member);	
+	@PostMapping("/roleCourseUpdate")  
+	public @ResponseBody void roleCourseUpdate(Member member) {   		
+		service.roleCourseUpdate(member);	
 	}
 	
 
 	//계정관리전 현재비밀번호폼으로 이동
-	@GetMapping("/memberUpdateForm_passwordCheckForm")
+	@GetMapping("/passwordUpdateForm_passwordCheckForm")
 	public String memberUpdateForm_passwordCheckForm() {
-		return "member/memberUpdateForm_passwordCheckForm";
+		return "member/passwordUpdateForm_passwordCheckForm";
 	}
 	
 
@@ -165,12 +175,12 @@ public class MemberController {
 	        rttr.addFlashAttribute("msg", "확인되었습니다.");
 	        
 	        // 성공 시 이동 (원하는 페이지로)
-	        return "redirect:/member/memberUpdateForm"; 
+	        return "redirect:/member/passwordUpdateForm"; 
 	    } else {
 	        rttr.addFlashAttribute("msgType", "실패메세지"); 
 	        rttr.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다.");
 	        
-	        return "redirect:/member/memberUpdateForm_passwordCheckForm";
+	        return "redirect:/member/passwordUpdateForm_passwordCheckForm";
 	    }
 	}
 	
@@ -342,7 +352,7 @@ public class MemberController {
 					rttr.addFlashAttribute("msgType", "실패메세지"); 
 					rttr.addFlashAttribute("msg", "비밀번호수정 실패했습니다");	
 					
-					return "redirect:/member/memberUpdateForm";
+					return "redirect:/member/passwordUpdateForm";
 				}					
 
 			}

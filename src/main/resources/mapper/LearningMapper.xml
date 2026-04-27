@@ -13,6 +13,10 @@
 		<if test="type =='content'">
 			WHERE CONTENT LIKE CONCAT('%', #{keyword},'%')
 		</if>
+		<if test="type =='lecture'">
+			WHERE LECTURE LIKE CONCAT('%', #{keyword},'%')
+		</if>
+		
 	</sql>
 	
 	
@@ -41,8 +45,8 @@
 	
 	<!-- 게시글등록 -->
 	<insert id="register" parameterType="kr.spring.entity.Learning">
-		INSERT INTO BT_LEARNING(IDX, USERNAME, ROLE, TITLE, CONTENT, WRITER, ATTACHED_DATA, ATTACHED_DATA2, BOARD_GROUP, BOARD_SEQUENCE, BOARD_LEVEL, BOARD_AVAILABLE)
-		SELECT IFNULL(MAX(IDX) + 1, 1) , #{username}, #{role}, #{title}, #{content}, #{writer}, #{attached_data}, #{attached_data2}, IFNULL(MAX(IDX) + 1, 1), 0, 0, 1   
+		INSERT INTO BT_LEARNING(IDX, USERNAME, ROLE, LECTURE, TITLE, CONTENT, WRITER, ATTACHED_DATA, ATTACHED_DATA2, BOARD_GROUP, BOARD_SEQUENCE, BOARD_LEVEL, BOARD_AVAILABLE)
+		SELECT IFNULL(MAX(IDX) + 1, 1) , #{username}, #{role}, #{lecture}, #{title}, #{content}, #{writer}, #{attached_data}, #{attached_data2}, IFNULL(MAX(IDX) + 1, 1), 0, 0, 1   
 		FROM BT_LEARNING                   
 	</insert>
 	
@@ -53,8 +57,8 @@
 				   IFNULL(MAX(BOARD_GROUP) + 1, 1) as board_group
 				   FROM BT_LEARNING 	
 		</selectKey>
-		INSERT INTO BT_LEARNING(IDX, USERNAME, ROLE, TITLE, CONTENT, WRITER, ATTACHED_DATA, ATTACHED_DATA2, BOARD_GROUP, BOARD_SEQUENCE, BOARD_LEVEL, BOARD_AVAILABLE)
-		VALUES(#{idx}, #{username}, #{role}, #{title}, #{content}, #{writer}, #{attached_data}, #{attached_data2}, #{board_group}, 0, 0, 1)
+		INSERT INTO BT_LEARNING(IDX, USERNAME, ROLE, LECTURE, TITLE, CONTENT, WRITER, ATTACHED_DATA, ATTACHED_DATA2, BOARD_GROUP, BOARD_SEQUENCE, BOARD_LEVEL, BOARD_AVAILABLE)
+		VALUES(#{idx}, #{username}, #{role}, #{lecture}, #{title}, #{content}, #{writer}, #{attached_data}, #{attached_data2}, #{board_group}, 0, 0, 1)
 	</insert>
 	
 	
@@ -76,8 +80,8 @@
 			SELECT IFNULL(MAX(IDX) + 1, 1) as idx
 				   FROM BT_LEARNING	
 		</selectKey>
-		INSERT INTO BT_LEARNING(IDX, USERNAME, ROLE, TITLE, CONTENT, WRITER, ATTACHED_DATA, ATTACHED_DATA2, BOARD_GROUP, BOARD_SEQUENCE, BOARD_LEVEL, BOARD_AVAILABLE)
-		VALUES(#{idx}, #{username}, #{role}, #{title}, #{content}, #{writer}, #{attached_data}, #{attached_data2}, 
+		INSERT INTO BT_LEARNING(IDX, USERNAME, ROLE, LECTURE, TITLE, CONTENT, WRITER, ATTACHED_DATA, ATTACHED_DATA2, BOARD_GROUP, BOARD_SEQUENCE, BOARD_LEVEL, BOARD_AVAILABLE)
+		VALUES(#{idx}, #{username}, #{role}, #{lecture}, #{title}, #{content}, #{writer}, #{attached_data}, #{attached_data2}, 
 		#{board_group}, #{board_sequence}, #{board_level}, 1)
 	</insert>
 	
@@ -95,7 +99,7 @@
 	<!-- 게시글수정 -->
 	<update id="update" parameterType="kr.spring.entity.Learning">
 		UPDATE BT_LEARNING 
-		SET TITLE = #{title}, CONTENT = #{content}, ATTACHED_DATA = #{attached_data}, ATTACHED_DATA2 = #{attached_data2}
+		SET TITLE = #{title}, CONTENT = #{content}, ATTACHED_DATA = #{attached_data}, ATTACHED_DATA2 = #{attached_data2}, LECTURE = #{lecture}
 		WHERE IDX = #{idx}
 	</update>
 	

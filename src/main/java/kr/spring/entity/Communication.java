@@ -1,7 +1,5 @@
 package kr.spring.entity;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,12 +16,12 @@ import lombok.ToString;
 
  
 @Entity //(javax.persistence) //Board VO가 DataBase에 Table로 만들때 설정하는 부분 
-@Table(name = "BT_BOARD") //이렇게 테이블이름 명시할 수 있다
+@Table(name = "BT_COMMUNICATION") //이렇게 테이블이름 명시할 수 있다
 @Data   //getter setter
 @ToString
 @AllArgsConstructor //모든 필드를 가진 생성자  
 @NoArgsConstructor //매개변수 없는 생성자 
-public class Board { //Board VO가 ORM기능을 통해서 알아서 TABLE로 형성이 될것이다
+public class Communication { //Board VO가 ORM기능을 통해서 알아서 TABLE로 형성이 될것이다
 	
 	@Id //(javax.persistence) //PK의 의미
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //DB가 PK 번호를 자동 증가해서 만들어주도록 맡기는 옵션: auto_increment와 같음
@@ -33,8 +31,6 @@ public class Board { //Board VO가 ORM기능을 통해서 알아서 TABLE로 형
 	
 	@Enumerated(EnumType.STRING) //@Enumerated → 열거형(권한이 여러개이기 떄문에)
 	private Role role;
-	
-	private String lecture;
 	
 	private String title;
 	

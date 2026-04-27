@@ -5,12 +5,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- Spring Security 관련 태그라이브러리(JSTL방식)-->
+<!-- 스프링보안 태그라이브러리(JSTL방식)-->
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:set var="cpath" value="${pageContext.request.contextPath}"/>
 
-<!-- 로그인한 계정정보 EL식-->
+<!-- Spring Security 로그인한 계정정보 EL식-->
 <c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}" />
 <!-- 권한정보 EL식-->
 <c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}" />
@@ -59,80 +59,50 @@
     		<!-- 첫번째칸 -->
     		<%@ include file="/WEB-INF/common/left_common.jsp" %>
     		
-    		<!-- PENALTY인경우  -->
+    		<!-- PENALTY 경우  -->
     		<c:if test="${user.member.role =='PENALTY'}">
+	    		<div class= "col-lg-10">
+	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
+	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
+	    					<p>※ ${user.member.nick_name} 님은 운영 정책에 따라 현재 <strong>이용제한</strong> 상태입니다. 관리센터에 문의 주세요.</p>
+	    				</div>
+	    			</div>			
+	    		</div>		   			
+    		</c:if>
+    		
+    		<!-- GUEST 경우  -->
+    		<c:if test="${user.member.role =='GUEST'}">
 	    		<div class= "col-lg-10">
 	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
 	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
 	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기상태</strong> 입니다. 관리자의 승인 후 서비스 이용이 가능합니다</p>
 	    				</div>
 	    			</div>			
-	    		</div>			
+	    		</div>		
+	    			
     		</c:if>
     		
-    		<!-- GUEST인경우  -->
-    		<c:if test="${user.member.role =='GUEST'}">
-	    		<div class= "col-lg-10">
-	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
-	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-	    					<p>※ ${user.member.nick_name} 님은 운영 정책에 따라 현재 <strong>이용제한(패널티)</strong> 상태입니다. 관리센터에 문의 주세요.</p>
-	    				</div>
-	    			</div>			
-	    		</div>			
-    		</c:if>
-    		
-    		<!-- GUEST 아닌경우 -->
+			<!-- GUEST, PENALTY 제외 -->
     		<c:if test="${user.member.role !='GUEST' && user.member.role !='PENALTY'}">
-	    		<!-- 두번째칸 -->
+    		    <!-- 두번째칸 -->
 	    		<div class= "col-lg-5">
-	    			<div class="card" style="min-height: 500px; max-height: 10000px;">
+	    			<div class="card" style="min-height: 500px; max-height: 2000px;">
 	    				<div class="card-body">
-	    				<p>※ [백엔드] 수업전용 게시판입니다. 관리자/강사 등급 이외는 게시물 등록이 제한됩니다</p>
-	    					    		
-    					
-    					<!-- 분류하기 -->
-    					<div class="container">
-							<form class="form-inline justify-content-end" action="${cpath}/learning/learning_list" method="post"> 
-								<!-- 검색옵션 -->
-								<div class="form-group">
-									<select id="lecture_keyword" name="keyword" class="form-control">
-										<!-- 이름을 선택하면 <option value="writer" selected>이름</option> 이 자동 선택된다 -->
-										<option value="">강의선택</option>
-										<option value="Spring" ${pageMaker.cri.keyword =='Spring' ? 'selected' : ''} >Spring</option> 
-										<option value="JSP&Servlet" ${pageMaker.cri.keyword =='JSP&Servlet' ? 'selected' : ''} >JSP&Servlet</option>
-										<option value="Java" ${pageMaker.cri.keyword =='Java' ? 'selected' : ''} >Java</option>
-										<option value="DataBase" ${pageMaker.cri.keyword =='DataBase' ? 'selected' : ''} >DataBase</option>
-									</select>
-								</div>
-								<!-- 검색키워드 -->	
-								<div class="form-group">
-									<input id="lecture_type" name="type" type="hidden" value="lecture" class="form-control">
-								</div>
-								&nbsp;<button type="submit" class="btn btn-custom">검색</button>	
-								&nbsp;<a href="${cpath}/learning/learning_list" class="btn btn-outline-dark"><i class="fas fa-redo" style="color: rgb(0, 0, 0);"></i> 새로고침</a>														
-							</form>
-						</div>		
-							<br>
-
+	    				<p>※ [백엔드] 커뮤니티 게시판입니다. 욕설 및 모욕적인 표현이 포함된 게시글은 운영 정책에 따라 삭제됩니다.</p>
 	    					<table class="table table-bordered table-hover">
 	    						<thead class="table-cnt">
-	    							<th style="width: 8%;">번호</th>
-	    							<th style="width: 9%;">강의</th>
-	    							<th style="width: 26%;">제목</th>
-	    							<th style="width: 8%;">공감</th>
+	    							<th style="width: 9%;">번호</th>
+	    							<th style="width: 32%;">제목</th>
+	    							<th style="width: 9%;">공감</th>
 	    							<th style="width: 17%;">작성자</th>
 	    							<th style="width: 9%;">권한</th>
 	    							<th style="width: 15%;">작성일</th>
-	    							<th style="width: 8%;">조회</th>
+	    							<th style="width: 9%;">조회</th>
 	    						</thead>
 	    						<tbody>
 	    							<c:forEach var="vo" items="${list}" varStatus="i">
 	    								<tr>
-	    									<!-- 번호 -->
 	    									<td class="table-cnt">${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + i.index)}</td>					
-	    									<!-- 강의 -->
-	    									<td class="table-cnt">${vo.lecture}</td>	
-	    									<!-- 제목 -->
 	    									<td>
 	    										<!-- 삭제인 경우 -->
 		    									<c:if test="${vo.board_available == 'ADMIN'}"> 								    									
@@ -173,10 +143,8 @@
 		    									</c:if>
 	    									</td> 		
 	    									<!-- 공감수 -->
-	    									<td class="table-cnt" id="likeCnt_${vo.idx}">${vo.like_count}</td>	
-	    									<!-- 작성자 -->				
-	    									<td class="table-cnt">${vo.writer}</td>	
-	    									<!-- 권한 -->
+	    									<td class="table-cnt" id="likeCnt_${vo.idx}">${vo.like_count}</td>					
+	    									<td class="table-cnt">${vo.writer}</td>					
 	    									<td class="table-cnt">
 											    <c:choose>
 											        <c:when test="${vo.role == 'ADMIN'}">
@@ -184,13 +152,11 @@
 											        </c:when>
 											        <c:when test="${vo.role == 'INSTRUCTOR'}">
 											        	<span class="role-textSt-instructor">강사</span>
-											        </c:when>									       
+											        </c:when>											       
 											        <c:otherwise>학생</c:otherwise>
 											    </c:choose>
-											</td>		
-											<!-- 작성일 -->														
+											</td>					
 	    									<td class="table-cnt"><fmt:formatDate value="${vo.indate}" pattern="yyyy.MM.dd HH:mm"/></td>
-	    									<!-- 조회수 -->
 	    									<td class="table-cnt" id="cnt_${vo.idx}">${vo.count}</td>
 	    								</tr>
 	    							</c:forEach>
@@ -198,13 +164,9 @@
 	    						
 	    					</table>
 	    					
-	    					
-	    					
-	    					<%-- 
 	    					<!-- 검색옵션/키워드 -->
-	    					
 							<div class="container">
-								<form class="form-inline justify-content-center" action="${cpath}/learning/learning_list" method="post"> 
+								<form class="form-inline justify-content-center" action="${cpath}/communication/list" method="post"> 
 									<!-- 검색옵션 -->
 									<div class="form-group">
 										<select name="type" class="form-control">
@@ -221,9 +183,6 @@
 									&nbsp;<button type="submit" class="btn btn-custom">검색</button>									
 								</form>
 							</div>
-							--%>
-							
-							
 							
 							<br>  				
 	    						<!-- 페이징버튼 -->									
@@ -253,7 +212,7 @@
 								  </ul> <!-- //페이징버튼 -->	
 								  
 								  <!-- 페이지 버튼을 클릭했을 때 페이지 이동을 처리하기 위한 숨겨진(form) 전송용 폼 -->
-								  <form action="${cpath}/learning/learning_list" id="pageFrm">
+								  <form action="${cpath}/communication/list" id="pageFrm">
 									  <input type="hidden" id="page" name="page" value="${pageMaker.cri.page}">
 									  <input type="hidden" id="perPageNum" name="perPageNum" value="${pageMaker.cri.perPageNum}">
 									  
@@ -264,16 +223,18 @@
 								</div>					
 	    				</div>
 	    			</div>
-	    		</div>
+	    		</div><!-- end두번째칸 -->
 	    		
 	    		<!-- 세번째칸 -->
 	    		<div class= "col-lg-5">
-	    			<div class="card" style="min-height: 500px; max-height: 5000px;">
+	    			<div class="card" style="min-height: 500px; max-height: 50000px;">
 	    				<div class="card-body">
 							<form id="regForm">					
-								<input type="hidden" id="idx" name="idx" value="">	
-								<input type="hidden" id="attached_data" name="attached_data" value="${vo.attached_data}">									
-								<input type="hidden" id="attached_data2" name="attached_data2" value="${vo.attached_data2}">									
+								<input type="hidden" id="idx" name="idx" value="">
+								<input type="hidden" id="attached_data" name="attached_data" value="${vo.attached_data}">
+								<input type="hidden" id="attached_data2" name="attached_data2" value="${vo.attached_data2}">
+								<input type="hidden" id="attached_data3" name="attached_data3" value="${vo.attached_data3}">
+								
 								
 								<input type="hidden" id="username" name="username" value="<sec:authentication property='principal.member.username'/>">
 								<input type="hidden" id="role" name="role" value="<sec:authentication property='principal.member.role'/>">
@@ -284,73 +245,65 @@
 								<!-- 검색정보 -->
 								<input type="hidden" id="type" name="type" value="${pageMaker.cri.type}">
 								<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
-								
-								<!-- 강의선택 -->				
-								<div class="form-group">
-									<label for="lecture"></label> 
-									<div class="form-inline justify-content-start"> 
-										<select id="lecture" name="lecture" class="form-control">
-											<option value="">강의선택</option>
-									        <option value="Spring">Spring</option>
-									        <option value="JSP&Servlet">JSP&Servlet</option>
-									        <option value="Java">Java</option>
-									        <option value="DataBase">DataBase</option>
-										</select>
-									</div>
-								</div>	
 							
 	    						<div class="form-group">
 	    							<label for="title">제목</label> 
-	    							<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" >
-	    						</div>
-
-	    						<div class="form-group">
-	    							<label for="content">내용</label>
-	    							<!-- 비디오 보이는부분-->
-		    						<div id="video_container" style="display: none;">
-			    						<video video id="main_video" controls width=100% >
-										    <source id="video_src" type="video/mp4">
-										    이 브라우저는 동영상 재생을 지원하지 않습니다
-										</video>
-									</div>
-	    							<textarea id="content" name="content" class="form-control" placeholder="Enter Content" rows="4" cols=""></textarea> 
+	    							<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
 	    						</div>
 	    						
+	    						  						
+	    						<div class="form-group">
+	    							<label for="content">내용</label>	
+	    							<!-- 이미지 --> 	
+	    							<div id="img_container" style="display: none;" class="form-group">
+			    						<img id="img_src" alt="attached-img" style="width: 60%; height: auto;">					    
+									</div>							
+	    							<textarea id="content" name="content" class="form-control" placeholder="Enter Content" rows="7" cols=""></textarea> 
+	    						</div>
+	    							    		
 	    						<!-- 첨부된 파일삭제버튼 -->								
 	    						<div id="delete_attached_data_btn" class="form-group" style="display: none">				
-	    							<button onclick="delete_attached_data()" type="button"></button> 	
+	    							<button onclick="delete_attached_data()" type="button" ></button> 	
 	    						</div>	
-	    							
+	    						
 	    						<!-- 첨부된 파일2삭제버튼 -->								
 	    						<div id="delete_attached_data_btn2" class="form-group" style="display: none">				
-	    							<button onclick="delete_attached_data2()" type="button"></button> 	
+	    							<button onclick="delete_attached_data2()" type="button" ></button> 	
 	    						</div>
 	    						
-	    						<!-- 관리 강사만 첨부파일 아이콘 볼수있다 -->
-	    						<c:if test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
-		    						<div class="row">
-		    							<div class="col">
-		    								<div id="uploadFile" class="form-group">
-				    							<label>영상업로드 (※영상 형식의 파일만 등록할 수 있습니다)</label>
-				    							<!-- name값과 VO의 필드명이 다르게한다 -->
-				    							<input type="file" id="uploadFile_video" name="uploadFile" accept="video/*" class="form-control">
-				    						</div>
-		    							</div>	
-		    							<div class="col">
-		    								<label></label><br>
-		    								<button id="addUploadFile_btn" type="button" onclick="addUploadFile()" class="btn btn-sm btn-outline-dark"> 첨부파일 추가하기</button> 	
-		    							</div>		    						
-		    						</div>
-	    						</c:if>
+	    						<!-- 첨부된 파일2삭제버튼 -->								
+	    						<div id="delete_attached_data_btn3" class="form-group" style="display: none">				
+	    							<button onclick="delete_attached_data3()" type="button" ></button> 	
+	    						</div>
+						
 	    						
-	    						<div id="uploadFile2" class="form-group" style="display: none;">
-	    							<label>첨부파일</label> 						
-	    							<input type="file" name="uploadFile2" class="form-control">
+	    						<div id="uploadFile" class="form-group">
+	    							<label>이미지업로드 (※이미지 형식의 파일만 등록할 수 있습니다)</label>
+	    							<input type="file" id="uploadFile_img" name="uploadFile" accept="image/*" class="form-control">    							
+		    					</div>
+	    						
+	    						<div class="row">
+	    							<div class="col">	
+	    								<div id="uploadFile2" class="form-group">
+			    							<label>첨부파일</label>
+			    							<!-- name값과 VO의 필드명이 다르게한다 -->
+			    							<input type="file" name="uploadFile2" class="form-control">    							
+		    							</div>
+	    							</div>	
+	    							<div class="col">
+	    								<label></label><br>
+	    								<button id="addUploadFile_btn" type="button" onclick="addUploadFile()" class="btn btn-sm btn-outline-dark"> 첨부파일 추가하기</button> 	
+	    							</div>		    						
+	    						</div>    											    						
+	    						
+	    						<div id="uploadFile3" class="form-group" style="display: none;">
+	    							<label>첨부파일2</label>
+	    							<!-- name값과 VO의 필드명이 다르게한다 -->
+	    							<input type="file" name="uploadFile3" class="form-control">
 	    						</div>
 	    						
-	    						<!-- 다운로드링크 -->
 	    						<div id="download_btn" style="display: none;" class="mb-3">
-	    							<label>영상파일</label><br>
+	    							<label>첨부파일(이미지)</label><br>
 	    							<a id="download_link" href="#"></a>					       
 	    						</div>
 	    						
@@ -358,47 +311,44 @@
 	    							<label>첨부파일</label><br>
 	    							<a id="download_link2" href="#"></a>					       
 	    						</div>
-	    										
-	    						<div id="hide_title" class="form-group">
+	    						
+	    						<div id="download_btn3" style="display: none;" class="mb-3">
+	    							<label>첨부파일2</label><br>
+	    							<a id="download_link3" href="#"></a>					       
+	    						</div>
+	    							
+	    						<div class="form-group">
 	    							<label for="writer">작성자</label>
 	    							<input value="<sec:authentication property='principal.member.nick_name'/>" 
 	    							type="text" class="form-control" id="writer" name="writer" readonly="readonly">
 	    						</div>
 	    						
 	    						<!-- 게시글등록시 버튼 -->
-	    						<c:if test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
-		    						<div id="regDiv">  					
-			    						<button type="button" data-oper="register" class="btn btn-sm btn-custom">등록</button> 						
-			    						<button type="button" data-oper="reset" class="btn btn-sm btn-outline-dark">취소</button> 						
-		    						</div>	
-	    						</c:if>
-	    						
+	    						<div id="regDiv">  					
+		    						<button type="button" data-oper="register" class="btn btn-sm btn-custom">등록</button> 						
+		    						<button type="button" data-oper="reset" class="btn btn-sm btn-outline-dark">취소</button> 						
+	    						</div>	
 	    						<!-- 게시글상세보기시 버튼 -->					
 	    						<div id="updateDiv" style="display: none;">
-	    							<c:if test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
-		    							<span id="reply">
-		    								<button class="btn btn-sm btn-outline-dark" data-oper="reply" type="button">답글쓰기</button>
-		    							</span>    							
-	    							</c:if>
+	    							<span id="reply">
+	    								<button class="btn btn-sm btn-outline-dark" data-oper="reply" type="button">답글쓰기</button>
+	    							</span>
 	    							
 	    							<span id="replyComplete" style="display: none;">
 	    								<button onclick="goReply()" class="btn btn-sm btn-custom" type="button">답글등록</button>
 	    							</span>
-									<c:if test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
-		    							<span id="update">
-		    								<button class="btn btn-sm btn-outline-dark" data-oper="updateForm" type="button">수정</button>
-		    							</span>
-									</c:if>
+			
+	    							<span id="update">
+	    								<button class="btn btn-sm btn-outline-dark" data-oper="updateForm" type="button">수정</button>
+	    							</span>
+	    							
 	    							<span id="updateComplete" style="display: none;">
 	    								<button onclick='goUpdate()' class='btn btn-sm btn-custom' type='button'>수정완료</button>
 	    							</span>
+	    							    								
 	    							<button id="likeBtn" class="btn btn-sm btn-outline-danger" type="button" onclick="likePlus()">♡ 좋아요</button>	
-	    													    							
-	    							<c:if test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
-	    								<button class="btn btn-sm btn-outline-dark" data-oper="remove" type="button">삭제</button>
-	    								<button class="btn btn-sm btn-outline-dark" data-oper="list" type="button">글쓰기</button>
-	    							</c:if>
-	    							
+	    							<button class="btn btn-sm btn-outline-dark" data-oper="remove" type="button">삭제</button> 					
+	    							<button class="btn btn-sm btn-outline-dark" data-oper="list" type="button">글쓰기</button>
 	    						</div> 										
 	    					</form>		
 	 			
@@ -423,7 +373,7 @@
 												<textarea placeholder="댓글을 입력해주세요." rows="2" cols="" id="cmt_content" name="cmt_content" class="form-control"></textarea>
 											</td> 
 											<td style="text-align:center; vertical-align:middle; width:80px;"> 
-												<button class="btn btn-custom btn-sm" type="button" onclick="cmtInsert()">등록</button>											
+												<button class="btn btn-custom btn-sm" type="button" onclick="cmtInsert()">댓글 등록</button>											
 											</td>
 										</tr>		                        
 									</table>
@@ -442,8 +392,9 @@
 						</div><!-- end댓글 -->
 	
 	    			</div>
-	    		</div>
-    		</c:if>
+	    		</div><!--세번째칸 -->
+    		</c:if> <!--end GUEST 아닌경우 -->
+    		
     	</div>
     </div> 
     <%@ include file="/WEB-INF/common/bottom_common.jsp" %>
@@ -499,6 +450,7 @@
     </div>
   </div>
   
+  
   <script type="text/javascript">
   	$(document).ready(function(){
   		
@@ -511,6 +463,7 @@
 			$("#myMessageOpenModal").click(); //모달창 실행
 		}
   		
+  		 		
   		//**페이지 번호 클릭 시 이동하기 
 		//form태그의 id=pageFrm 인 요소를 선택
 		var pageFrm = $("#pageFrm");
@@ -528,167 +481,144 @@
 			pageFrm.find("#page").val(page); 
 			pageFrm.submit(); //form태그 제출된다 
 		});		
+		
   		
-  		//form 태그에 대한 정보
+  		//<form> 태그에 대한 정보
   		var regForm = $("#regForm");
   		
   		//모든태그의 버튼의 클릭을 감지를 한다 
   		$("button[data-oper]").on("click", function(){
-  			//클릭한 버튼의 data-oper 속성 값을 가져온다
-  			var oper = $(this).data("oper");
-  			//현재페이지 번호
-  			var currentPage = ${pageMaker.cri.page}		
   			
-  		    //등록기능
-  			if(oper == "register"){ 	
-  				var file = $("#uploadFile_video")[0].files[0];				
+  			var oper = $(this).data("oper"); //클릭한 버튼의 data-oper 속성 값을 가져온다		
+  			var currentPage = ${pageMaker.cri.page} //현재페이지 번호
+  			
+  			if(oper == "register"){ //등록
   				
-  				var lecture = $("#lecture").val();
-  				
-  				
-  				//강의값없으면
-  				if(!lecture){
-  					alert("강의종류의 선택해주세요");
-  					$("#lecture").focus();
-  					return false; 
-  				}
-	 	
+  				var file = $("#uploadFile_img")[0].files[0];
+  			 	
   				// *먼저 파일이 있을 때만 영상 파일인지 체크해야한다	
   			    if (file) {         
-  			        if (!file.type.startsWith("video/")) {
-  			            alert("'첨부파일()영상파일'은 동영상 파일만 등록할 수 있습니다");
-  			            $("#uploadFile_video").val(""); 
+  			        if (!file.type.startsWith("image/")) {
+  			            alert("'이미지첨부'는 이미지 파일만 등록할 수 있습니다");
+  			            $("#uploadFile_img").val(""); 
   			            return false; 
   			        }
   			    }
-  	  			
-  				if ($("#title").val().trim() == "" || $("#content").val().trim() == "") {
-  					//trim() : 빈칸을 자르는역할
-  				    alert("제목 또는 내용이 입력되지 않았습니다");
-  				    $("#title").focus(); //커서가 title로 이동한다 
-  				    return false; 
-  				}
   				
-  				regForm.attr("action", "${cpath}/learning/register");
+  				if($("#title").val().trim() == "" || $("#content").val().trim() == ""){
+					alert("제목 또는 내용이 입력되지 않았습니다");
+					$("#title").focus(); //다시 내용입력란에 포커스적용 
+  					return false;
+  				}			
+  				regForm.attr("action", "${cpath}/communication/register");
   				regForm.attr("method", "post");
   			    regForm.attr("enctype", "multipart/form-data");
   				regForm.submit();
-  				
   			}else if(oper == "reset"){ //취소
   				regForm[0].reset();
-  			}else if(oper == "list"){ //목록  
-  			  	location.href ="${cpath}/learning/learning_list"; 			  
-  			}else if(oper == "remove"){ //삭제  				
-  				regForm.attr("action", "${cpath}/learning/remove");
+  			}else if(oper == "list"){ //목록
+  			  	location.href ="${cpath}/communication/list";  
+  			}else if(oper == "remove"){ //삭제			
+  				regForm.attr("action", "${cpath}/communication/remove");
   				regForm.attr("method", "get");
   			    regForm.submit();
-  								
-  				regForm.find("#title").attr("readonly", false);
-  				regForm.find("#content").attr("readonly", false);
-  			 					
-  				$("#update").hide(); // '수정' 버튼 숨기기
-  				$("#reply").hide();  // '답글쓰기' 버튼 숨기기
-  			    $("#updateComplete").show(); // '수정완료' 버튼 보이기
-  			    
-  			  
-  			    $("#uploadFile").show();   // 파일첨부 버튼 보이기 	
-  			    
-  				$("#cmt").hide(); //댓글전체폼 숨긴다
-	    			
-  			}else if(oper == "updateForm"){ //수정폼	
-  				$("#lecture").prop("disabled", false);
-  							
+  			}else if(oper == "updateForm"){ //게시글 수정폼					
   				regForm.find("#title").attr("readonly", false);
   				regForm.find("#content").attr("readonly", false);
   				
-  			    var attached_data = regForm.find("#attached_data").val();
-  			    var attached_data2 = regForm.find("#attached_data2").val();
+				var attached_data = regForm.find("#attached_data").val();
+				var attached_data2 = regForm.find("#attached_data2").val();
+				var attached_data3 = regForm.find("#attached_data3").val();
 				
-  			    //=부분을 제거한다 
+				
+  			    //'='부분을 제거한다 
 	  			if (attached_data.includes("=")) { // Java의 contains 대신 includes 사용
 	  				attached_data = attached_data.substring(attached_data.indexOf("=") + 1);
 	  			}
-	  			 
+
 	  			if (attached_data2.includes("=")) { // Java의 contains 대신 includes 사용
 	  				attached_data2 = attached_data2.substring(attached_data2.indexOf("=") + 1);
 	  			}
 
+	  			if (attached_data3.includes("=")) { // Java의 contains 대신 includes 사용
+	  				attached_data3 = attached_data3.substring(attached_data3.indexOf("=") + 1);
+	  			}
+
   				if(attached_data){
   					$("#delete_attached_data_btn").show(); //'첨부파일삭제'버튼보이기 
-  					$("#delete_attached_data_btn button").attr("class", "btn btn-sm btn-dark").text(" 영상 첨부파일 삭제 (" + attached_data + ")" );				
-  				} 	
+  					$("#delete_attached_data_btn button").attr("class", "btn btn-sm btn-dark").text(" 이미지 첨부파일 삭제 ( " + attached_data + " )" );				
+  				} 
   				
   				if(attached_data2){
-  					$("#delete_attached_data_btn2").show(); 
-  					$("#delete_attached_data_btn2 button").attr("class", "btn btn-sm btn-dark").text(" 첨부파일 삭제 (" + attached_data2 + ")" );				
+  					$("#delete_attached_data_btn2").show(); //'첨부파일삭제'버튼보이기 
+  					$("#delete_attached_data_btn2 button").attr("class", "btn btn-sm btn-dark").text(" 첨부파일 삭제 ( " + attached_data2 + " )" );				
   				}
   				
-  				$("#video_container").hide(); // 비디오강의 숨기기
+  				if(attached_data3){
+  					$("#delete_attached_data_btn3").show(); //'첨부파일삭제'버튼보이기 
+  					$("#delete_attached_data_btn3 button").attr("class", "btn btn-sm btn-dark").text(" 첨부파일2 삭제 ( " + attached_data3 + " )" );				
+  				}
+  				
+  				$("#img_container").hide(); // 이미지숨기기
   				$("#update").hide(); // '수정' 버튼 숨기기
   				$("#reply").hide();  // '답글쓰기' 버튼 숨기기
-  				$("#likeBtn").hide();  // '좋아요' 버튼 숨기기
-  	
   			    $("#updateComplete").show(); // 수정완료 버튼 보이기
+  			    $("#likeBtn").hide();  // '좋아요' 버튼 숨기기
   			    
   			    $("#download_btn").hide(); // 파일다운 버튼 보이기
-			    $("#download_btn2").hide(); // 파일다운 버튼 보이기
-			    
-			    $("#uploadFile").show();   // 파일첨부 버튼 보이기 		    
-			    $("#uploadFile2").hide();   // '파일첨부2' 버튼 보이기 
-			    
-			    $("#addUploadFile_btn").show();   // '첨부파일추가하기' 버튼 보이기
-			    
-  				$("#cmt").hide(); //댓글전체폼 숨긴다
-  		
-  			}else if(oper =="reply"){
-		
-  				// hidden 필드인 #idx에 저장된 부모 게시글의 번호를 가져온다
-  			    //var parentIdx = regForm.find("#idx").val();
-  			  	//var boardGroup = regForm.find("#board_group").val();	
+  			    $("#download_btn2").hide(); // 파일다운 버튼 보이기
+  			    $("#download_btn3").hide(); // 파일다운 버튼 보이기
+  			    $("#uploadFile").show();    // 이미지첨부 보이기 		    
+  			    $("#uploadFile2").show();   // '파일첨부' 보이기
+  			    $("#uploadFile3").hide();   // '파일첨부2'숨기기
+  			    
+  			 	$("#addUploadFile_btn").show();   // '첨부파일추가하기' 버튼 보이기
+  			    
+  				$("#cmt").hide(); //댓글전체폼 숨긴다  
   				
-  				var lecture = $("#lecture").val();			 				
-  				regForm.find("#lecture").val(lecture);
+  			}else if(oper =="reply"){			
   				regForm.find("#title").attr("readonly", false).val(""); // .val("") : 기존작성된내용 ""로 변경
-  				regForm.find("#content").attr("readonly", false).val("");		
+  				regForm.find("#content").attr("readonly", false).val("");
   				regForm.find("#writer").val("${user.member.nick_name}");
   				
   				$("#delete_attached_data_btn").hide(); //'첨부파일삭제버튼' 숨기기
   				$("#delete_attached_data_btn2").hide(); //'첨부파일삭제2버튼' 숨기기
+  				$("#delete_attached_data_btn3").hide(); //'첨부파일삭제2버튼' 숨기기
   				
-  				//<form>태그 hidden에 있는 attached_data를 삭제한다
+  			    //<form>태그 hidden에 있는 attached_data를 삭제한다
   				regForm.find("input[name='attached_data']").remove();
   				regForm.find("input[name='attached_data2']").remove();
-		
-  			    $("#replyComplete").show(); // '답글등록' 버튼 보이기
-  				$("#video_container").hide(); // 비디오강의 숨기기
-  				$("#likeBtn").hide();  // '좋아요' 버튼 숨기기
+  				regForm.find("input[name='attached_data3']").remove();
+  				
+  				$("#img_container").hide();
+  				
   				$("#reply").hide(); // '답글쓰기' 버튼 숨기기
-  				$("#update").hide(); // '수정' 버튼 숨기기	
-  				  			
-  			    $("#download_btn").hide(); // '파일다운' 숨기기
-		    	$("#download_btn2").hide(); // '파일다운' 숨기기		    	
-  			    $("#uploadFile").show();   // '파일첨부' 버튼 보이기
-  			  	$("#uploadFile2").hide();   // '파일첨부2' 버튼 보이기
+  				$("#update").hide(); // '수정' 버튼 숨기기
+  			    $("#replyComplete").show(); // '답글등록' 버튼 보이기
+  			    $("#likeBtn").hide();  // '좋아요' 버튼 숨기기		    
+  		    	$("#download_btn").hide(); // '파일다운' 보이기
+  		    	$("#download_btn2").hide(); // '파일다운' 보이기
+  		    	$("#download_btn3").hide(); // '파일다운' 보이기
+			    $("#uploadFile").show();   // '파일첨부' 버튼 보이기
+			    $("#uploadFile2").show();   // '파일첨부' 버튼 보이기
+			    $("#uploadFile3").hide();   // '파일첨부2' 버튼 보이기
 			    
 			    $("#addUploadFile_btn").show();   // '첨부파일추가하기' 버튼 보이기
-  
   				$("#cmt").hide(); //댓글폼 전체를 숨긴다
-  			}	
+  			}		
   			
   		}); //버튼클릭
-  		
   			
   		//상세보기기능
-  		$(".move").on("click", function(e){
-  			//a 태그의 기본 동작(href에 의한 페이지 이동)을 막는다
-  			e.preventDefault(); 
+  		$(".move").on("click", function(e){ 			
+  			e.preventDefault(); //a 태그의 기본 동작(href에 의한 페이지 이동)을 막는다
   			
   			//클릭한 해당 요소의 href 속성값(idx)을 가져온다
   			// <td><a href="${vo.idx}">${vo.title}</a></td>
   			var idx = $(this).attr("href"); 
 			
   			$.ajax({
-  				url : "${cpath}/learning/get",
+  				url : "${cpath}/communication/get",
   				type : "get",
   				data : {"idx" : idx},
   				dataType : "json",
@@ -697,25 +627,14 @@
   			});//ajax	
   		});//a태그클릭
   		
-  		
-	
+
   	});//end ready
-  	
-  	
 
   	//상세보기 성공 후 게시글 정보를 폼에 출력하는 함수
   	function printBoard(vo){
   		
   		var regForm = $("#regForm"); //등록글
   		var cmtForm = $("#cmtForm"); //댓글
-	
-  		var selectedLecture = vo.lecture; 
-  		//.val(selectedLecture): selectedLecture가 "Java"라면, <option value="Java">를 자동으로 찾아간다
-  		//.prop("selected", true): 선택된 요소의 속성중 selected 상태를 true로 설정한다 
-   	    $("#lecture").val(selectedLecture).prop("selected", true);
-  		
-   	    $("#lecture").prop("disabled", true); //폼을 submit 하면 disabled 된 요소의 값은 서버로 전송되지 않는다 
-  		
   		
   		//regForm기준으로 title을 찾는다 → vo.title 인 value값을 넣는다 
   		//regForm.find(...) : <input>이나 <textarea>같은 입력창의 value를 바꿀때 쓰는 방법
@@ -723,99 +642,118 @@
   		regForm.find("#content").val(vo.content);
   		regForm.find("#writer").val(vo.writer);	
   		
-  		//regForm 안에 input, textarea 태그를 찾아서 readonly → true로 속성을 추가
+  		//regForm 안에 input, textarea 태그를 찾아서 readonly → true로 속성을 추가한다
   		regForm.find("input").attr("readonly", true);
   		regForm.find("textarea").attr("readonly", true);
   		
-  		//attached_data에 비디오 있는지 확인
-  		if (vo.attached_data) {
-  		    $("#video_src").attr("src", "${cpath}/board_upload/" + vo.attached_data);
- 		    
-  		    $("#main_video")[0].load();
-  		    //비디오파일 화면에 보여준다
-  		    $("#video_container").show();
+  		
+  		//attached_img에 이미지가 있는지 확인
+  		if (vo.attached_data) {	
+  		    $("#img_src").attr("src", "${cpath}/board_upload/" + vo.attached_data);	    
+  		    $("#img_container").show();
   		} else {	  
-  		    //비디오화면 숨긴다
-  		    $("#video_container").hide();
+  		    //이미지를 숨긴다
+  		    $("#img_container").hide();
   		}
   		
+
   		//파일이름 있는지 확인
- 		if (vo.attached_data) {
- 		    $("#download_link").attr("href", "${cpath}/learning/download/" + vo.attached_data);		    
- 		   
- 		    var attached_data = vo.attached_data;
-  		
- 		    if (attached_data.includes("=")) { 
-	 		attached_data = attached_data.substring(attached_data.indexOf("=") + 1);
+  		if (vo.attached_data) {
+  		    $("#download_link").attr("href", "${cpath}/communication/download/" + vo.attached_data);		    
+  		   
+  		    var attached_data = vo.attached_data;
+	  		
+  		    if (attached_data.includes("=")) { 
+		 		attached_data = attached_data.substring(attached_data.indexOf("=") + 1);
 			}
- 		    
-		    //download_link <a>태그에 text 표시한다 
-		    $("#download_link").text(attached_data);
-		    
-		    //숨겨져 있던 버튼을 화면에 보여줌
-		    $("#download_btn").hide();	   
- 		} else {
- 		    // 파일이 없으면 버튼을 숨김
- 		    $("#download_btn").hide();
- 		}
- 		
- 		//파일이름 있는지 확인2
- 		if (vo.attached_data2) {
- 		    $("#download_link2").attr("href", "${cpath}/learning/download/" + vo.attached_data2);		    
- 		   
- 		    var attached_data2 = vo.attached_data2;
+  		    
+  		    //download_link <a>태그에 text 표시한다 
+  		    $("#download_link").text(attached_data);
+  		    
   		
- 		    if (attached_data2.includes("=")) { 
-	 		attached_data2 = attached_data2.substring(attached_data2.indexOf("=") + 1);
-		}
- 		    
- 		    //download_link <a>태그에 text 표시한다 
- 		    $("#download_link2").text(attached_data2);
- 		    
- 		    //숨겨져 있던 버튼을 화면에 보여줌
- 		    $("#download_btn2").show();
- 		} else {
- 		    // 파일이 없으면 버튼을 숨김
- 		    $("#download_btn2").hide();
- 		}
+  		    $("#download_btn").hide();
+  		} else {
+  		    // 파일이 없으면 버튼을 숨김
+  		    $("#download_btn").hide();
+  		}
   		
-  		$("#delete_attached_data_btn").hide(); //'첨부파일삭제버튼' 숨기기
-  		$("#delete_attached_data_btn2").hide(); //'첨부파일삭제버튼2' 숨기기 		
+  		//파일이름 있는지 확인2
+  		if (vo.attached_data2) {
+  		    $("#download_link2").attr("href", "${cpath}/communication/download/" + vo.attached_data2);		    
+  		   
+  		    var attached_data2 = vo.attached_data2;
+	  		
+  		    if (attached_data2.includes("=")) { 
+		 		attached_data2 = attached_data2.substring(attached_data2.indexOf("=") + 1);
+			}
+  		    
+  		    //download_link <a>태그에 text 표시한다 
+  		    $("#download_link2").text(attached_data2);
+  		    
+  		    //숨겨져 있던 버튼을 화면에 보여줌
+  		    $("#download_btn2").show();
+  		} else {
+  		    // 파일이 없으면 버튼을 숨김
+  		    $("#download_btn2").hide();
+  		}
+  		
+  		
+  	//파일이름 있는지 확인2
+  		if (vo.attached_data3) {
+  		    $("#download_link3").attr("href", "${cpath}/communication/download/" + vo.attached_data3);		    
+  		   
+  		    var attached_data3 = vo.attached_data3;
+	  		
+  		    if (attached_data3.includes("=")) { 
+		 		attached_data3 = attached_data3.substring(attached_data3.indexOf("=") + 1);
+			}
+  		    
+  		    //download_link <a>태그에 text 표시한다 
+  		    $("#download_link3").text(attached_data3);
+  		    
+  		    //숨겨져 있던 버튼을 화면에 보여줌
+  		    $("#download_btn3").show();
+  		} else {
+  		    // 파일이 없으면 버튼을 숨김
+  		    $("#download_btn3").hide();
+  		}
+		
+  		$("#delete_attached_data_btn").hide(); //'첨부파일삭제버튼' 숨기기 		
+  		$("#delete_attached_data_btn2").hide(); //'첨부파일2삭제버튼' 숨기기 		
+  		$("#delete_attached_data_btn3").hide(); //'첨부파일2삭제버튼' 숨기기 		
+  		
   		$("#uploadFile").hide();  //첨부파일 안보인다
   		$("#uploadFile2").hide();  //첨부파일2 안보인다
-  		$("#addUploadFile_btn").hide();  //'첨부파일추가하기' 버튼 숨긴다
-		
+  		$("#uploadFile3").hide();  //첨부파일3 안보인다
+  		$("#addUploadFile_btn").hide();  //첨부파일 안보인다
   		
   		//display는 HTML 속성이 아니라 CSS속성이기 때문에 attr()로 안된다  
   		$("#regDiv").css("display", "none");     //'등록' '취소' 안보인다 
-  		$("#updateDiv").css("display", "block"); //'답글쓰기' '목록' '수정' '삭제' 보인다 
-  		
+  		$("#updateDiv").css("display", "block"); //'답글쓰기' '목록' '수정' '삭제' 보인다 	
   		$("#update").show();         //'수정' 버튼 보이기
-		$("#updateComplete").hide(); //'수정완료' 버튼 숨기기
-		
+		$("#updateComplete").hide(); //'수정완료' 버튼 숨기기	
 		$("#reply").show();         //'답글쓰기'버튼 보이기
-		$("#replyComplete").hide(); //'답글등록'버튼 숨기기
-		
+		$("#replyComplete").hide(); //'답글등록'버튼 숨기	
 		$("#cmt").show(); //'답글등록'버튼 숨기기
   		
-  		regForm.find("#idx").val(vo.idx); //idx값을 hidden 태그에 넣는다 
+  		regForm.find("#idx").val(vo.idx);           //idx값을 hidden 태그에 넣는다 
   		regForm.find("#username").val(vo.username); 
   		regForm.find("#attached_data").val(vo.attached_data); 
   		regForm.find("#attached_data2").val(vo.attached_data2); 
+  		regForm.find("#attached_data3").val(vo.attached_data3); 
   		
-  		
-
   		//댓글작성에 입력되는 값
   		cmtForm.find("#idx").val(vo.idx); 
-  		loadCmt(); //댓글리스트을 불러오는 기능
+  		
+  		loadCmt(); //댓글리스트을 불러오는 기능	
   		
   		$("#likeBtn").attr("onclick", "likePlus('" + vo.idx + "')");
 		
   		//like_available 조회하기
   		likeHave(vo.idx);
-
   		
-  		//EL식에서 가져온 스프링시큐리티 이름과 게시글 작성한 이름이 같다면 수정버튼 비활성화를 취소시킨다 
+  		//EL식에서 가져온 스프링시큐리티 이름과 게시글 작성한 이름이 같다면 
+  		// 수정버튼 비활성화를 취소시키겠다 
   		if("${user.member.nick_name}" == vo.writer){
   			//button 태그에 data-oper="updateForm" 접근한다 
   			$("button[data-oper='updateForm']").attr("disabled", false);		
@@ -834,25 +772,13 @@
   			$("button[data-oper='remove']").attr("disabled", true);
   		}
   		
-  		
   	}//printBoard
-  	
-  	
-  	
+
   	
   	//수정기능
   	function goUpdate(){
-  			
-  		var lecture = $("#lecture").val();	
-			
-		if(!lecture){
-			alert("강의종류의 선택해주세요");
-			$("#lecture").focus();
-			return false; 
-		}
-		
-		var regForm = $("#regForm");
-  		regForm.attr("action", "${cpath}/learning/modify");
+  		var regForm = $("#regForm");
+  		regForm.attr("action", "${cpath}/communication/modify");
   		regForm.attr("method", "post");
 		regForm.attr("enctype", "multipart/form-data");
   		regForm.submit(); //제출
@@ -860,29 +786,19 @@
   	}
   	
   	//답글기능
-  	function goReply(){		
-  		//disabled을 ture를 하면 서버에 전송되지 않으므로 전송직전에 false로 풀어준다 
-  		$("#lecture").prop("disabled", false); 	
-  		
-  		if($("#title").val().trim() == "" || $("#content").val().trim() == ""){
-			alert("제목 또는 내용이 입력되지 않았습니다");
-			$("#title").focus();;
-				return false;
-		}
-		
-		var regForm = $("#regForm");
-  		regForm.attr("action", "${cpath}/learning/reply");
+  	function goReply(){
+  		var regForm = $("#regForm");
+  		regForm.attr("action", "${cpath}/communication/reply");
   		regForm.attr("method", "post");
   		regForm.attr("enctype", "multipart/form-data");
   		regForm.submit(); //제출
   		alert("답글이 게시되었습니다");
   	}
-  		
-  	
+  		 	
   	//조회수실시간반영
 	function showCount(idx) {	
 	    $.ajax({
-	        url: "${cpath}/learning/showCount",    
+	        url: "${cpath}/communication/showCount",    
 	        type: "get",
 	        data: {"idx": idx},
 	        success: function(vo) {   
@@ -897,19 +813,21 @@
 	    });
 	}
 
-  	
+//댓글----------------------------------------------------------------------------------------- 
+
 	//댓글리스트 가져오는 기능 
 	function loadCmt() {
 		var idx = $("#regForm #idx").val();
+		//alert("loadCmt의 idx값: " + idx);
 		
 	    $.ajax({
-	        url : "${cpath}/learnComment/loadCmt", 
+	        url : "${cpath}/cmntComment/loadCmt", 
 	        type: "get",
 	        data : { "idx" : idx },
 	        dataType: "json",
 	        success: function(data) {         
 	        	cmtView(data);
-	        },           
+	        },             
 	        error: function() {         
 	            alert("댓글로드 실패");
 	        }
@@ -922,7 +840,7 @@
 		//alert("loadCmt의 idx값: " + idx);
 		
 	    $.ajax({
-	        url : "${cpath}/learnComment/cmt_groupCnt", 
+	        url : "${cpath}/cmntComment/cmt_groupCnt", 
 	        type: "get",
 	        data : { "idx" : idx , "cmt_group" : cmt_group },
 	        dataType: "json",
@@ -936,10 +854,8 @@
 	
 	//댓글의 정보를 받아온다
 	//서버로부터 비동기방식통신을 하고 성공했을때 작동하는 함수, 
-	function cmtView(data){
-		
-		var listHtml = "";
-	
+	function cmtView(data){	
+		var listHtml = "";	
 		//$.each: jQuary반목문
 		//data: AJAX 요청에서 서버가 반환한 전체 데이터
 		//index: 배열의 인덱스, obj: 배열의 해당 인덱스 값 data[index]
@@ -956,8 +872,8 @@
 	                        // "12"+'-' → "12-"
 	                        ('0' + date.getDate()).slice(-2) + ' ' +
 	                        ('0' + date.getHours()).slice(-2) + ':' +
-	                        ('0' + date.getMinutes()).slice(-2);
-	        
+	                        ('0' + date.getMinutes()).slice(-2);                    
+	                        
 	        //원본글이 아니면 배경색 회색을 적용한다    
 	        if (obj.cmt_level == 0) {   
 	        	listHtml += "<tr>";
@@ -1002,7 +918,7 @@
 				
 				listHtml += cleanContent + "</span></td>";
 			}	
-			
+
 			//댓글날짜
 			listHtml += "<td style='text-align:center; vertical-align:middle; width:100px;'>" + formatted + "</td>"; //댓글날짜		
 			
@@ -1077,7 +993,6 @@
 		$("#cmtView").html(listHtml);	
 	};	//end cmtView
 		
-
 	
 	//댓글 등록버튼
 	function cmtInsert(){
@@ -1090,7 +1005,7 @@
 		var fData = $("#cmtForm").serialize();
 		//idx=123&memID=son&cmtContent=%EB%8C%93%EA%B8%80+%EB%82%B4%EC%9A%A9
 		$.ajax({
-			url : "${cpath}/learnComment/cmtInsert",
+			url : "${cpath}/cmntComment/cmtInsert",
 			type : "post",
 			data : fData, 
 			success : function(){ 
@@ -1112,9 +1027,9 @@
 		if(!confirm("댓글을 삭제하겠습니까?")) {
 	        return; //취소를 누르면 함수종료 된다
 	    }	
-		
+	
 		$.ajax({
-			url : "${cpath}/learnComment/cmtDelete", 
+			url : "${cpath}/cmntComment/cmtDelete", 
 			type : "get",        
 			data : { "cmt_idx" : cmt_idx, "role" : role }, 
 			success : function(){ 
@@ -1134,7 +1049,7 @@
 	    }	
 	
 		$.ajax({
-			url : "${cpath}/learnComment/cmtDelete", 
+			url : "${cpath}/cmntComment/cmtDelete", 
 			type : "get",        
 			data : { "cmt_idx" : cmt_idx, "role" : role }, 
 			success : function(){  	
@@ -1144,6 +1059,7 @@
 		});
 	};
 	
+
 	//대댓글전송
 	function cmtCmtInsert(btn){	
 		//<button class="btn btn-custom btn-sm" type="button" onclick="cmtCmtInsert(this)">대댓등록</button> 값이 넘어갔다
@@ -1161,7 +1077,7 @@
 	    
 	    console.log("전송될 데이터: ", fData);
 		$.ajax({
-			url : "${cpath}/learnComment/cmtcmtInsert",
+			url : "${cpath}/cmntComment/cmtcmtInsert",
 			type : "post",
 			data : fData, 
 			success : function(){ 
@@ -1178,15 +1094,13 @@
 	};//end cmtCmtInsert
 	
 	
-	
-	
 	//댓글당 대댓글수를 나오게 하는 기능
 	function getCmt_cmt_count(cmt_idx){
 		var cmt_idx = cmt_idx;
 		//alert("도착한 cmt_idx값: " + cmt_idx);
 		
 		$.ajax({
-			url : "${cpath}/learnComment/getCmt_cmt_count",
+			url : "${cpath}/cmntComment/getCmt_cmt_count",
 			type : "get",
 			data: {"cmt_idx": cmt_idx},
 			dataType: 'json',
@@ -1197,7 +1111,6 @@
 			error : function(){ alert("댓글당 대댓글수를 나오게 하는 기능 실패");}
 		});
 	};
-	
 
 	
 	//대댓글 작성폼 나오게 하는 기능
@@ -1210,13 +1123,12 @@
 		$("#cmt_" + cmt_idx).toggle(); //id="cmt_\${obj.cmt_idx}" 로 토글실행한다
 	};
 	
-	
 	//Cmt_group가져오는 기능
 	function getCmt_group(cmt_idx) {	
 		//alert("group에 넘어온 cmt_idx값: " + cmt_idx);
 		
 		$.ajax({
-	        url: "${cpath}/learnComment/getCmt_group",    
+	        url: "${cpath}/cmntComment/getCmt_group",    
 	        type: "get",
 	        data: {"cmt_idx": cmt_idx},
 	        dataType: 'json',
@@ -1231,6 +1143,7 @@
 	    });
 	}
 	
+	
 	//대댓글리스트 가져오는 기능 
 	function loadCmtcmt(cmt_group, cmt_idx) {
 		var idx = $("#regForm #idx").val();
@@ -1238,7 +1151,7 @@
 		//alert("대댓글리스트 가져오는 함수 idx값: " + idx + " group값: " + cmt_group);	
 		
 		 $.ajax({
-		        url : "${cpath}/learnComment/loadCmtcmt", 
+		        url : "${cpath}/cmntComment/loadCmtcmt", 
 		        type: "get",
 		        data : { "idx" : idx, "cmt_group" : cmt_group},
 		        dataType: "json",
@@ -1251,7 +1164,7 @@
 		        }
 		 });
 	}
-	
+
 	
 	//대댓글 보이기
 	function cmtCmtView(data, cmt_idx){   
@@ -1347,29 +1260,20 @@
 		
 		
 		$("#cmtCmtView_" + cmt_idx).html(listHtml);
-	};
+	};	
 	
-	
-	
-	
-	
-	
-		
 	
 	
 
-	//===================================================================================좋아요
-	
-	
-	
-		
+	//좋아요 기능 ----------------------------------------------------------------------------------------------------------------
+
 	//like_count +1 기능
 	function likePlus(idx){
 		//var idx = $("#regForm #idx").val();		
 		//alert("likePlus - idx 값:"+ idx);
 		
 		$.ajax({
-			url : "${cpath}/learnLike/likePlus",    
+			url : "${cpath}/cmntLike/likePlus",    
 			type: "post",      
 			data : { "idx" : idx},  
 			success: function(){	
@@ -1387,7 +1291,7 @@
 		//alert("likeHave - idx 값: "+ idx +" username값: " + username);
 		
 		$.ajax({
-			url : "${cpath}/learnLike/likeHave",    
+			url : "${cpath}/cmntLike/likeHave",    
 			type: "get",      
 			data : {"idx" : idx, "username" : username},  
 			dataType: 'json',
@@ -1413,7 +1317,7 @@
 		//alert("insertLike - idx 값: "+ idx +" username값: " + username);
 		
 		$.ajax({
-			url : "${cpath}/learnLike/insertLike",    
+			url : "${cpath}/cmntLike/insertLike",    
 			type: "post",      
 			data : {"idx" : idx, "username" : username},  
 			success: function(){		
@@ -1432,7 +1336,7 @@
 		
 		//alert("updateLike - idx 값: "+ idx +" username값: " + username);
 		$.ajax({
-			url : "${cpath}/learnLike/updateLike",    
+			url : "${cpath}/cmntLike/updateLike",    
 			type: "post",      
 			data : {"idx" : idx, "username" : username},  
 			success: function(){	
@@ -1450,7 +1354,7 @@
 		//alert("likeHave - idx 값: "+ idx +" username값: " + username);
 		
 		$.ajax({
-			url : "${cpath}/learnLike/likeHave",    
+			url : "${cpath}/cmntLike/likeHave",    
 			type: "get",      
 			data : {"idx" : idx, "username" : username},  
 			dataType: 'json',
@@ -1474,7 +1378,7 @@
 		//alert("selectLike- idx값: " + idx +" "+ "username값: " + username);
 		
 		$.ajax({
-			url : "${cpath}/learnLike/selectLike",    
+			url : "${cpath}/cmntLike/selectLike",    
 			type: "get",      
 			data : {"idx" : idx, "username" : username},
 			dataType: 'json',
@@ -1498,7 +1402,7 @@
 		 
 		if (data == 1) {
 			//text를 '♡'로 교체하고 속성들을 교체한다
-		    $("#likeBtn").text("♡ 좋아요").attr("onclick", "unLike('"+idx+"')").attr("class", "btn btn-danger btn-sm");
+		    $("#likeBtn").text("♡ 좋아요").attr("onclick", "unLike('"+idx+"')").attr("class", "btn btn-sm btn-danger");
 		    //.removeClass() //기존의 모든 CSS 클래스를 삭제 하고 버튼속성을 교체한다
 	        //.addClass("btn btn-danger btn-sm"); 
 		}else{
@@ -1512,7 +1416,7 @@
 		//alert("unLike - idx값: " + idx); 	
 		
 		$.ajax({
-			url : "${cpath}/learnLike/unLike",    
+			url : "${cpath}/cmntLike/unLike",    
 			type: "post",      
 			data : { "idx" : idx},  
 			success: function(){	
@@ -1531,7 +1435,7 @@
 		//alert("updateLike_0 - idx값: " + idx +" "+ "username값: " + username);
 		
 		$.ajax({
-			url : "${cpath}/learnLike/updateLike_0",    
+			url : "${cpath}/cmntLike/updateLike_0",    
 			type: "post",      
 			data : {"idx" : idx, "username" : username},
 			success: function(){
@@ -1548,7 +1452,7 @@
 		//alert("showLike_count idx값 : " + idx);
 		
 	    $.ajax({
-	        url: "${cpath}/learning/showLike_count",    
+	        url: "${cpath}/communication/showLike_count",    
 	        type: "get",
 	        data: {"idx": idx},
 	        success: function(vo) {   
@@ -1561,7 +1465,9 @@
 	        }
 	    });
 	}
-
+	
+	
+	
 	//첨부된데이터삭제
 	function delete_attached_data() {			
 		$("#regForm").find("input[name='attached_data']").remove();
@@ -1569,20 +1475,34 @@
 		
 		//id="delete_attached_data_btn" 안에 button 태그에 접근한다
 		//<input>태그의 경우는 .val()을 사용한다 
-		$("#delete_attached_data_btn button").attr("class", "btn btn-sm btn-outline-dark").text("영상 첨부파일 삭제 완료");
+		$("#delete_attached_data_btn button").attr("class", "btn btn-sm btn-outline-dark").text("이미지 첨부파일 삭제 완료");
 	}
 	
 	//첨부된데이터2삭제
 	function delete_attached_data2() {			
 		$("#regForm").find("input[name='attached_data2']").remove();
-		alert("첨부된 데이터가 삭제되었습니다");	
+		alert("첨부된 데이터가 삭제되었습니다");
+		
+		//id="delete_attached_data_btn" 안에 button 태그에 접근한다
+		//<input>태그의 경우는 .val()을 사용한다 
 		$("#delete_attached_data_btn2 button").attr("class", "btn btn-sm btn-outline-dark").text("첨부파일 삭제 완료");
+	}
+	
+	//첨부된데이터3삭제
+	function delete_attached_data3() {			
+		$("#regForm").find("input[name='attached_data3']").remove();
+		alert("첨부된 데이터가 삭제되었습니다");
+
+		$("#delete_attached_data_btn3 button").attr("class", "btn btn-sm btn-outline-dark").text("첨부파일2 삭제 완료");
 	}
 	
 	//첨부파일추가하기 버튼
 	function addUploadFile(){
-		$("#uploadFile2").toggle();
+		$("#uploadFile3").toggle();
 	}
+
+
+
 	
   </script>
 

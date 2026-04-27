@@ -61,17 +61,18 @@ input[type="radio"] {
     					<form id="imageUpdateForm">
     						<input type="hidden" name="username" value="${user.member.username}"> 
 							<table style="text-align: center;" class="table table-bordered">					
+								<p>※이미지 형식의 파일만 등록할 수 있습니다</p>
 								<tr>
 									<td style="width: 150px; vertical-align: middle;">프로필업로드</td>
 									<td>
 										<span class="btn btn-default">										
-											<input type="file" name="profile">
+											<input type="file" id="profile" name="profile" accept="image/*">
 										</span>
 									</td>
 								</tr>						
 								<tr>
 									<td colspan="2">	
-										<button type="button" data-oper="imageUpdate" class="btn btn-custom">프로필업로드</button> &nbsp;					
+										<button type="button" data-oper="imageUpdate" class="btn btn-custom" id="profileBtn" disabled>프로필업로드</button> &nbsp;					
 										<button type="button" data-oper="imageDelete" class="btn btn-outline-secondary">삭제</button>																							
 									</td>
 								</tr>
@@ -136,52 +137,8 @@ input[type="radio"] {
     		
     		<!-- 세번째칸 -->
     		<div class= "col-lg-5">
-    			<div class="card" style="min-height: 500px; max-height: 1000px;">
+    			<div class="card" style="min-height: 636px; max-height: 1000px;">
     				<div class="card-body">
-    				
-	    				<!-- 비밀번호수정 -->
-	    				<p>※ 비밀번호 변경시 자동으로 로그아웃이 됩니다.</p>		 
-    					<form id="passwordForm">
-    					<input type="hidden" name="username" value="${user.member.username}">
-    					<input type="hidden" name="password" id="password" value="" >
-							<table style="text-align: center; border : 1px solid #dddddd" class="table table-bordered">						
-								<tr>
-									<td style="width: 110px; vertical-align: middle;">새 비밀번호</td>
-									<td><input class="form-control" type="password" name="password1" id="password1" onkeyup="passwordCheck()" maxlength="20" required="required" placeholder="비밀번호를 입력하세요"></td>									
-								</tr>	
-								<tr>
-									<td style="width: 110px; vertical-align: middle;">새 비밀번호확인</td>
-									<td><input class="form-control" type="password" name="password2" id="password2" onkeyup="passwordCheck()" maxlength="20" required="required" placeholder="비밀번호를 확인하세요"></td>					
-								</tr>
-								<tr>
-									<td style="width: 200px; vertical-align: middle;">비밀번호일치 여부 확인</td>
-									<td style="text-align: center">
-										<span id="passMessage"></span> <!-- 비밀번호 일치 여부 메시지 표시-->															
-									</td>
-								</tr>							
-								<tr>
-									<td colspan="2">								
-										<button type="button" data-oper="password" class="btn btn-custom pull-right" >비밀번호수정</button>										
-									</td>
-								</tr>
-							</table>		
-						</form>
-					
-						<br>
-						<br>
-						
-						<p>※ 탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다</p>
-						<form id="close_accountForm">	
-						<input type="hidden" id="username" name="username" value="${user.member.username}">			
-							<table style="text-align: center; border : 1px solid #dddddd" class="table table-bordered">									
-								<tr>
-									<td>												
-										<button type="button" data-oper="close_account" class="btn btn-custom pull-right">회원탈퇴하기</button>										
-									</td>
-								</tr>					
-							</table>									
-						</form>	
-						
 											
     				</div>
     			</div>
@@ -254,15 +211,31 @@ input[type="radio"] {
 			}
 			$("#myMessageOpenModal").click(); //모달창 실행
 		}
+	  
+	  
+  	  const profile = $("#profile");
+      const profileBtn = $("#profileBtn");
+      //프로필사진 등록시 '파일업로드'버튼 활성화 기능
+	      //.on(): 이벤트 감시하는 역할 역할
+	      //change : 바뀌면 다음동작실행
+	  profile.on("change", function() {
+	      // jQuery 객체에서 파일을 찾으려면 [0]을 붙여서 원본 엘리먼트에 접근한다
+	      if(profile[0].files.length > 0) {
+	          profileBtn.prop("disabled", false); // .prop()으로 속성 제어
+	      } else {
+	          profileBtn.prop("disabled", true);
+	      }
+	  });
+	  
 
-	  var nick_nameForm = $("#nick_nameForm");
-	  var passwordForm = $("#passwordForm");
-	  var member_updateForm = $("#member_updateForm");
-	  var close_accountForm = $("#close_accountForm");
-	  var imageUpdateForm = $("#imageUpdateForm");
+	  const nick_nameForm = $("#nick_nameForm");
+	  const passwordForm = $("#passwordForm");
+	  const member_updateForm = $("#member_updateForm");
+	  const close_accountForm = $("#close_accountForm");
+	  const imageUpdateForm = $("#imageUpdateForm");
 	  
 	  $("button[data-oper]").on("click", function(){
-		  var oper = $(this).data("oper"); 
+		  const oper = $(this).data("oper"); 
 		  //닉네임
 		  if(oper == "nick_name"){ 
 				if($("#nick_name").val() == "${user.member.nick_name}"){
@@ -281,35 +254,13 @@ input[type="radio"] {
 					
 					$("#nick_name").focus(); // 아이디 입력창으로 커서를 자동한다
 					return false;
-				}			
+				}	
+	   
 				nick_nameForm.attr("action", "${cpath}/member/update_nick_name");
 				nick_nameForm.attr("method", "post");
 				nick_nameForm.submit();
 				
-		   //비밀번호		
-		   }else if(oper == "password"){
-			   
-			   if($("#password").val().trim() == ""){
-				    $("#checkMessage").text("비밀번호를 입력해주세요");
-					$("#checkType").find(".modal-header").addClass("bg-warning text-white");
-					$("#openModal").click();	
-					
-					$("#password1").focus(); // 아이디 입력창으로 커서를 자동한다
-					return false;
-			   }
-			   
-			   if($("#password1").val() != $("#password2").val()){
-				    $("#checkMessage").text("비밀번호가 서로 일치하지 않습니다");
-					$("#checkType").find(".modal-header").addClass("bg-danger text-white");
-					$("#openModal").click();	
-					
-					$("#password1").focus(); // 아이디 입력창으로 커서를 자동한다
-					return false;
-			   }else{
-				   passwordForm.attr("action", "${cpath}/member/update_password");
-				   passwordForm.attr("method", "post");
-				   passwordForm.submit();	   
-			   }		  
+		  	
 		   }else if(oper =="member_update"){
 			   if($("#name").val().trim() == ""){
 				    $("#checkMessage").text("이름을 입력해주세요");
@@ -328,17 +279,8 @@ input[type="radio"] {
 			   member_updateForm.attr("method", "post");
 			   member_updateForm.submit();
 			   
-		   }else if(oper == "close_account"){
-			   
-			   if(!confirm("${user.member.username}" + "님 정말 탈퇴하시겠습니까? \n탈퇴 후 데이터 복구 및 동일 아이디 재가입은 불가능합니다.")) {
-			        return; //취소를 누르면 함수종료 된다
-			    }	
-			   
-			   close_accountForm.attr("action", "${cpath}/member/close_account");
-			   close_accountForm.attr("method", "post");
-			   close_accountForm.submit();  
-			   
 		   }else if(oper == "imageUpdate"){   
+		   
 			   imageUpdateForm.attr("action", "${cpath}/member/imageUpdate");
 			   imageUpdateForm.attr("method", "post");
 			   imageUpdateForm.attr("enctype", "multipart/form-data");
@@ -358,10 +300,12 @@ input[type="radio"] {
   	});//ready
   	
   	
-	
+
+  	
+
 	 //닉네임 중복체크
 	 function nick_nameCheck() {
-		var nick_name = $("#nick_name").val(); //val(): 입력한 값을 가져온다  
+		 const nick_name = $("#nick_name").val(); //val(): 입력한 값을 가져온다  
 		
 		if(nick_name == ""){
 			$("#checkMessage").text("닉네임을 입력해주세요");
@@ -401,29 +345,7 @@ input[type="radio"] {
 		});
 	 }; //end 닉네임중복체크
 	 
- 
-	//비밀번호체크
-	function passwordCheck() {
-		var password1 = $("#password1").val();
-		var password2 = $("#password2").val();
-		
-		if(password1 != password2){
-			$("#passMessage").html("비밀번호가 서로 일치하지 않습니다")
-			$("#passMessage").css("color", "red");
-		}else{
-			$("#passMessage").html("비밀번호가 서로 일치합니다")
-			$("#passMessage").css("color", "blue");
-			
-			//입력한 두 비밀번호 일치했을 때, password2 입력한 비밀번호가 hidden태그의 value에 값이 들어간다
-			$("#password").val(password2); 
-		}		
-	};
 
-  	
-  	
-  	
-  	
-  	
   	
   	
   	

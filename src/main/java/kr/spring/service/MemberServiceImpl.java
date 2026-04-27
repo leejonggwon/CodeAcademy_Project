@@ -38,8 +38,8 @@ public class MemberServiceImpl implements MemberService{
 	
 	//회원권한/교육과정수정
 	@Override
-	public void roleCourceUpdate(Member member) {
-		mapper.roleCourceUpdate(member);
+	public void roleCourseUpdate(Member member) {
+		mapper.roleCourseUpdate(member);
 	}
 
 	//회원정보가져오기

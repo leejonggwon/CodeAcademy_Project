@@ -72,14 +72,13 @@ public class LearningController {
 	public String register(Learning vo, 
 			@RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2,
 			RedirectAttributes rttr) {
-
+		
 		String savePath = "C:/boot_upload/board_upload/";
 		
 		//C:\boot_upload\board_upload
 		File dir = new File(savePath);
 		//mkdirs(): dir(경로)이 삭제되어 있으면 생성한다	    
 		if (!dir.exists()) dir.mkdirs();
-
 
         try {
 
@@ -214,8 +213,7 @@ public class LearningController {
 			rttr.addAttribute("perPageNum",cri.getPerPageNum());		
 			rttr.addAttribute("type",cri.getType());
 			rttr.addAttribute("keyword",cri.getKeyword());
-			
-			
+					
 		        try {
 		            String savePath = "C:/boot_upload/board_upload/";
 		            File dir = new File(savePath);
@@ -244,12 +242,9 @@ public class LearningController {
 		            rttr.addFlashAttribute("msg", "파일 업로드 실패");
 		            return "redirect:/learning_list";
 		        }
-		    
-			
-			rttr.addFlashAttribute("result", vo.getIdx());
-			
+				
+			rttr.addFlashAttribute("result", vo.getIdx());		
 			service.update(vo);
-
 			return "redirect:/learning/learning_list";
 		}
 	
@@ -274,41 +269,44 @@ public class LearningController {
 
 	//댓글기능
 	@PostMapping("/reply")
-	public String reply(Learning vo, @RequestParam("uploadFile") MultipartFile file, Criteria cri, RedirectAttributes rttr) {
+	public String reply(Learning vo, @RequestParam("uploadFile") MultipartFile file, @RequestParam("uploadFile2") MultipartFile file2, Criteria cri, RedirectAttributes rttr) {
 		
 		rttr.addAttribute("page",cri.getPage());
-		rttr.addAttribute("perPageNum",cri.getPerPageNum());
-		
+		rttr.addAttribute("perPageNum",cri.getPerPageNum());	
 		rttr.addAttribute("type",cri.getType());
 		rttr.addAttribute("keyword",cri.getKeyword());
+
 		
-		if (file != null && !file.isEmpty()) {
-	        try {
-	            String savePath = "C:/boot_upload/board_upload/";
-	            File dir = new File(savePath);
-	            if (!dir.exists()) dir.mkdirs();
+		try {
+            String savePath = "C:/boot_upload/board_upload/";
+            File dir = new File(savePath);
+            if (!dir.exists()) dir.mkdirs();
+            
+            if (file != null && !file.isEmpty()) {
 
 	            String originalFilename = file.getOriginalFilename();
 	            String saveFilename = System.currentTimeMillis() + "=" + originalFilename;
-
 	            // 실제 파일 저장
 	            file.transferTo(new File(savePath + saveFilename));
-
 	            // 여기서 중요! 
 	            // DB에 저장할 '파일명'을 VO의 String 필드(attached_data)에 직접 넣어줌
 	            vo.setAttached_data(saveFilename);
-
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	            rttr.addFlashAttribute("msg", "파일 업로드 실패");
-	            return "redirect:/learning/learning_list";
-	        }
-	    }
-		
-		rttr.addFlashAttribute("result", vo.getIdx());
-		
+            }
+            
+            if (file2 != null && !file2.isEmpty()) {
+	            String originalFilename2 = file2.getOriginalFilename();
+	            String saveFilename2 = System.currentTimeMillis() + "=" + originalFilename2;
+	            file2.transferTo(new File(savePath + saveFilename2));
+	            vo.setAttached_data2(saveFilename2);
+            }	            
+        } catch (IOException e) {
+            e.printStackTrace();
+            rttr.addFlashAttribute("msg", "파일 업로드 실패");
+            return "redirect:/learning/learning_list";
+        }
+	
+		rttr.addFlashAttribute("result", vo.getIdx());	
 		service.reply(vo);
-
 		return "redirect:/learning/learning_list";
 	}
 	
