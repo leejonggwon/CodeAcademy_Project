@@ -81,7 +81,6 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="300" />
 </p>
-<br>
 
 ### 3-3. 주요보안 기능 구현 세부사항 
 
