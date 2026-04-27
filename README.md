@@ -77,12 +77,12 @@
 #### 3) CustomUser (Security 전용 유저 객체)
 ▪ Spring Security의 User 클래스를 상속받아 구현 <br>
 ▪ DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 합니다 <br>
-▪ 사용자의 권한을 ROLE_ADMIN, ROLE_STUDENT와 같은 형태로 변환하여 부여한다 <br><br>
-
+▪ 사용자의 권한을 ROLE_ADMIN, ROLE_STUDENT와 같은 형태로 변환하여 부여한다 <br>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="800" />
+  <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="300" />
 </p>
 
+<br>
 ### 3-3. 주요보안 기능 구현 세부사항 
 
 #### 1) 비밀번호 암호화 ((BCrypt)
