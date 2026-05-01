@@ -1,4 +1,4 @@
-## 1. 서비스소개 
+# 1. 서비스소개 
 ### 서비스명
 ▪ Spring Boot Security를 이용한 코딩 교육 플랫폼 <br>
 ▪ (부제) Spring Boot Security와 JWT를 활용한 RESTful 게시판 API 서비스 <br>
@@ -14,7 +14,7 @@
 ▪ 2026.02 ~ 2026.04 <br>
 <br>
 
-## 2. 기술스택 
+# 2. 기술스택 
 ### 2-1. Backend
 ▪ Framework: Spring Boot 2.7.3 <br>
 ▪ Security: Spring Security (Role-based Access Control) <br>
@@ -36,7 +36,7 @@
 ▪ Spring DevTools <br><br>
 
 
-## 3. Authentication & Security (Spring Security 스프링보안)
+# 3. Authentication & Security (Spring Security 스프링보안)
 ▪ 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
 ▪ 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
 
@@ -106,7 +106,7 @@
 <br>
 
 
-## 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
+# 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
 ▪ JPA 흐름 : Client → Controller → Service → Repository Interface(JPA) → DB <br>
 ▪ MyBatis 흐름 : Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
@@ -114,19 +114,19 @@
   <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="600" />
 </p>
 
-## 5. DataBase E-R Diagram
+# 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6bc555a7-54d4-4f2f-a2b4-e19410141885" width="800" />
 </p>
 <br>
 
-## 6. 서비스 흐름도
+# 6. 서비스 흐름도
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0bfa8858-1c77-43ee-8fba-4231de1a9fe5" width="500" />
 </p>
 
 
-## 7. 주요기능설명
+# 7. 주요기능설명
 
 ### 로그인 페이지
 ▪ 로그인 인증 후 접근 가능<br>
