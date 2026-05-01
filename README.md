@@ -129,12 +129,15 @@
 ## 7. 주요기능설명
 
 ### 7-1. 권한별 기능 제어(Technical Description)
-
+#### 1) 핵심 기술 구현 요약 <br>
 ▪ Spring Security 기반 RBAC(Role-Based Access Control) 구축 : <br>
 &nbsp;&nbsp;&nbsp; 사용자 역할(Role)에 따라 시스템 자원(URL, API, 데이터)에 대한 접근 권한을 세밀하게 통제하여 보안성을 강화하였음<br>
 ▪ EL(Expression Language) & JSTL 기반의 동적 뷰 제어: <br>
 &nbsp;&nbsp;&nbsp; ▪ 데이터 바인딩(EL): SecurityContext 내 Principal 객체에 실시간 접근하여 사용자 정보를 효율적으로 참조하였음 <br>
 &nbsp;&nbsp;&nbsp; ▪ 조건부 렌더링(JSTL): 권한 계층에 따라 메뉴 및 버튼 활성화 여부를 결정하는 태그 기반 로직을 설계하여 코드 가독성과 유지보수성을 확보하였음<br>
+
+#### 2) 상세 권한 및 역할 정의
+
 
 
 <p align="center">
