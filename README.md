@@ -168,11 +168,8 @@
 ▪ 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
 ▪ 이용 제한: 관리자에 의해 지정되며, 로그인은 가능하나 게시물 작성 및 조회 등 핵심 서비스 이용이 차단된 상태 <br>
 
-
-
-
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0cb0e457-c6f2-47b1-99a3-d4e7997db389" width="700" />
+  <img src="https://github.com/user-attachments/assets/2d5032e4-5961-4573-86a3-cb1afd7c6caa" width="700" />
 </p>
 
 
