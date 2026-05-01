@@ -142,6 +142,14 @@
 ▪ 회원 및 과정 관리 : 운영 정책에 따라 관리자 페이지를 통해 관리자를 제외한 회원의 정보 열람이 가능하며, 회원의 권한 등급 및 수강 교육과정을 동적으로 변경할 수 있습니다.<br>
 ▪ 콘텐츠 정화 : 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2d5032e4-5961-4573-86a3-cb1afd7c6caa" width="900" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d817c57d-6918-45ea-87b4-fa2f490e82e6" width="900" />
+</p>
+
+
 #### 2. 운영부(STAFF) <br> 
 ▪ 학생 지원 서비스를 담당하는 권한 <br>
 ▪ 부서별 역할 수행 : 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
@@ -168,9 +176,7 @@
 ▪ 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
 ▪ 이용 제한: 관리자에 의해 지정되며, 로그인은 가능하나 게시물 작성 및 조회 등 핵심 서비스 이용이 차단된 상태 <br>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/2d5032e4-5961-4573-86a3-cb1afd7c6caa" width="700" />
-</p>
+
 
 
 
