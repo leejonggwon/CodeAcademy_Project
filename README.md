@@ -306,8 +306,9 @@ POST /api/brand/logo
 - **접근 제한** - 관리자가 사용자 정보를 확인하여 수강생 또는 강사로 권한을 부여하기 전까지는 서비스 이용이 제한되는 준회원 상태 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/cf36d65e-5494-455b-86fd-50044e254299" width="900" />
+  <img src="https://github.com/user-attachments/assets/310dfb60-7321-4030-8812-bc75a869a1e8" width="900" />
 </p>
+
 
 #### 2-6) 이용제한 (PENALTY) <br> 
 - 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
