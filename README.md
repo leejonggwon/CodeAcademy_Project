@@ -298,9 +298,8 @@ POST /api/brand/logo
     **커뮤니티** - 회원간 원활한 소통을 위해 모든 게시판 활동(쓰기, 수정, 삭제 등)이 허용됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d0fcd5ef-2e33-47b1-994c-d9cc0a628b37" width="900" />
+  <img src="https://github.com/user-attachments/assets/1d7aa436-0b91-4b34-901f-3f8975ff32ac" width="900" />
 </p>
-
 
 #### 2-5) 승인대기 (GUEST) <br> 
 - 회원가입은 완료했으나 서비스 이용 권한을 대기 중인 상태 <br>
