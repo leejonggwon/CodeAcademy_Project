@@ -140,8 +140,8 @@ POST /api/brand/logo
 - ORM/Data Access: Spring Data JPA, MyBatis <br>
 
 ## 2-2. Database
-▪ RDBMS: MySQL <br>
-▪ Connector: MySQL Connector Java <br>
+- RDBMS: MySQL <br>
+- Connector: MySQL Connector Java <br>
 
 ## 2-3. Frontend & View
 - View Engine: JSP (Java Server Pages) <br>
@@ -174,22 +174,24 @@ POST /api/brand/logo
 
 ## 3-2. 클래스별 상세 역할
 ### 1) SecurityConfiguration (보안 설정)
-▪ 비밀번호 암호화 : BCrypt 방식 등을 지원하는 DelegatingPasswordEncoder 사용 <br>
+- 비밀번호 암호화 : BCrypt 방식 등을 지원하는 DelegatingPasswordEncoder 사용 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/3b6063b9-0420-47c4-bfe4-c73486bd603e" width="800" />
 </p>
-▪ 권한별 접근 제어 :<br>
-&nbsp;&nbsp;&nbsp; ▪ /, /member/** : 누구나 접근 가능 <br>
-&nbsp;&nbsp;&nbsp; ▪ /board/** : 로그인한 사용자만 접근 가능 <br>
-▪ 커스텀 로그인/로그아웃 : 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
-▪ CSRF 비활성화 : REST API 및 테스트 편의를 위해 설정 <br>
+
+- 권한별 접근 제어 <br>
+ `/, /member/**` : 누구나 접근 가능 <br>
+ `/board/**` : 로그인한 사용자만 접근 가능 <br>
+
+- 커스텀 로그인/로그아웃 : 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
+- CSRF 비활성화 : REST API 및 테스트 편의를 위해 설정 <br>
 
 ### 2) UerDetailsServiceImpl
-▪ UserDetailsService 인터페이스를 구현 <br>
-▪ memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
-▪ 예외처리 : <br>
-&nbsp;&nbsp;&nbsp; ▪ 사용자가 없을 경우 UsernameNotFoundException 발생 <br>
-&nbsp;&nbsp;&nbsp; ▪ 탈퇴한 계정(enabled=false)일 경우 DisabledException 발생 <br>
+- UserDetailsService 인터페이스를 구현 <br>
+- memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
+- 예외처리 : <br>
+ 사용자가 없을 경우 `UsernameNotFoundException 발생` <br>
+ 탈퇴한 계정(enabled=false)일 경우 `DisabledException 발생` <br>
 
 ### 3) CustomUser (Security 전용 유저 객체)
 ▪ Spring Security의 User 클래스를 상속받아 구현 <br>
