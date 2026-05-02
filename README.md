@@ -284,7 +284,7 @@ POST /api/brand/logo
 - **가독성 강화** - 강사가 작성한 게시글 및 답변은 수강생이 쉽게 인지할 수 있도록 강조색으로 차별화되어 표시됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f845fdf5-53f5-431d-bd83-bb249d231234" width="900" />
+  <img src="https://github.com/user-attachments/assets/b0cf0271-efe0-4142-ae3d-cb1985c8d187" width="900" />
 </p>
 
 
