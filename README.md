@@ -379,8 +379,9 @@ POST /api/brand/logo
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/91899485-aae9-4d26-a275-c72fe86d0c65" width="400" />
+  <img src="https://github.com/user-attachments/assets/326e2933-8cb3-46de-9951-6d7a0353f5aa" width="600" />
 </p>
+
 
 
 
