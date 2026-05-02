@@ -133,11 +133,11 @@ POST /api/brand/logo
 
 ## 2. 기술스택 
 ### 2-1. Backend
-- Framework: Spring Boot 2.7.3 <br>
-- Security: Spring Security (Role-based Access Control) <br>
-- Language: Java 8 (JDK 1.8) <br>
-- Build Tool: Maven <br>
-- ORM/Data Access: Spring Data JPA, MyBatis <br>
+- **Framework** - Spring Boot 2.7.3 <br>
+- **Security** - Spring Security (Role-based Access Control) <br>
+- **Language** - Java 8 (JDK 1.8) <br>
+- **Build Tool** - Maven <br>
+- **ORM/Data Access** - Spring Data JPA, MyBatis <br>
 
 ### 2-2. Database
 - RDBMS: MySQL <br>
