@@ -1,47 +1,56 @@
-## 1. 서비스소개 
-### 서비스명
+
+
+
+
+
+<br>
+<br>
+<br>
+
+# 1. 서비스소개 
+## 서비스명
 ▪ Spring Boot Security를 이용한 코딩 교육 플랫폼 <br>
 ▪ (부제) Spring Boot Security와 JWT를 활용한 RESTful 게시판 API 서비스 <br>
 
-### 서비스설명
+## 서비스설명
 ▪ 본 프로젝트는 스프링(Spring) 프레임워크와 MVC 3Tier 아키텍처를 기반으로 한 커뮤니케이션 프로젝트입니다. <br>
 ▪ 사용자 간 손쉽게 소통하고, 효율적으로 커뮤니티 기능을 활용할 수 있는 웹 애플리케이션 개발을 목표로 합니다. <br>
 ▪ 그룹 채팅, 메시지, 게시글 작성, 좋아요, 댓글·답글, 조회수, 검색, 페이징, 게시글 작성자 프로필, 좌석 발권, 자료 검색, 회원 관리 등의 기능을 제공합니다. <br>
 ▪ WebSocket과 비동기 통신(AJAX)을 활용한 실시간 갱신을 구현했습니다. <br>
 ▪ Bootstrap 3과 직관적인 JSP 기반 UI를 통해 사용자 친화적인 화면을 구성했습니다. <br>
 
-### 프로젝트기간
+## 프로젝트기간
 ▪ 2026.02 ~ 2026.04 <br>
 <br>
 
-## 2. 기술스택 
-### 2-1. Backend
+# 2. 기술스택 
+## 2-1. Backend
 ▪ Framework: Spring Boot 2.7.3 <br>
 ▪ Security: Spring Security (Role-based Access Control) <br>
 ▪ Language: Java 8 (JDK 1.8) <br>
 ▪ Build Tool: Maven <br>
 ▪ ORM/Data Access: Spring Data JPA, MyBatis <br>
 
-### 2-2. Database
+## 2-2. Database
 ▪ RDBMS: MySQL <br>
 ▪ Connector: MySQL Connector Java <br>
 
-### 2-3. Frontend & View
+## 2-3. Frontend & View
 ▪ View Engine: JSP (Java Server Pages) <br>
 ▪ Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
 ▪ Embedded Server: Tomcat (with Jasper for JSP rendering) <br>
 
-### 2-4. Tools & Utilities
+## 2-4. Tools & Utilities
 ▪ Lombok <br>
 ▪ Spring DevTools <br><br>
 
 
-## 3. Authentication & Security (Spring Security 스프링보안)
+# 3. Authentication & Security (Spring Security 스프링보안)
 ▪ 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
 ▪ 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
 
 
-### 3-1. Spring Security  핵심 아키텍처 및 흐름
+## 3-1. Spring Security  핵심 아키텍처 및 흐름
 1. 사용자가 로그인 폼에 ID/PW 입력 후 제출 → <br>
 2. UerDetailsServiceImpl에서 DB의 회원 정보를 조회 → <br>
 3. 조회된 정보를 CustomUser에 담아 반환 → <br>
@@ -55,8 +64,8 @@
 
 <br>
 
-### 3-2. 클래스별 상세 역할
-#### 1) SecurityConfiguration (보안 설정)
+## 3-2. 클래스별 상세 역할
+### 1) SecurityConfiguration (보안 설정)
 ▪ 비밀번호 암호화 : BCrypt 방식 등을 지원하는 DelegatingPasswordEncoder 사용 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/3b6063b9-0420-47c4-bfe4-c73486bd603e" width="800" />
@@ -67,14 +76,14 @@
 ▪ 커스텀 로그인/로그아웃 : 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
 ▪ CSRF 비활성화 : REST API 및 테스트 편의를 위해 설정 <br>
 
-#### 2) UerDetailsServiceImpl
+### 2) UerDetailsServiceImpl
 ▪ UserDetailsService 인터페이스를 구현 <br>
 ▪ memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
 ▪ 예외처리 : <br>
 &nbsp;&nbsp;&nbsp; ▪ 사용자가 없을 경우 UsernameNotFoundException 발생 <br>
 &nbsp;&nbsp;&nbsp; ▪ 탈퇴한 계정(enabled=false)일 경우 DisabledException 발생 <br>
 
-#### 3) CustomUser (Security 전용 유저 객체)
+### 3) CustomUser (Security 전용 유저 객체)
 ▪ Spring Security의 User 클래스를 상속받아 구현 <br>
 ▪ DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 합니다 <br>
 ▪ 사용자의 권한을 ROLE_ADMIN, ROLE_INSTRUCTOR, ROLE_STUDENT와 같은 형태로 변환하여 부여한다 <br>
@@ -82,31 +91,31 @@
   <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="300" />
 </p>
 
-### 3-3. 주요보안 기능 구현 세부사항 
+## 3-3. 주요보안 기능 구현 세부사항 
 
-#### 1) 비밀번호 암호화 ((BCrypt)
+### 1) 비밀번호 암호화 ((BCrypt)
 ▪ 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호함. <br>
 ▪ 회원가입 컨트롤러: @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리. <br>
 ▪ 로그인 검증: 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행. <br>
 
-#### 2) 권한별 접근 제어 (Authorization)
+### 2) 권한별 접근 제어 (Authorization)
 ▪ 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다. <br>
 ▪ PermitAll: 메인 페이지 및 회원 관련 기능(/member/**)은 비로그인 사용자도 접근 가능. <br>
 ▪ Authenticated: 게시판 관련 기능(/board/**)은 로그인한 인증된 사용자만 접근 가능. <br>
 
-#### 3) 커스텀 유저 디테일 서비스
+### 3) 커스텀 유저 디테일 서비스
 ▪ 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 CustomUser를 구현 <br>
 ▪ SecurityContextHolder에 저장된 CustomUser를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있습니다. <br>
 ▪ 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
 
-#### 4) 로그인/회원가입 프로세스 요약
+### 4) 로그인/회원가입 프로세스 요약
 <p align="center">
   <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="500" />
 </p>
 <br>
 
 
-## 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
+# 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
 ▪ JPA 흐름 : Client → Controller → Service → Repository Interface(JPA) → DB <br>
 ▪ MyBatis 흐름 : Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
@@ -114,29 +123,29 @@
   <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="600" />
 </p>
 
-## 5. DataBase E-R Diagram
+# 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6bc555a7-54d4-4f2f-a2b4-e19410141885" width="800" />
 </p>
 <br>
 
-## 6. 서비스 흐름도
+# 6. 서비스 흐름도
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0bfa8858-1c77-43ee-8fba-4231de1a9fe5" width="500" />
 </p>
 
 
-## 7. 주요기능설명
+# 7. 주요기능설명
 
-### 7-1. 권한별 기능 제어(Technical Description)
-#### 1) 핵심 기술 구현 요약 <br>
+## 7-1. 권한별 기능 제어(Technical Description)
+### 1) 핵심 기술 구현 요약 <br>
 ▪ Spring Security와 JSTL/EL을 활용하여 위와 같은 역할 기반 접근 제어(RBAC) 모델을 설계 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ 사용자 역할(Role)에 따라 시스템 자원(URL, API, 데이터)에 대한 접근 권한을 세밀하게 통제하여 보안성을 강화하였음 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ 데이터 바인딩(EL) : SecurityContext 내 Principal 객체에 실시간 접근하여 사용자 정보를 효율적으로 참조하였음 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ 조건부 렌더링(JSTL) : 권한 계층에 따라 메뉴 및 버튼 활성화 여부를 결정하는 태그 기반 로직을 설계하여 코드 가독성과 유지보수성을 확보하였음<br>
 
-#### 2) 상세 권한 및 역할 정의 <br>
-#### 1. 관리자(ADMIN) <br> 
+### 2) 상세 권한 및 역할 정의 <br>
+### 1. 관리자(ADMIN) <br> 
 ▪ 시스템 전반의 제어 및 운영 정책을 총괄하는 최상위 권한 <br>
 ▪ 통합 관제 : 전체 게시판(강의, Q&A, 커뮤니티, 강사 전용 커뮤니티 등) 및 게시물에 대한 접근 및 관리 권한을 가집니다. <br>
 ▪ 회원 및 과정 관리 : 운영 정책에 따라 관리자 페이지를 통해 관리자를 제외한 회원의 정보 열람이 가능하며, 회원의 권한 등급 및 수강 교육과정을 동적으로 변경할 수 있습니다.<br>
@@ -147,11 +156,11 @@
 </p>
 
 
-#### 2. 운영부(STAFF) <br> 
+### 2. 운영부(STAFF) <br> 
 ▪ 학생 지원 서비스를 담당하는 권한 <br>
 ▪ 부서별 역할 수행 : 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
 
-#### 3. 강사 (INSTRUCTOR) <br> 
+### 3. 강사 (INSTRUCTOR) <br> 
 ▪ 학습 콘텐츠 생산 및 교육 서비스 제공을 담당하는 교육 권한 <br>
 ▪ 과정 중심 접근 : 본인이 배정된 특정 교육과정의 강의, Q&A, 오픈채팅, 커뮤니티 게시판에만 한정적으로 접근하여 보안성을 유지합니다. <br>
 ▪ 학습 지원 : 강의 자료 및 수업 내용을 등록하고, 댓글 및 Q&A 답글을 통해 수강생의 학습 질문에 답변합니다.<br>
@@ -162,7 +171,7 @@
 </p>
 
 
-#### 4. 수강생 (STUDENT) <br> 
+### 4. 수강생 (STUDENT) <br> 
 ▪ 학습 콘텐츠를 소비하고 커뮤니티 활동에 참여하는 핵심 사용자 <br>
 ▪ 권한 승인 기반 : 회원가입 후 GUEST 상태에서 관리자의 승인을 거쳐 STUDENT 권한을 획득해야 정식 서비스 이용이 가능합니다. <br>
 ▪ 차등적 활동 권한 <br>
@@ -170,17 +179,17 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ Q&A 게시판 : 학습 관련 질문 등록이 가능하지만 강사의 전문적인 답변을 보장하기 위해 답글 쓰기 기능은 제한됩니다. <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ 커뮤니티 : 회원간 원활한 소통을 위해 모든 게시판 활동(쓰기, 수정, 삭제 등)이 허용됩니다. <br>
 
-#### 5. 승인대기 (GUEST) <br> 
+### 5. 승인대기 (GUEST) <br> 
 ▪ 회원가입은 완료했으나 서비스 이용 권한을 대기 중인 상태 <br>
 ▪ 접근 제한 : 관리자가 사용자 정보를 확인하여 수강생 또는 강사로 권한을 부여하기 전까지는 서비스 이용이 제한되는 준회원 상태 <br>
 
-#### 6. 이용제한 (PENALTY) <br> 
+### 6. 이용제한 (PENALTY) <br> 
 ▪ 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
 ▪ 이용 제한: 관리자에 의해 지정되며, 로그인은 가능하나 게시물 작성 및 조회 등 핵심 서비스 이용이 차단된 상태 <br>
 
 
-### 7-2.다중 파일업로드 및 서버 저장 시스템 <br>
-#### 1) 핵심 기술 구현 요약 <br>
+## 7-2.다중 파일업로드 및 서버 저장 시스템 <br>
+### 1) 핵심 기술 구현 요약 <br>
 ▪ 게시글 작성 시 사용자가 첨부한 여러 개의 미디어 파일(이미지, 문서 등)을 서버 로컬 파일 시스템에 안전하게 저장하고, 이를 DB와 매핑하여 관리하는 기능을 구현했습니다<br>
 ▪ `MultipartFile` 인터페이스를 사용하여 클라이언트로부터 전송된 데이터를 효율적으로 수신 및 처리합니다.<br>
 ▪ 동일한 파일명 업로드 시 데이터 덮어쓰기를 방지하기 위해 `System.currentTimeMillis()`를 활용하여 파일의 고유성을 확보하였습니다.<br>
@@ -198,292 +207,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-### 회원가입 
-▪ 아이디 중복 확인 <br>
-▪ 비밀번호 일치 여부 확인 <br>
-▪ 필수 회원정보 미입력 시 메시지 출력 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c0f902f9-7ea9-4dfc-88ec-9979f3d688ab" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/9c085db7-79aa-481f-ab79-535fa2b8303c" width="700" />
-</p>
-
-
-### 게시글 기능
-▪ 게시글목록 <br>
-▪ 게시글 상세보기 할 때마다 조회수 1씩 증가 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/54364dc7-5833-4be0-9319-b56e0d476664" width="700" />
-</p>
-<br>
-
-
-▪ 게시글작성(제목 미입력 시 경고 메세지 츨력) <br>
-▪ 파일업로드 <br>
-▪ 게시글 목록으로 이동 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/6dab254e-4e28-4e7d-84de-0e5f9ebdfef2" width="700" />
-</p>
-<br>
-
-
-▪ 게시글수정 <br>
-▪ 게시글 삭제 <br>
-▪ 답글 삭제시 "작성자에 의해 삭제된 게시글입니다" 표시 <br>
-▪ 게시글 목록으로 이동 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/1ae3b894-7c6b-4402-a9fa-a8c1ece173cd" width="700" />
-</p>
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e1d038f5-3e02-4269-bfe7-0b81b277fa94" width="700" />
-</p>
-<br>
-
-
-### 작성자 프로필 및 메시지 기능
-▪ 게시글 작성자를 클릭하면 작성자의 프로필 확인 및 메시지 전송 기능 제공 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ccba83d8-173d-44aa-9954-7c8537b8cc1e" width="700" />
-</p>
-
-### 페이징 기능
-▪ 페이지별 페이징  <br>
-▪ 그룹별 페이징  <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/bb231d25-db8c-439d-8af2-f34a89f68dfe" width="700" />
-</p>
-
-### 검색 기능
-▪ 옵션 별 검색  <br>
-▪ 검색 후 게시글 열람 뒤 목록으로 돌아갈 때 기존 검색 조건 유지 기능<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/41971616-f6ba-47bf-9eb0-5835d089d960" width="700" />
-</p>
-
-
-### 좋아요 기능
-▪ 좋아요 버튼 누르면 실시간 반영 <br>
-▪ 한 게시물당 좋아요 1회 제한 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ebba14ae-58e9-4bea-a988-c3109df47188" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/4420947a-da8f-4e03-9e4f-04458301ef3c" width="700" />
-</p>
-
-
-### 답글 기능
-▪ 답글 입력 <br>
-▪ 게시물의 그룹, 순서, 원본글 여부(원본글 0, 댓글 1, 대댓글 2)를 설정하여 답글 작성 가능 <br>
-▪ 답글 수정 <br>
-▪ 답글 삭제 <br>
-
- <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/97b68cf2-e1f4-4ed2-a10c-67fb460c6965" width="700" />
-</p>
-
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/79eafdd7-1ce4-470a-a248-06b9636d3775" width="700" />
-</p>
-
-
-### 댓글 기능
-▪ 댓글 등록 <br>
-▪ 댓글 등록 <br>
-▪ 댓글 삭제 시 “ 작성자에 의해 삭제된 댓글입니다” 표시<br>
- <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/20f0a64f-0f82-480e-a688-ba863262144a" width="700" />
-</p>
-
-### 단체 오픈 채팅 기능 구현
-
-▪ WebSocket 기반 실시간 그룹 채팅 구현<br>
-<br>
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/429a3055-e868-43fb-b5bd-0a7b66014f67" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/5bf366e1-73bf-4027-89b2-d02cc0ab99af" width="400" />
-</p>
-<br>
-
-### 프로필 이미지 업데이트
-▪ 회원가입을 완료한 후 최초 로그인 시 기본 프로필 이미지가 설정된다
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c7c54ed3-08dd-4ed3-a805-b06f82812da7" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/d994a449-f3d5-4f61-a0f8-39be32f324a2" width="700" />
-</p>
-
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f86a1d4f-feba-447b-86f6-a7c0d21e0ed2" width="700" />
-</p>
-
-### 프로필 수정
-▪ 비밀번호, 사용자이름, 닉네임, 나이, 성별, 이름, 이메일 등 프로필수정이 가능하다  <br>
-▪ 비밀번호, 비밀번호확인이 일치해야 한 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c8c6697b-57a7-450e-b4b8-e8c4ecd21e0f" width="700" />
-</p>
-
-
-### 좌석 발권 기능
-
-▪ 지정 좌석 발권 <br>
-▪ 발권 후 다른 좌석을 다시 발권하려 할 경우 “현재 사용 중인 좌석이 있습니다”라는 경고창을 출력 <br>
-▪ 다른 이용자가 사용 중인 좌석은 발권할 수 없도록 제한 <br>
-▪ 발권 좌석 반납기능 <br>
-▪ 현재 발권 정보 및 과거 발권 기록 조회 기능 <br>
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/05b76200-6e0f-4553-89fb-e16504148c41" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/9a50c0ab-a66b-4ddb-8ca0-158dfdd61d9d" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/83254f2b-d029-48cf-a4ce-7093f79522d9" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/37b3cb91-c0a2-4400-830d-0016383d9b0a" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/60a2f07b-2bfd-4bc1-8954-6df629376e67" width="700" />
-</p>
-<br>
-
-
-
-### 자료검색(사용자)
-
-▪ 도서명, 작가, 출판사 등 다양한 검색 옵션을 활용하여 등록된 자료를 조회<br>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5a5b764d-fc82-4490-915c-72d29f69534c" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/ad324b36-4cd6-4109-8d84-fa431c852146" width="700" />
-</p>
-<br>
-
-### 자료검색(관리자)
-▪ 관리자는 자료 등록 및 수정, 삭제 등 접근 가능 <br>
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/03623187-51d5-4c00-b725-9ccdf03c1367" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/317fa267-d8a9-4dcb-b521-4559d615c0cf" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/7e822ba1-a090-4d6d-8fb7-80e7bc8500c7" width="700" />
-</p>
-<br>
-
-### 메세지
-
-▪ 새 메시지 도착 시 알림 기능 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f09037d0-d068-4d28-99bf-26f92542736e" width="700" />
-</p>
-<br>
-
-
-▪ 수신한 메시지 내역을 확인 <br>
-▪ 받은 메세지 수 및 미열람 메세지 수 표시<br>
-▪ 메시지 열람 여부(열람/미열람) 상태 표시 <br>
-▪ 체크박스로 선택한 메시지를 삭제 <br>
-▪ 발신자 아이디 및 제목 등 조건별로 메시지를 검색 <br>
-▪ 보낸 메세지 페이지로 이동 <br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/bd529d7f-ea2e-4bfb-bdcc-74b692fda268" width="700" />
-</p>
-<br>
-
-
-▪ 사용자가 메시지를 작성할 수 있는 기능 <br>
-▪ 중복 확인 버튼을 이용해 수신자 아이디를 확인하는 기능<br>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5682c9bc-c9b4-4d8c-815b-476be5499f09" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/07f807f9-12a0-4d14-bb78-5b49cd6811e4" width="700" />
-</p>
-<br>
-
-▪ 발신자 아이디 클릭 시 작성자 프로필 확인 및 메시지 전송 버튼 제공 <br>
-▪ 보내기 버튼 클릭 시 해당 발신자 어아다 기준으로 메시지 작성 화면으로 이동 <br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/b56f2461-9a6d-44df-9781-0dc4c73a67d2" width="700" />
-</p>
-<br>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f5408e1c-d19c-4d66-ab25-1b5e2cbb21d5" width="700" />
-</p>
-<br>
-
-▪ 보낸 메세지 내역을 확인  <br>
-▪ 보낸 메세지 수 표시<br>
-▪ 메시지 열람 여부(열람/미열람) 상태 표시 <br>
-▪ 체크박스로 선택한 메시지를 삭제 <br>
-▪ 발신자 아이디 및 제목 등 조건별로 메시지를 검색 <br>
-▪ 받은 메세지 페이지로 이동 <br>
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/aaf0da10-fa40-4e9e-8167-14a839513467" width="700" />
-</p>
-<br>
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/a94072cb-1be9-4a9c-b0b4-517c7a762477" width="700" />
-</p>
-<br>
 
 
 
