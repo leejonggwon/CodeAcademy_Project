@@ -344,7 +344,7 @@ POST /api/brand/logo
 #### 3) MyBatis를 활용한 계층 구조 생성 <br>
 - 원본 댓글 등록 시 MAX(CMT_IDX)를 조회해 다음 그룹 번호를 자동으로 할당합니다.<br>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a59705cb-bfa3-44f7-93a8-4eaaa26327ff" width="700" />
+  <img src="https://github.com/user-attachments/assets/6c98d151-0c17-4b2d-afdd-3dafb043c888" width="700" />
 </p>
 
 
