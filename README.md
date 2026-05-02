@@ -196,8 +196,8 @@ POST /api/brand/logo
  탈퇴한 계정(enabled=false)일 경우 `DisabledException 발생` <br>
 
 #### 3) CustomUser (Security 전용 유저 객체)
-- Spring Security의 User 클래스를 상속받아 구현 <br>
-- DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 합니다 <br>
+- Spring Security의 `User` 클래스를 상속받아 구현한다 <br>
+- DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 한다 <br>
 - 사용자의 권한을 `ROLE_ADMIN`, `ROLE_INSTRUCTOR`, `ROLE_STUDENT`와 같은 형태로 변환하여 부여한다 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="300" />
@@ -206,9 +206,9 @@ POST /api/brand/logo
 ### 3-3. 주요보안 기능 구현 세부사항 
 
 #### 1) 비밀번호 암호화 ((BCrypt)
-- 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호화한다 <br>
-- 회원가입 컨트롤러: @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리한다 <br>
-- 로그인 검증: 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행한다 <br>
+- 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 `해시 암호화`한다 <br>
+- **회원가입 컨트롤러** - @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리한다 <br>
+- **로그인 검증** - 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행한다 <br>
 
 #### 2) 권한별 접근 제어 (Authorization)
 - 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다 <br>
@@ -216,7 +216,7 @@ POST /api/brand/logo
 - **Authenticated** - 게시판 관련 기능`(/board/**)`은 로그인한 인증된 사용자만 접근 가능 <br>
 
 #### 3) 커스텀 유저 디테일 서비스
-- 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 `CustomUser`를 구현 <br>
+- 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 `CustomUser`를 구현한다 <br>
 - `SecurityContextHolder`에 저장된 `CustomUser`를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있다 <br>
 - 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단한다 <br>
 
