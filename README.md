@@ -360,6 +360,10 @@ POST /api/brand/logo
 `AVAILABLE == 'ADMIN'` : "관리자에 의해 삭제된 댓글입니다." 메시지 출력 <br>
 `AVAILABLE == '0'` : "작성자에 의해 삭제된 댓글입니다." 메시지 출력 <br>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6b585f9e-3119-445f-812e-d9e6f71ce31a" width="600" />
+</p>
+
 #### 2) DB 설계 및 로직 <br>
 - 계층형 구조를 구현하기 위해 `selectKey` 로직을 사용<br>
 - **댓글 그룹화 (`GROUP`)** - 원본 댓글과 그에 달린 대댓글을 하나의 그룹으로 묶습니다. <br>
