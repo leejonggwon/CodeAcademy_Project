@@ -1,7 +1,115 @@
 
+# MyBrandName — AI 브랜딩 어시스턴트
+
+MyBrandName은 스타트업이 몇 분 만에 완전한 브랜드 아이덴티티
+(로고, 스토리, 마케팅 자료)를 만들 수 있도록 돕는 AI 기반 플랫폼입니다.
+
+## ✨ 주요 기능
+
+- 🤖 **AI 기반 브랜딩** - OpenAI를 사용해 로고, 브랜드 스토리, 마케팅 자료를 즉시 생성
+- 🔐 **인증 시스템** - Supabase 기반의 안전한 로그인 및 회원가입
+- 💾 **데이터베이스** - 사용자, 브랜드, 자산, 구독 데이터 저장
+- 🎨 **프론트엔드** - TypeScript, Vite, TailwindCSS로 구축된 반응형 UI
+- ⚙️ **백엔드 API** - Node.js + Express로 AI 생성, 인증, 데이터 관리 처리
+- 💳 **구독 관리** - Stripe 통합으로 플랜 업그레이드 및 결제 처리
+- 🔄 **CI/CD** - GitHub Actions를 통한 자동화된 테스트 및 빌드
+- 📦 **배포 준비 완료** - Vercel(프론트) + Render(백엔드) + Supabase 통합
+
+## 🛠 기술 스택
+
+| 분야 | 기술 |
+|------|------|
+| **런타임** | Node.js + Express.js |
+| **언어** | TypeScript |
+| **프론트엔드** | Vite + Tailwind CSS |
+| **데이터베이스 & 인증** | Supabase |
+| **AI 서비스** | OpenAI API |
+| **CI/CD** | GitHub Actions |
+| **호스팅** | Vercel (프론트) + Render (백엔드) |
+
+## 🚀 빠른 시작
+
+### 사전 요구사항
+
+- Node.js 16 이상
+- Supabase 프로젝트 (인증, 데이터베이스, 스토리지용)
+- OpenAI API 키
+- Stripe 계정
+
+### 설치 방법
+
+1. **저장소 클론**
+```bash
+git clone https://github.com/nuelcas/mybrandname.git
+cd mybrandname
+```
+
+
+## 🏗 아키텍처 개요
+
+### 프론트엔드
+- TypeScript + Vite + Tailwind CSS로 구축
+- Supabase 인증, 백엔드 API (AI 생성), Stripe (결제) 연결
+
+### 백엔드
+- Node.js + Express로 구축
+- Supabase를 통한 인증, AI 콘텐츠 생성, 데이터베이스 작업 처리
+
+### Supabase 테이블
+
+| 테이블 | 용도 |
+|--------|------|
+| `users` | 사용자 계정 저장 |
+| `brands` | 생성된 브랜드 정보 저장 |
+| `assets` | 저장된 이미지/파일 링크 |
+| `subscriptions` | 플랜 및 결제 상태 추적 |
 
 
 
+## 📡 API 엔드포인트 예제
+
+### 인증 라우트
+
+| 엔드포인트 | 메소드 | 설명 |
+|-----------|--------|------|
+| `/api/auth/signup` | POST | 신규 사용자 등록 |
+| `/api/auth/login` | POST | 사용자 로그인 |
+
+### 브랜딩 라우트
+
+| 엔드포인트 | 메소드 | 설명 |
+|-----------|--------|------|
+| `/api/brand/logo` | POST | AI 로고 생성 |
+
+#### 요청 예제:
+```json
+POST /api/brand/logo
+{
+  "brandName": "NovaTech",
+  "industry": "Tech",
+  "style": "Modern Minimal"
+}
+```
+
+## 📜 행동 강령
+
+긍정적이고 포용적인 커뮤니티 유지를 위해 모든 기여자는 다음을 준수해야 합니다:
+
+- ✅ 다른 사람과 상호작용할 때 존중하고 친절하며 인내심 있게 대하기
+- ✅ 피드백을 환영하고 건설적인 토론에 참여하기
+- ✅ 차별적이거나 공격적인 언어 피하기
+- ✅ 비판보다는 협업과 문제 해결에 집중하기
+- ❌ 다른 기여자에게 적절히 신용 부여하기
+
+위반 사항이나 우려 사항은 관리자에게 비공개로 보고해 주세요.
+
+## 🚀 배포
+
+| 컴포넌트 | 플랫폼 | 참고사항 |
+|---------|--------|---------|
+| 프론트엔드 | Vercel/Netlify | 환경 변수 추가 |
+| 백엔드 | Render/Railway | Supabase & AI 키 추가 |
+| 데이터베이스 | Supabase | Auth + Storage + Database |
 
 <br>
 <br>
