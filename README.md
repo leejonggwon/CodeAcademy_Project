@@ -378,6 +378,12 @@ POST /api/brand/logo
   <img src="https://github.com/user-attachments/assets/91bd1a5d-5e53-438e-bff2-590cf848c0f5" width="250" />
 </p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/91899485-aae9-4d26-a275-c72fe86d0c65" width="400" />
+</p>
+
+
+
 
 <br>
 
