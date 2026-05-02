@@ -342,9 +342,15 @@ POST /api/brand/logo
 - **계층 깊이 (`LEVEL`)** - 원본 댓글은 0, 대댓글은 1로 구분 했습니다.<br>
 
 #### 3) MyBatis를 활용한 계층 구조 생성 <br>
-- 원본 댓글 등록 시 MAX(CMT_IDX)를 조회해 다음 그룹 번호를 자동으로 할당합니다.<br>
+- 원본 댓글 등록 시 MAX(CMT_IDX)를 조회해 다음 그룹 번호를 자동으로 할당함<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6c98d151-0c17-4b2d-afdd-3dafb043c888" width="700" />
+</p>
+
+#### 4)대댓글 동적 UI 렌더링 (jQuery) <br>
+- 서버에서 받은 JSON 데이터를 바탕으로 $.each 반복문을 돌려 HTML을 생성하며, 대댓글 작성 폼은 `toggle()` 함수를 이용해 필요할 때만 나타나도록 구현<br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/91bd1a5d-5e53-438e-bff2-590cf848c0f5" width="250" />
 </p>
 
 
