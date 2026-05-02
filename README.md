@@ -264,7 +264,7 @@ POST /api/brand/logo
 - **콘텐츠 정화** - 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4ea3c6e2-8f6d-4511-ba7f-9a560d89c2fc" width="900" />
+  <img src="https://github.com/user-attachments/assets/fb57897b-a88b-4161-9cb1-b01d76963485" width="900" />
 </p>
 
 
