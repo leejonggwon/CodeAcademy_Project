@@ -121,8 +121,8 @@ POST /api/brand/logo
 - Spring Boot Security와 JWT 기반의 RBAC(역할 기반 권한 제어)를 적용한 RESTful 코딩 교육 관리 플랫폼(LMS) <br>
 
 ### 프로젝트 개요
-CodeAcademy는 Spring Boot를 기반으로 설계된 차세대 코딩 교육 관리 시스템(LMS)입니다 <br>
-단순한 게시판을 넘어, 교육 현장에서 필수적인 역할별 권한 제어와 실시간 소통 기능을 RESTful API 환경에서 구현한 통합 플랫폼입니다 <br>
+- CodeAcademy는 Spring Boot를 기반으로 설계된 차세대 코딩 교육 관리 시스템(LMS)입니다 <br>
+- 교육 현장에서 필수적인 역할별 권한 제어와 실시간 소통 기능을 RESTful API 환경에서 구현한 통합 플랫폼입니다 <br>
 
 ### 핵심 기술 
 - **보안 및 인가 (Security & Auth)** - Spring Boot Security와 JWT를 결합하여 사용자 인증의 보안성을 높였으며, RBAC(Role-Based Access Control)를 통해 관리자, 강사, 수강생 각 역할에 최적화된 메뉴와 기능을 제공합니다 <br>
@@ -142,13 +142,13 @@ CodeAcademy는 Spring Boot를 기반으로 설계된 차세대 코딩 교육 관
 - **ORM/Data Access** - Spring Data JPA, MyBatis <br>
 
 ### 2-2. Database
-- RDBMS: MySQL <br>
-- Connector: MySQL Connector Java <br>
+- **RDBMS** - MySQL <br>
+- **Connector** - MySQL Connector Java <br>
 
 ### 2-3. Frontend & View
-- View Engine: JSP (Java Server Pages) <br>
-- Library: JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
-- Embedded Server: Tomcat (with Jasper for JSP rendering) <br>
+- **View Engine** - JSP (Java Server Pages) <br>
+- **Library** - JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
+- **Embedded Server** - Tomcat (with Jasper for JSP rendering) <br>
 
 ### 2-4. Tools & Utilities
 - Lombok <br>
@@ -156,8 +156,8 @@ CodeAcademy는 Spring Boot를 기반으로 설계된 차세대 코딩 교육 관
 
 
 ## 3. Authentication & Security (Spring Security 스프링보안)
-- 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였음. <br>
-- 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됨. <br>
+- 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였습니다 <br>
+- 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됩니다 <br>
 
 
 ### 3-1. Spring Security  핵심 아키텍처 및 흐름
