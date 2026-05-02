@@ -312,6 +312,10 @@ POST /api/brand/logo
 #### 2-6) 이용제한 (PENALTY) <br> 
 - 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
 - **이용 제한** - 관리자에 의해 지정되며, 로그인은 가능하나 게시물 작성 및 조회 등 핵심 서비스 이용이 차단된 상태 <br>
+<p align="center">
+  <img src=src="https://github.com/user-attachments/assets/b5e6a6ca-2104-4e34-ada3-4afb777de1d2" width="900" />
+</p>
+
 
 <br>
 
