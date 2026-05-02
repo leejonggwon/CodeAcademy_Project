@@ -176,29 +176,29 @@ POST /api/brand/logo
 
 ### 3-2. 클래스별 상세 역할
 #### 1) SecurityConfiguration (보안 설정)
-- 비밀번호 암호화 : BCrypt 방식 등을 지원하는 DelegatingPasswordEncoder 사용 <br>
+- **비밀번호 암호화** - BCrypt 방식 등을 지원하는 DelegatingPasswordEncoder 사용 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/3b6063b9-0420-47c4-bfe4-c73486bd603e" width="800" />
 </p>
 
-- 권한별 접근 제어 <br>
- `/, /member/**` : 누구나 접근 가능 <br>
- `/board/**` : 로그인한 사용자만 접근 가능 <br>
+- **권한별 접근 제어** <br>
+ `/, /member/**` - 누구나 접근 가능 <br>
+ `/board/**` - 로그인한 사용자만 접근 가능 <br>
 
-- 커스텀 로그인/로그아웃 : 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
-- CSRF 비활성화 : REST API 및 테스트 편의를 위해 설정 <br>
+- **커스텀 로그인/로그아웃** - 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
+- **CSRF 비활성화** - REST API 및 테스트 편의를 위해 설정 <br>
 
 #### 2) UerDetailsServiceImpl
 - UserDetailsService 인터페이스를 구현 <br>
 - memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
-- 예외처리 : <br>
+- **예외처리**  <br>
  사용자가 없을 경우 `UsernameNotFoundException 발생` <br>
  탈퇴한 계정(enabled=false)일 경우 `DisabledException 발생` <br>
 
 #### 3) CustomUser (Security 전용 유저 객체)
 - Spring Security의 User 클래스를 상속받아 구현 <br>
 - DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 합니다 <br>
-- 사용자의 권한을 ROLE_ADMIN, ROLE_INSTRUCTOR, ROLE_STUDENT와 같은 형태로 변환하여 부여한다 <br>
+- 사용자의 권한을 `ROLE_ADMIN`, `ROLE_INSTRUCTOR`, `ROLE_STUDENT`와 같은 형태로 변환하여 부여한다 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="300" />
 </p>
@@ -206,19 +206,19 @@ POST /api/brand/logo
 ### 3-3. 주요보안 기능 구현 세부사항 
 
 #### 1) 비밀번호 암호화 ((BCrypt)
-- 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호함. <br>
-- 회원가입 컨트롤러: @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리. <br>
-- 로그인 검증: 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행. <br>
+- 회원가입 시 사용자의 비밀번호를 그대로 저장하지 않고, PasswordEncoder를 사용하여 해시 암호화한다 <br>
+- 회원가입 컨트롤러: @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리한다 <br>
+- 로그인 검증: 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행한다 <br>
 
 #### 2) 권한별 접근 제어 (Authorization)
-- 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다. <br>
-- PermitAll: 메인 페이지 및 회원 관련 기능(/member/**)은 비로그인 사용자도 접근 가능. <br>
-- Authenticated: 게시판 관련 기능(/board/**)은 로그인한 인증된 사용자만 접근 가능. <br>
+- 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다 <br>
+- **PermitAll** - 메인 페이지 및 회원 관련 기능`(/member/**)`은 비로그인 사용자도 접근 가능 <br>
+- **Authenticated** - 게시판 관련 기능`(/board/**)`은 로그인한 인증된 사용자만 접근 가능 <br>
 
 #### 3) 커스텀 유저 디테일 서비스
-- 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 CustomUser를 구현 <br>
-- SecurityContextHolder에 저장된 CustomUser를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있습니다. <br>
-- 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단합니다. <br>
+- 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 `CustomUser`를 구현 <br>
+- `SecurityContextHolder`에 저장된 `CustomUser`를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있다 <br>
+- 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단한다 <br>
 
 #### 4) 로그인/회원가입 프로세스 요약
 <p align="center">
@@ -228,8 +228,8 @@ POST /api/brand/logo
 
 
 ## 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
-- JPA 흐름 : Client → Controller → Service → Repository Interface(JPA) → DB <br>
-- MyBatis 흐름 : Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
+- **JPA 흐름** - Client → Controller → Service → Repository Interface(JPA) → DB <br>
+- **MyBatis 흐름** - Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="600" />
@@ -253,15 +253,15 @@ POST /api/brand/logo
 #### 1) 핵심 기술 구현 요약 <br>
 - Spring Security와 JSTL/EL을 활용하여 위와 같은 역할 기반 접근 제어(RBAC) 모델을 설계 <br>
 - 사용자 역할(Role)에 따라 시스템 자원(URL, API, 데이터)에 대한 접근 권한을 세밀하게 통제하여 보안성을 강화하였음 <br>
-- 데이터 바인딩(EL) : SecurityContext 내 Principal 객체에 실시간 접근하여 사용자 정보를 효율적으로 참조하였음 <br>
-- 조건부 렌더링(JSTL) : 권한 계층에 따라 메뉴 및 버튼 활성화 여부를 결정하는 태그 기반 로직을 설계하여 코드 가독성과 유지보수성을 확보하였음<br>
+- **데이터 바인딩(EL)** - SecurityContext 내 Principal 객체에 실시간 접근하여 사용자 정보를 효율적으로 참조하였음 <br>
+- **조건부 렌더링(JSTL)** - 권한 계층에 따라 메뉴 및 버튼 활성화 여부를 결정하는 태그 기반 로직을 설계하여 코드 가독성과 유지보수성을 확보하였음<br>
 
 #### 2) 상세 권한 및 역할 정의 <br>
 #### 2)-1. 관리자(ADMIN) <br> 
 - 시스템 전반의 제어 및 운영 정책을 총괄하는 최상위 권한 <br>
-- 통합 관제 : 전체 게시판(강의, Q&A, 커뮤니티, 강사 전용 커뮤니티 등) 및 게시물에 대한 접근 및 관리 권한을 가집니다. <br>
-- 회원 및 과정 관리 : 운영 정책에 따라 관리자 페이지를 통해 관리자를 제외한 회원의 정보 열람이 가능하며, 회원의 권한 등급 및 수강 교육과정을 동적으로 변경할 수 있습니다.<br>
-- 콘텐츠 정화 : 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
+- **통합 관제** - 전체 게시판(강의, Q&A, 커뮤니티, 강사 전용 커뮤니티 등) 및 게시물에 대한 접근 및 관리 권한을 가집니다. <br>
+- **회원 및 과정 관리** - 운영 정책에 따라 관리자 페이지를 통해 관리자를 제외한 회원의 정보 열람이 가능하며, 회원의 권한 등급 및 수강 교육과정을 동적으로 변경할 수 있습니다.<br>
+- **콘텐츠 정화** - 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4ea3c6e2-8f6d-4511-ba7f-9a560d89c2fc" width="900" />
@@ -270,13 +270,13 @@ POST /api/brand/logo
 
 #### 2)-2. 운영부(STAFF) <br> 
 - 학생 지원 서비스를 담당하는 권한 <br>
-- 부서별 역할 수행 : 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
+- **부서별 역할 수행** - 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
 
 #### 2)-3. 강사 (INSTRUCTOR) <br> 
 - 학습 콘텐츠 생산 및 교육 서비스 제공을 담당하는 교육 권한 <br>
-- 과정 중심 접근 : 본인이 배정된 특정 교육과정의 강의, Q&A, 오픈채팅, 커뮤니티 게시판에만 한정적으로 접근하여 보안성을 유지합니다. <br>
-- 학습 지원 : 강의 자료 및 수업 내용을 등록하고, 댓글 및 Q&A 답글을 통해 수강생의 학습 질문에 답변합니다.<br>
-- 가독성 강화 : 강사가 작성한 게시글 및 답변은 수강생이 쉽게 인지할 수 있도록 강조색으로 차별화되어 표시됩니다. <br>
+- **과정 중심 접근** - 본인이 배정된 특정 교육과정의 강의, Q&A, 오픈채팅, 커뮤니티 게시판에만 한정적으로 접근하여 보안성을 유지합니다. <br>
+- **학습 지원** - 강의 자료 및 수업 내용을 등록하고, 댓글 및 Q&A 답글을 통해 수강생의 학습 질문에 답변합니다.<br>
+- **가독성 강화** - 강사가 작성한 게시글 및 답변은 수강생이 쉽게 인지할 수 있도록 강조색으로 차별화되어 표시됩니다. <br>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f845fdf5-53f5-431d-bd83-bb249d231234" width="900" />
@@ -284,12 +284,12 @@ POST /api/brand/logo
 
 
 #### 2)-4. 수강생 (STUDENT) <br> 
-▪ 학습 콘텐츠를 소비하고 커뮤니티 활동에 참여하는 핵심 사용자 <br>
-▪ 권한 승인 기반 : 회원가입 후 GUEST 상태에서 관리자의 승인을 거쳐 STUDENT 권한을 획득해야 정식 서비스 이용이 가능합니다. <br>
-▪ 차등적 활동 권한 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ 강의 게시판 : 강의 수강, 수업 자료 다운로드, 댓글 및 좋아요 작성이 가능하지만, 자료의 보호를 위해 게시물 등록, 답글쓰기, 수정, 삭제는 제한됩니다. <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ Q&A 게시판 : 학습 관련 질문 등록이 가능하지만 강사의 전문적인 답변을 보장하기 위해 답글 쓰기 기능은 제한됩니다. <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▪ 커뮤니티 : 회원간 원활한 소통을 위해 모든 게시판 활동(쓰기, 수정, 삭제 등)이 허용됩니다. <br>
+- 학습 콘텐츠를 소비하고 커뮤니티 활동에 참여하는 핵심 사용자 <br>
+- **권한 승인 기반** - 회원가입 후 GUEST 상태에서 관리자의 승인을 거쳐 STUDENT 권한을 획득해야 정식 서비스 이용이 가능합니다. <br>
+- 차등적 활동 권한 <br>
+    강의 게시판 : 강의 수강, 수업 자료 다운로드, 댓글 및 좋아요 작성이 가능하지만, 자료의 보호를 위해 게시물 등록, 답글쓰기, 수정, 삭제는 제한됩니다. <br>
+    Q&A 게시판 : 학습 관련 질문 등록이 가능하지만 강사의 전문적인 답변을 보장하기 위해 답글 쓰기 기능은 제한됩니다. <br>
+    커뮤니티 : 회원간 원활한 소통을 위해 모든 게시판 활동(쓰기, 수정, 삭제 등)이 허용됩니다. <br>
 
 #### 2)-5. 승인대기 (GUEST) <br> 
 - 회원가입은 완료했으나 서비스 이용 권한을 대기 중인 상태 <br>
