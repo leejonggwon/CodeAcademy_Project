@@ -117,15 +117,17 @@ POST /api/brand/logo
 
 ## 1. 서비스소개 
 ### 서비스명
-- Spring Boot Security를 이용한 코딩 교육 플랫폼 <br>
-- (부제) Spring Boot Security와 JWT를 활용한 RESTful 게시판 API 서비스 <br>
+- Coda Academy(코드아케데미)
+- Spring Boot Security와 JWT 기반의 RBAC(역할 기반 권한 제어)를 적용한 RESTful 코딩 교육 관리 플랫폼(LMS) <br>
 
-### 서비스설명
-- 본 프로젝트는 스프링(Spring) 프레임워크와 MVC 3Tier 아키텍처를 기반으로 한 커뮤니케이션 프로젝트입니다. <br>
-- 사용자 간 손쉽게 소통하고, 효율적으로 커뮤니티 기능을 활용할 수 있는 웹 애플리케이션 개발을 목표로 합니다. <br>
-- 그룹 채팅, 메시지, 게시글 작성, 좋아요, 댓글·답글, 조회수, 검색, 페이징, 게시글 작성자 프로필, 좌석 발권, 자료 검색, 회원 관리 등의 기능을 제공합니다. <br>
-- WebSocket과 비동기 통신(AJAX)을 활용한 실시간 갱신을 구현했습니다. <br>
-- Bootstrap 3과 직관적인 JSP 기반 UI를 통해 사용자 친화적인 화면을 구성했습니다. <br>
+### 프로젝트 개요
+CodeAcademy는 Spring Boot를 기반으로 설계된 차세대 코딩 교육 관리 시스템(LMS)입니다 <br>
+단순한 게시판을 넘어, 교육 현장에서 필수적인 역할별 권한 제어와 실시간 소통 기능을 RESTful API 환경에서 구현한 통합 플랫폼입니다 <br>
+
+### 핵심 기술 
+- **보안 및 인가 (Security & Auth)** - Spring Boot Security와 JWT를 결합하여 사용자 인증의 보안성을 높였으며, RBAC(Role-Based Access Control)를 통해 관리자, 강사, 수강생 각 역할에 최적화된 메뉴와 기능을 제공합니다 <br>
+- **효율적인 데이터 구조 (RESTful API)** - 모든 커뮤니티 기능(게시판, 댓글, 대댓글)을 RESTful API로 설계하여 프론트엔드와의 통신 효율을 극대화하고 데이터 무결성을 확보했습니다 <br>
+- **실시간 소통 (Real-time Interaction)** - Native WebSocket을 활용한 그룹별 오픈채팅 기능을 통해 교육생 간의 활발한 피드백과 실시간 질의응답 환경을 구축했습니다 <br>
 
 ### 프로젝트기간
 - 2026.02 ~ 2026.04 <br>
