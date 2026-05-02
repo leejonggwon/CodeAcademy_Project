@@ -273,9 +273,8 @@ POST /api/brand/logo
 - **부서별 역할 수행** - 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5e4f9b98-a2d3-4b09-9592-03abef993130" width="900" />
+  <img src="https://github.com/user-attachments/assets/1d00bc68-4bb3-4ed3-a250-8952282def75" width="900" />
 </p>
-
 
 
 #### 2-3) 강사 (INSTRUCTOR) <br> 
