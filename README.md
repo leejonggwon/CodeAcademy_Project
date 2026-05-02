@@ -398,7 +398,9 @@ POST /api/brand/logo
 - **조건부 렌더링** -서버로부터 받은 메시지가 '나'인 경우와 '타인'인 경우를 구분하여 말풍선 위치와 스타일을 다르게 렌더링 <br>
 
 
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/887b8afc-0955-4332-9ec1-5264d3c2ee67" width="700" />
+</p>
 
 
 
