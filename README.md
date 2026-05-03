@@ -595,6 +595,23 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
   <img src="https://github.com/user-attachments/assets/dbd6b570-20af-4ff3-9bea-8e4b55e8b352" width="900" />
 </p>
 
+<br>
+
+## 2. 로그인 페이지 (Login Page)
+### 2-1. 페이지 소개 <br>
+- **인증 중심 인터페이스** - 서비스 이용을 위한 사용자 인증의 관문으로, 로고와 로그인 폼을 중앙에 배치하여 시각적 집중도를 높였습니다 <br>
+- **사용자 편의 기능** - '비밀번호 보기/ 비밀번호 숨기기' 기능을 구현하여 사용자 경험(UX)을 개선하고 입력 오류를 줄일 수 있도록 설계했습니다 <br>
+- **유연한 동선** - 회원가입 페이지 및 메인 랜딩 페이지로의 빠른 이동 버튼을 제공하여 사용자 이탈을 방지했습니다 <br>
+<br>
+
+### 2-2. 사용 기술 및 구현 <br>
+- **Spring Security** - 사용자 인증 및 권한 부여(Authentication & Authorization)를 처리하며, 세션 관리를 통해 보안성을 확보했습니다<br>
+- **Role-based Access Control (RBAC)** - 로그인 시 사용자의 등급(Admin, Student 등)을 식별하여 각 역할에 맞는 메뉴 접근 권한을 동적으로 부여합니다 <br>
+- **비밀번호 가시성 제어 (Show/Hide Password)** - 로그인 시 사용자의 등급(Admin, Student 등)을 식별하여 각 역할에 맞는 메뉴 접근 권한을 동적으로 부여합니다 <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bf68d029-a4f1-4b31-97cc-859331318c45" width="600" />
+</p>
 
 
 
