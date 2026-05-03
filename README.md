@@ -607,7 +607,8 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 ### 2-2. 사용 기술 및 구현 <br>
 - **Spring Security** - 사용자 인증 및 권한 부여(Authentication & Authorization)를 처리하며, 세션 관리를 통해 보안성을 확보했습니다<br>
 - **Role-based Access Control (RBAC)** - 로그인 시 사용자의 등급(Admin, Student 등)을 식별하여 각 역할에 맞는 메뉴 접근 권한을 동적으로 부여합니다 <br>
-- **비밀번호 가시성 제어 (Show/Hide Password)** - 로그인 시 사용자의 등급(Admin, Student 등)을 식별하여 각 역할에 맞는 메뉴 접근 권한을 동적으로 부여합니다 <br>
+- **비밀번호 가시성 제어 (Show/Hide Password)** <br>
+  로그인 시 사용자의 등급(Admin, Student 등)을 식별하여 각 역할에 맞는 메뉴 접근 권한을 동적으로 부여합니다 <br>
   attr() 함수를 사용하여 input 태그의 type 속성을 password와 text로 동적 전환하는 로직을 구현했습니다 <br>
   상태 변화에 따라 버튼의 텍스트("보이기"/"숨기기")와 Font Awesome 아이콘을 실시간으로 업데이트하여 사용자에게 직관적인 시각적 피드백을 제공합니다 <br>
 
