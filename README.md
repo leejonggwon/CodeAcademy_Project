@@ -584,17 +584,16 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 - **사용자 인증 관문** - 로그인 및 문의하기 버튼을 상단에 배치하여 서비스 이용의 편의성을 제공합니다 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3594296c-ecf8-4481-9d8e-3abab7f1d102" width="900" />
+  <img src="https://github.com/user-attachments/assets/0fcbc207-5c8b-41c9-92c7-8681b5848cc1"  width="900" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/63c63550-803a-41bf-a942-21cf71473aa1" width="900" />
+  <img src="https://github.com/user-attachments/assets/139a8f20-9f62-46ca-a119-343dd90f68f3" width="900" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5828bb6a-cf6c-4245-b535-7f74d70a9379" width="900" />
+  <img src="https://github.com/user-attachments/assets/dbd6b570-20af-4ff3-9bea-8e4b55e8b352" width="900" />
 </p>
-
 
 
 
