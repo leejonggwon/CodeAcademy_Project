@@ -281,7 +281,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/1e5eb11d-0719-4b4a-ab8d-0fdef4587c69" width="900" />
   <br>
-  [운영부 계정 - 커뮤니티]
+  [운영부 계정 - 커뮤니티 게시글 업로드 및 수정]
 </p>
 
 
@@ -309,7 +309,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/1c9bf984-640e-4e68-8439-a546a57e4f14" width="900" />
   <br>
-  [수강생 계정 - Q%A 게시글 업로드 및 수정]
+  [수강생 계정 - Q&A 게시글 업로드 및 수정]
 </p>
 <br>
 
