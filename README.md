@@ -354,6 +354,8 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/70bc813a-8006-45a8-b3f1-5617380fca6e" width="900" />
+  <br>
+  [파일 업로드]
 </p>
 
 <br>
@@ -373,6 +375,8 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/424a445c-e51d-410d-8171-fd3b362237b8" width="900" />
+  <br>
+  [파일 다운로드]
 </p>
 
 <br>
