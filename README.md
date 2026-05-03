@@ -430,14 +430,22 @@ POST /api/brand/logo
 ## 6. 페이징 및 검색 시스템 (Paging & Search System) <br>
 ### 6-1. 주요 클래스 구성 요소 <br>
 - **Criteria** - `현재 페이지(page)`, `페이지당 게시글 수(perPageNum)`, `검색 조건(type, keyword)` 등 사용자가 요청한 데이터를 담는 객체 <br>
-- **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
-- **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c995b28e-1319-4ea9-b82f-be5b243011fe"" width="250" />
   <br>
   [Criteria 클래스]
 </p>
+
+- **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd7d39df-9dae-439c-aaea-590203700d52" width="250" />
+  <br>
+  [PageMaker 클래스]
+</p>
+
+- **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
+
+
 
 
 ### 5-2. [Server] 세션 핸들링 및 메시지 브로드캐스팅 <br>
