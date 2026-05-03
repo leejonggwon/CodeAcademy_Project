@@ -371,7 +371,7 @@ POST /api/brand/logo
 `AVAILABLE == '0'` : "작성자에 의해 삭제된 댓글입니다." 메시지 출력 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6b585f9e-3119-445f-812e-d9e6f71ce31a" width="600" />
+  <img src="https://github.com/user-attachments/assets/6b585f9e-3119-445f-812e-d9e6f71ce31a" width="400" />
 </p>
 
 ### 4-2. DB 설계 및 로직 <br>
@@ -393,7 +393,7 @@ POST /api/brand/logo
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/326e2933-8cb3-46de-9951-6d7a0353f5aa" width="600" />
+  <img src="https://github.com/user-attachments/assets/326e2933-8cb3-46de-9951-6d7a0353f5aa" width="400" />
 </p>
 
 
