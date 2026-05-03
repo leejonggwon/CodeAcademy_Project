@@ -267,18 +267,23 @@ POST /api/brand/logo
 - **콘텐츠 정화** - 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fb57897b-a88b-4161-9cb1-b01d76963485" width="900" />
+  <img src="https://github.com/user-attachments/assets/3a9e9944-c521-45fd-8b01-7021b7700a56" width="900" />
+  <br>
+  [관리자 계정 - 관리자페이지]
 </p>
 <br>
+
 
 #### 2) 운영부(STAFF) <br> 
 - 학생 지원 서비스를 담당하는 권한 <br>
 - **부서별 역할 수행** - 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1d00bc68-4bb3-4ed3-a250-8952282def75" width="900" />
+  <img src="https://github.com/user-attachments/assets/1e5eb11d-0719-4b4a-ab8d-0fdef4587c69" width="900" />
+  <br>
+  [운영부 계정 - 커뮤니티]
 </p>
-<br>
+
 
 #### 3) 강사 (INSTRUCTOR) <br> 
 - 학습 콘텐츠 생산 및 교육 서비스 제공을 담당하는 교육 권한 <br>
@@ -287,9 +292,11 @@ POST /api/brand/logo
 - **가독성 강화** - 강사가 작성한 게시글 및 답변은 수강생이 쉽게 인지할 수 있도록 강조색으로 차별화되어 표시됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b0cf0271-efe0-4142-ae3d-cb1985c8d187" width="900" />
+  <img src="https://github.com/user-attachments/assets/6cb3b321-4340-406d-a9dd-92476daec6d6" width="900" />
+  <br>
+  [강사 계정 - 강의 게시글 업로드 및 수정]
 </p>
-<br>
+
 
 #### 4) 수강생 (STUDENT) <br> 
 - 학습 콘텐츠를 소비하고 커뮤니티 활동에 참여하는 핵심 사용자 <br>
@@ -300,27 +307,36 @@ POST /api/brand/logo
     **커뮤니티** - 회원간 원활한 소통을 위해 모든 게시판 활동(쓰기, 수정, 삭제 등)이 허용됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/446282f9-8e68-49df-abde-8dd950d14d49" width="900" />
+  <img src="https://github.com/user-attachments/assets/1c9bf984-640e-4e68-8439-a546a57e4f14" width="900" />
+  <br>
+  [수강생 계정 - Q%A 게시글 업로드 및 수정]
 </p>
 <br>
+
 
 #### 5) 승인대기 (GUEST) <br> 
 - 회원가입은 완료했으나 서비스 이용 권한을 대기 중인 상태 <br>
 - **접근 제한** - 관리자가 사용자 정보를 확인하여 수강생 또는 강사로 권한을 부여하기 전까지는 서비스 이용이 제한되는 준회원 상태 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/310dfb60-7321-4030-8812-bc75a869a1e8" width="900" />
+  <img src="https://github.com/user-attachments/assets/f049caba-de2b-472a-9610-3b4567d68a8c" width="900" />
+  <br>
+  [승인대기 계정]
 </p>
 <br>
+
 
 ### 6) 이용제한 (PENALTY) <br> 
 - 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
 - **이용 제한** - 관리자에 의해 지정되며, 로그인은 가능하나 게시물 작성 및 조회 등 핵심 서비스 이용이 차단된 상태 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b5e6a6ca-2104-4e34-ada3-4afb777de1d2" width="900" />
+  <img src="https://github.com/user-attachments/assets/578f9ea5-8df2-49b9-9a52-e6f65373d9d7" width="900" />
+  <br>
+  [이용제한 계정]
 </p>
 <br>
+
 
 ## 2. 다중 파일업로드 및 서버 저장 시스템 <br>
 ### 2-1. 핵심 기술 구현 요약 <br>
