@@ -573,12 +573,27 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
   [좋아요 기능 및 실시간 반영]
 </p>
 
+<br>
 
 
+# 페이지별 기능 가이드 #
 
+## 1. 메인 랜딩 페이지 (Main Landing Page)
+- **서비스소개** - Code Academy의 비전과 교육과정을 한눈에 확인할 수 있는 랜딩페이지입니다 <br>
+- **강의 카테고리 퀵 뷰** - Backend, Frontend, IT Startup 등 제공 중인 주요 교육과정을 카드 레이아웃으로 시각화하여 정보 접근성을 높였습니다 <br>
+- **사용자 인증 관문** - 로그인 및 문의하기 버튼을 상단에 배치하여 서비스 이용의 편의성을 제공합니다 <br>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3594296c-ecf8-4481-9d8e-3abab7f1d102" width="900" />
+</p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/63c63550-803a-41bf-a942-21cf71473aa1" width="900" />
+</p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5828bb6a-cf6c-4245-b535-7f74d70a9379" width="900" />
+</p>
 
 
 
