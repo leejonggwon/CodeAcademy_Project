@@ -372,6 +372,10 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6b585f9e-3119-445f-812e-d9e6f71ce31a" width="400" />
+  <br>
+  [작성자 본인이 댓글 삭제시 "작성자에 의해 삭제된 댓글입니다." 메시지 출력]
+  <br>
+  [관리자가 댓글 삭제시 "관리자에 의해 삭제된 댓글입니다." 메시지 출력]
 </p>
 
 ### 4-2. DB 설계 및 로직 <br>
@@ -396,6 +400,8 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/326e2933-8cb3-46de-9951-6d7a0353f5aa" width="400" />
+  <br>
+  [댓글과 대댓글 기능]
 </p>
 <br>
 
@@ -424,6 +430,8 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/87044bf3-e999-450f-9486-af74dd61c0b4" width="400" />
+  <br>
+  [실시간 그룹 오픈채팅 기능]
 </p>
 
 <br>
@@ -474,7 +482,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/15f3b199-cb49-4e4f-9e0f-e9b3d1bbc8a5" width="900" />
   <br>
-  [Pagination]
+  [Pagination 페이징 기능]
 </p>
 <br>
 
@@ -496,7 +504,7 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 ### 8-2. 기술적 특징 <br>
 - **RESTful API** - LikeRestController를 통해 클라이언트와 데이터를 JSON 기반으로 주고받습니다 <br>
-- **실시간 UI 업데이트 (Ajax)** - success 콜백 함수 내에서 `showLike_count()`, `likeView()` 등을 호출하여 페이지 새로고침 없이 화면을 갱신합니다 <br>
+- **실시간 UI 업데이트 (Ajax)** - success 콜백 함수 내에서 `showLike_count()`, `likeView()` 등을 호출하여 페이지 새로고침 없이 실시간 화면을 갱신합니다 <br>
 - **상태 기반 처리** - DataBase에 사용자별 이력을 남겨 추후 '내가 좋아요 한 글 보기' 등의 기능 확장이 가능하도록 설계했습니다 <br>
 
 <p align="center">
