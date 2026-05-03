@@ -249,7 +249,7 @@ POST /api/brand/logo
 
 # 주요기능설명
 
-### 1. 권한별 기능 제어(Technical Description)
+## 1. 권한별 기능 제어(Technical Description)
 #### 1) 핵심 기술 구현 요약 <br>
 - Spring Security와 JSTL/EL을 활용하여 위와 같은 역할 기반 접근 제어(RBAC) 모델을 설계 <br>
 - 사용자 역할(Role)에 따라 시스템 자원(URL, API, 데이터)에 대한 접근 권한을 세밀하게 통제하여 보안성을 강화하였음 <br>
