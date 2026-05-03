@@ -329,6 +329,7 @@ POST /api/brand/logo
 - 동일한 파일명 업로드 시 데이터 덮어쓰기를 방지하기 위해 `System.currentTimeMillis()`를 활용하여 파일의 고유성을 확보하였습니다.<br>
 - `File.mkdirs()`를 활용해 물리적 저장 경로가 존재하지 않을 경우 서버가 자동으로 디렉토리를 생성하도록 설계하여 운영 안정성을 높였습니다<br>
 - 서버 부하를 줄이기 위해 파일 본체는 로컬 스토리지에 저장하고, 데이터베이스에는 파일명 및 경로 정보만을 저장하는 표준화된 업로드 아키텍처를 따랐습니다<br>
+<br>
 
 ### 2-2. 게시판별 맞춤형 파일 필터링 <br>
 - 사용자가 파일 선택 단계에서부터 게시판 목적에 맞는 형식만 선택할 수 있도록 HTML5의 accept 속성을 활용하여 프론트엔드 제어 및 UX를 개선했습니다.<br>
@@ -337,7 +338,6 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/70bc813a-8006-45a8-b3f1-5617380fca6e" width="900" />
-  Criteria
 </p>
 
 <br>
@@ -379,12 +379,14 @@ POST /api/brand/logo
 - **댓글 그룹화 (`GROUP`)** - 원본 댓글과 그에 달린 대댓글을 하나의 그룹으로 묶습니다. <br>
 - **정렬 순서 (`SEQUENCE`)** - 그룹 내에서 댓글이 보여지는 순서를 결정합니다. 새 대댓글이 중간에 삽입될 경우 기존 순서를 +1 UPDATE 하여 순서를 유지합니다.<br>
 - **계층 깊이 (`LEVEL`)** - 원본 댓글은 0, 대댓글은 1로 구분 했습니다.<br>
+<br>
 
 ### 4-3. MyBatis를 활용한 계층 구조 생성 <br>
 - 원본 댓글 등록 시 MAX(CMT_IDX)를 조회해 다음 그룹 번호를 자동으로 할당함<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6c98d151-0c17-4b2d-afdd-3dafb043c888" width="800" />
 </p>
+<br>
 
 ### 4-4. 대댓글 동적 UI 렌더링 (jQuery) <br>
 - 서버에서 받은 JSON 데이터를 바탕으로 $.each 반복문을 돌려 HTML을 생성하며, 대댓글 작성 폼은 `toggle()` 함수를 이용해 필요할 때만 나타나도록 구현<br>
@@ -395,9 +397,6 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/326e2933-8cb3-46de-9951-6d7a0353f5aa" width="400" />
 </p>
-
-
-
 <br>
 
 ## 5. 실시간 그룹 오픈채팅 시스템 (WebSocket) <br>
