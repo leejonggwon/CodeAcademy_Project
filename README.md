@@ -487,7 +487,6 @@ POST /api/brand/logo
 <br>
 
 
-
 ## 7. 검색 필터링 및 페이징 (Search & Pagination) <br>
 사용자가 원하는 조건으로 게시글을 필터링하고` MyBatis 동적 SQL`과 `Criteria 패턴`을 적용했습니다 <br>
 
@@ -504,7 +503,6 @@ POST /api/brand/logo
   [MyBatis 동적 SQL]
 </p>
 
-
 <br>
 
 ### 7-2. 기술적 포인트 <br>
@@ -518,6 +516,13 @@ POST /api/brand/logo
   <br>
   [다음 페이지 넘어가도 검색정보 유지]
 </p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/50c21c40-cbf5-40b8-8dda-2652ffff748c" width="900" />
+  <br>
+  [검색 및 필터링 기능]
+</p>
+
 
 <br>
 
