@@ -445,11 +445,10 @@ POST /api/brand/logo
 
 - **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
 <p align="center">
-  <img  width="600" />
+  <img src="https://github.com/user-attachments/assets/b09a1ef6-cf96-48fd-b8db-f3c8c192f9f1" width="600" />
   <br>
   [Mapper (SQL)]
 </p>
-
 
 
 ### 5-2. [Server] 세션 핸들링 및 메시지 브로드캐스팅 <br>
