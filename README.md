@@ -267,7 +267,7 @@ POST /api/brand/logo
 - **콘텐츠 정화** - 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fb57897b-a88b-4161-9cb1-b01d76963485" width="700" />
+  <img src="https://github.com/user-attachments/assets/fb57897b-a88b-4161-9cb1-b01d76963485" width="900" />
 </p>
 <br>
 
@@ -276,7 +276,7 @@ POST /api/brand/logo
 - **부서별 역할 수행** - 교육운영, 취업지원, 홍보 등 각 부서의 목적에 맞춰 전체 교육과정의 커뮤니티에 접근하여 공지사항 등록 및 홍보 활동을 수행합니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1d00bc68-4bb3-4ed3-a250-8952282def75" width="700" />
+  <img src="https://github.com/user-attachments/assets/1d00bc68-4bb3-4ed3-a250-8952282def75" width="900" />
 </p>
 <br>
 
@@ -287,7 +287,7 @@ POST /api/brand/logo
 - **가독성 강화** - 강사가 작성한 게시글 및 답변은 수강생이 쉽게 인지할 수 있도록 강조색으로 차별화되어 표시됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b0cf0271-efe0-4142-ae3d-cb1985c8d187" width="700" />
+  <img src="https://github.com/user-attachments/assets/b0cf0271-efe0-4142-ae3d-cb1985c8d187" width="900" />
 </p>
 <br>
 
@@ -300,7 +300,7 @@ POST /api/brand/logo
     **커뮤니티** - 회원간 원활한 소통을 위해 모든 게시판 활동(쓰기, 수정, 삭제 등)이 허용됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/446282f9-8e68-49df-abde-8dd950d14d49" width="700" />
+  <img src="https://github.com/user-attachments/assets/446282f9-8e68-49df-abde-8dd950d14d49" width="900" />
 </p>
 <br>
 
@@ -309,7 +309,7 @@ POST /api/brand/logo
 - **접근 제한** - 관리자가 사용자 정보를 확인하여 수강생 또는 강사로 권한을 부여하기 전까지는 서비스 이용이 제한되는 준회원 상태 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/310dfb60-7321-4030-8812-bc75a869a1e8" width="700" />
+  <img src="https://github.com/user-attachments/assets/310dfb60-7321-4030-8812-bc75a869a1e8" width="900" />
 </p>
 <br>
 
@@ -318,7 +318,7 @@ POST /api/brand/logo
 - **이용 제한** - 관리자에 의해 지정되며, 로그인은 가능하나 게시물 작성 및 조회 등 핵심 서비스 이용이 차단된 상태 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b5e6a6ca-2104-4e34-ada3-4afb777de1d2" width="700" />
+  <img src="https://github.com/user-attachments/assets/b5e6a6ca-2104-4e34-ada3-4afb777de1d2" width="900" />
 </p>
 <br>
 
@@ -336,7 +336,7 @@ POST /api/brand/logo
 - Q&A 게시판 (`accept="image/*"`): 코드 오류나 실행 화면 스크린샷 등 텍스트로 설명하기 어려운 상황을 시각적으로 공유할 수 있도록 이미지 파일만 허용하여 원활한 소통을 유도했습니다.<br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/70bc813a-8006-45a8-b3f1-5617380fca6e" width="700" />
+  <img src="https://github.com/user-attachments/assets/70bc813a-8006-45a8-b3f1-5617380fca6e" width="900" />
 </p>
 
 <br>
@@ -355,7 +355,7 @@ POST /api/brand/logo
 - 일반적인 언더바(_) 대신 `등호(=)`를 구분자로 사용했습니다. 이는 사용자가 입력한 파일명에 언더바가 포함되어 있을 경우, 실제 파일명과 시스템용 식별자가 혼동되어 데이터가 유실되거나 이름이 잘리는 현상을 방지하기 위한 의도적인 설계입니다.<br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/424a445c-e51d-410d-8171-fd3b362237b8" width="600" />
+  <img src="https://github.com/user-attachments/assets/424a445c-e51d-410d-8171-fd3b362237b8" width="900" />
 </p>
 
 <br>
@@ -382,7 +382,7 @@ POST /api/brand/logo
 ### 4-3. MyBatis를 활용한 계층 구조 생성 <br>
 - 원본 댓글 등록 시 MAX(CMT_IDX)를 조회해 다음 그룹 번호를 자동으로 할당함<br>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6c98d151-0c17-4b2d-afdd-3dafb043c888" width="700" />
+  <img src="https://github.com/user-attachments/assets/6c98d151-0c17-4b2d-afdd-3dafb043c888" width="800" />
 </p>
 
 ### 4-4. 대댓글 동적 UI 렌더링 (jQuery) <br>
@@ -417,7 +417,7 @@ POST /api/brand/logo
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/887b8afc-0955-4332-9ec1-5264d3c2ee67" width="700" />
+  <img src="https://github.com/user-attachments/assets/887b8afc-0955-4332-9ec1-5264d3c2ee67" width="900" />
 </p>
 
 <p align="center">
