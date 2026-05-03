@@ -436,7 +436,7 @@ POST /api/brand/logo
 
 <br>
 
-## 6. 페이징 및 검색 시스템 (Paging & Search System) <br>
+## 6. 페이징 시스템 (Paging & Search System) <br>
 ### 6-1. 주요 구성 요소 <br>
 - **Criteria** - `현재 페이지(page)`, `페이지당 게시글 수(perPageNum)`, `검색 조건(type, keyword)` 등 사용자가 요청한 데이터를 담는 객체 <br>
 - **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
@@ -486,6 +486,40 @@ POST /api/brand/logo
 </p>
 <br>
 
+
+
+## 7. 검색 필터링 및 페이징 (Search & Pagination) <br>
+사용자가 원하는 조건으로 게시글을 필터링하고` MyBatis 동적 SQL`과 `Criteria 패턴`을 적용했습니다 <br>
+
+### 7-1. 핵심 로직 흐름 (Process Flow) <br>
+
+- **파라미터 수집** - JSP에서 선택한 검색 `타입(type)`과 `키워드(keyword)`를 Criteria 객체에 담아 컨트롤러로 전송합니다 <br>
+- **동적 SQL 생성** - MyBatis의 `<if> 태그`와 `<sql> 조각`을 활용하여 선택된 타입에 따라 WHERE 절을 동적으로 생성합니다 <br>
+- **데이터 조회** - `LIMIT 명령어`를 통해 전체 데이터가 아닌 현재 페이지에 필요한 10개의 게시글만 효율적으로 가져옵니다 <br>
+- **UI 유지** - 검색 후에도 사용자가 선택한 검색 조건과 입력값이 사라지지 않도록 `EL(${pageMaker.cri})`을 통해 입력 폼을 유지합니다<br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f1591379-da31-45f5-926f-29f06a0c99a2" width="600" />
+  <br>
+  [MyBatis 동적 SQL]
+</p>
+
+
+<br>
+
+### 7-2. 기술적 포인트 <br>
+
+- **MyBatis 동적 SQL** - 중복되는 SQL을 방지하기 위해 <sql> 태그로 검색 로직을 분리하고, 필요한 쿼리에서 <include>하여 결합하는 방식을 사용했습니다 <br>
+- **검색 조건 유지** - 검색 실행 후 페이지가 새로고침되어도 사용자가 어떤 조건으로 검색했는지 알 수 있도록 삼항 연산자를 이용해 selected 상태를 제어했습니다 <br>
+- **검색 정보 유지** - 페이징 버튼 클릭 시 단순 링크 이동 대신, page, type, keyword 값을 포함한 Hidden Form을 전송(Submit)하는 방식을 채택하여 검색 결과를 끝까지 유지하도록 해결하였습니다<br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/75228965-70ef-4263-8be0-22757ab84a11" width="600" />
+  <br>
+  [다음 페이지 넘어가도 검색정보 유지]
+</p>
+
+
 ## 8. 비동기 좋아요(Like) 시스템 <br>
 Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 좋아요 기능을 구현했습니다 <br>
 
@@ -512,10 +546,6 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
   <br>
   [좋아요 기능 및 실시간 반영]
 </p>
-
-
-
-
 
 
 
