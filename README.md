@@ -269,7 +269,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fb57897b-a88b-4161-9cb1-b01d76963485" width="700" />
 </p>
-
+<br>
 
 #### 2) 운영부(STAFF) <br> 
 - 학생 지원 서비스를 담당하는 권한 <br>
@@ -278,7 +278,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/1d00bc68-4bb3-4ed3-a250-8952282def75" width="700" />
 </p>
-
+<br>
 
 #### 3) 강사 (INSTRUCTOR) <br> 
 - 학습 콘텐츠 생산 및 교육 서비스 제공을 담당하는 교육 권한 <br>
@@ -289,7 +289,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b0cf0271-efe0-4142-ae3d-cb1985c8d187" width="700" />
 </p>
-
+<br>
 
 #### 4) 수강생 (STUDENT) <br> 
 - 학습 콘텐츠를 소비하고 커뮤니티 활동에 참여하는 핵심 사용자 <br>
@@ -302,7 +302,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/446282f9-8e68-49df-abde-8dd950d14d49" width="700" />
 </p>
-
+<br>
 
 #### 5) 승인대기 (GUEST) <br> 
 - 회원가입은 완료했으나 서비스 이용 권한을 대기 중인 상태 <br>
@@ -311,7 +311,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/310dfb60-7321-4030-8812-bc75a869a1e8" width="700" />
 </p>
-
+<br>
 
 ### 2)-6 이용제한 (PENALTY) <br> 
 - 운영 정책 위반으로 인해 서비스 이용이 정지된 상태 <br>
@@ -320,8 +320,6 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b5e6a6ca-2104-4e34-ada3-4afb777de1d2" width="700" />
 </p>
-
-
 <br>
 
 ## 2. 다중 파일업로드 및 서버 저장 시스템 <br>
