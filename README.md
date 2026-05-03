@@ -428,7 +428,7 @@ POST /api/brand/logo
 <br>
 
 ## 6. 페이징 및 검색 시스템 (Paging & Search System) <br>
-### 6-1. 주요 클래스 구성 요소 <br>
+### 6-1. 주요 구성 요소 <br>
 - **Criteria** - `현재 페이지(page)`, `페이지당 게시글 수(perPageNum)`, `검색 조건(type, keyword)` 등 사용자가 요청한 데이터를 담는 객체 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c995b28e-1319-4ea9-b82f-be5b243011fe"" width="250" />
@@ -444,7 +444,11 @@ POST /api/brand/logo
 </p>
 
 - **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
-
+<p align="center">
+  <img  width="600" />
+  <br>
+  [Mapper (SQL)]
+</p>
 
 
 
