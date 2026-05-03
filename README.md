@@ -438,7 +438,7 @@ POST /api/brand/logo
 
 - **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dd7d39df-9dae-439c-aaea-590203700d52" width="800" />
+  <img src="https://github.com/user-attachments/assets/dd7d39df-9dae-439c-aaea-590203700d52" width="600" />
   <br>
   [PageMaker 클래스]
 </p>
