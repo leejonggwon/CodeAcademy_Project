@@ -431,6 +431,8 @@ POST /api/brand/logo
 ## 6. 페이징 및 검색 시스템 (Paging & Search System) <br>
 ### 6-1. 주요 구성 요소 <br>
 - **Criteria** - `현재 페이지(page)`, `페이지당 게시글 수(perPageNum)`, `검색 조건(type, keyword)` 등 사용자가 요청한 데이터를 담는 객체 <br>
+- **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
+- **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c995b28e-1319-4ea9-b82f-be5b243011fe"" width="250" />
   <br>
@@ -438,7 +440,12 @@ POST /api/brand/logo
 </p>
 <br>
 
-- **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
+### 6-2. 페이징 계산 로직 <br>
+- **끝 페이지 번호 (endPage)** - Math.ceil(현재 페이지 / 보여줄 페이지 수) * 보여줄 페이지 수 <br>
+- **작 페이지 번호 (startPage)** - (끝 페이지 번호 - 보여줄 페이지 수) + 1 <br>
+- **실제 최종 페이지 (tempEndPage)** - Math.ceil(전체 게시글 수 / 페이지당 게시글 수)<br>
+- **보정 로직** - 계산된 endPage가 실제 tempEndPage보다 크면, endPage를 실제 마지막 페이지로 변경합니다 <br>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/dd7d39df-9dae-439c-aaea-590203700d52" width="600" />
   <br>
@@ -446,20 +453,18 @@ POST /api/brand/logo
 </p>
 <br>
 
-- **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
+### 6-3. 데이터 흐름 (Data Flow) <br>
+- **Request** - 사용자가 페이지 번호나 검색어를 클릭하면 Criteria 객체에 바인딩되어 Controller로 전달됩니다 <br>
+- **Mapper** - pageStart (계산식: (page-1) * perPageNum)를 활용해 DB에서 해당 구간의 데이터만 조회합니다 <br>
+- **Calculation** - totalCount를 조회한 후 PageMaker에 주입하여 하단 페이징 버튼에 필요한 정보를 생성합니다. <br>
+- **View** - JSP에서 c:forEach와 c:if를 활용해 계산된 페이지 번호와 이전/다음 버튼을 동적으로 렌더링합니다. <br>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9a034d6c-bf5e-4f30-af9f-c56f4f6b4151" width="600" />
   <br>
   [Mapper (SQL)]
 </p>
 <br>
-
-### 6-2. [Server] 세션 핸들링 및 메시지 브로드캐스팅 <br>
-- **접속 관리** - 사용자가 연결되면 `ArrayList<WebSocketSession>`에 저장하고, 입장 메시지를 동일 그룹 사용자들에게 전달한다 <br>
-- **메시지 분기 처리** - 메시지 페이로드의 특정 접두사(`#$nickName_`)를 분석하여 입장 알림인지, 일반 채팅 메시지인지 판별하여 처리한다 <br>
-- **비정상 종료 대응** - 브라우저 닫기나 네트워크 단절 시 `afterConnectionClosed`를 통해 세션을 즉시 제거하고 퇴장 알림을 보냄으로써 세션 누수를 방지한다 <br>
-
-
 
 
 
