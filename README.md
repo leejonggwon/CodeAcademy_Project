@@ -474,7 +474,7 @@ POST /api/brand/logo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/15f3b199-cb49-4e4f-9e0f-e9b3d1bbc8a5" width="900" />
   <br>
-  [Mapper (SQL)]
+  [Pagination]
 </p>
 <br>
 
