@@ -486,11 +486,30 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 **1. 상태 확인** - 사용자가 좋아요 버튼을 클릭하면 해당 게시물에 대한 사용자의 좋아요 기록(BT_LIKE)이 있는지 확인합니다 <br>
 **2. 데이터 처리** <br>
-- 기록이 없는 경우: INSERT를 통해 새로운 좋아요 객체를 생성합니다 <br>
-- 기록이 있는 경우: UPDATE를 통해 LIKE_AVAILABLE 상태값을 변경(0 ↔ 1)합니다 <br>
+- **기록이 없는 경우** - INSERT를 통해 새로운 좋아요 객체를 생성합니다 <br>
+- **기록이 있는 경우** - UPDATE를 통해 LIKE_AVAILABLE 상태값을 변경(0 ↔ 1)합니다 <br>
 
 **3. 카운트 반영** - 게시판 테이블(BT_BOARD)의 LIKE_COUNT를 증감시키고, Ajax를 통해 실시간으로 화면의 공감 숫자를 업데이트합니다 <br>
 **4. UI 전환** - 좋아요 상태(1)면 빨간색 버튼, 취소 상태(0)면 라인 버튼으로 즉시 변경됩니다. <br>
+
+<br>
+
+### 8-2. 기술적 특징 <br>
+- **RESTful API** - LikeRestController를 통해 클라이언트와 데이터를 JSON 기반으로 주고받습니다 <br>
+- **실시간 UI 업데이트 (Ajax)** - success 콜백 함수 내에서 `showLike_count()`, `likeView()` 등을 호출하여 페이지 새로고침 없이 화면을 갱신합니다 <br>
+- **상태 기반 처리** - DataBase에 사용자별 이력을 남겨 추후 '내가 좋아요 한 글 보기' 등의 기능 확장이 가능하도록 설계했습니다 <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ae6293ec-0f1d-4bdd-a34d-3745fedd6faf" width="900" />
+  <br>
+  [좋아요 기능]
+</p>
+
+
+
+
+
+
 
 
 
