@@ -466,6 +466,18 @@ POST /api/brand/logo
 </p>
 <br>
 
+### 6-4. 주요 특징 <br>
+- **검색 조건 유지** - 페이지를 이동하더라도 사용자가 선택한 검색 `타입(type)`과 `키워드(keyword)`가 input hidden 폼을 통해 계속 유지되도록 설계했습니다 <br>
+- **Pagination** - Bootstrap 4의 `.pagination` 클래스를 활용한 UI를 제공하며, 현재 페이지(active 상태)를 시각적으로 구분했습니다 <br>
+- **성능 최적화** - 전체 데이터를 가져오지 않고 MySQL의 `LIMIT 구문`을 사용하여 필요한 레코드만 조회함으로써 서버 부하를 최소화했습니다 <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/15f3b199-cb49-4e4f-9e0f-e9b3d1bbc8a5" width="900" />
+  <br>
+  [Mapper (SQL)]
+</p>
+<br>
+
 
 
 
