@@ -334,6 +334,10 @@ POST /api/brand/logo
 - 강의 게시판 (`accept="video/*"`): 학습 콘텐츠의 일관성을 위해 동영상 파일만 업로드 가능하도록 제한하여 강의 중심의 게시판 성격을 강화했습니다.<br>
 - Q&A 게시판 (`accept="image/*"`): 코드 오류나 실행 화면 스크린샷 등 텍스트로 설명하기 어려운 상황을 시각적으로 공유할 수 있도록 이미지 파일만 허용하여 원활한 소통을 유도했습니다.<br>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/70bc813a-8006-45a8-b3f1-5617380fca6e" width="700" />
+</p>
+
 <br>
 
 ### 7-3. 파일 다운로드 시스템 <br>
