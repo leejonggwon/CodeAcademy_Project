@@ -478,7 +478,63 @@ POST /api/brand/logo
 </p>
 <br>
 
+## 8. 비동기 좋아요(Like) 시스템 <br>
+Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 좋아요 기능을 구현했습니다 <br>
 
+### 8-1. 핵심 로직 흐름 <br>
+좋아요 클릭 시, 단순히 숫자만 올리는 것이 아니라 사용자별 상태(좋아요 여부)를 DataBase에서 관리하여 상태에 따라 동적으로 UI가 변경됩니다 <br>
+
+**1. 상태 확인** - 사용자가 좋아요 버튼을 클릭하면 해당 게시물에 대한 사용자의 좋아요 기록(BT_LIKE)이 있는지 확인합니다 <br>
+**2. 데이터 처리** <br>
+   기록이 없는 경우: INSERT를 통해 새로운 좋아요 객체를 생성합니다 <br>
+   기록이 있는 경우: UPDATE를 통해 LIKE_AVAILABLE 상태값을 변경(0 ↔ 1)합니다 <br>
+**3. 카운트 반영** - 게시판 테이블(BT_BOARD)의 LIKE_COUNT를 증감시키고, Ajax를 통해 실시간으로 화면의 공감 숫자를 업데이트합니다 <br>
+**4. UI 전환** - 좋아요 상태(1)면 빨간색 버튼, 취소 상태(0)면 라인 버튼으로 즉시 변경됩니다. <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c995b28e-1319-4ea9-b82f-be5b243011fe"" width="250" />
+  <br>
+  [Criteria 클래스]
+</p>
+<br>
+
+### 6-2. 페이징 계산 로직 <br>
+- **끝 페이지 번호 (endPage)** - Math.ceil(현재 페이지 / 보여줄 페이지 수) * 보여줄 페이지 수 <br>
+- **작 페이지 번호 (startPage)** - (끝 페이지 번호 - 보여줄 페이지 수) + 1 <br>
+- **실제 최종 페이지 (tempEndPage)** - Math.ceil(전체 게시글 수 / 페이지당 게시글 수)<br>
+- **보정 로직** - 계산된 endPage가 실제 tempEndPage보다 크면, endPage를 실제 마지막 페이지로 변경합니다 <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd7d39df-9dae-439c-aaea-590203700d52" width="600" />
+  <br>
+  [PageMaker 클래스]
+</p>
+<br>
+
+### 6-3. 데이터 흐름 (Data Flow) <br>
+- **Request** - 사용자가 페이지 번호나 검색어를 클릭하면 Criteria 객체에 바인딩되어 Controller로 전달됩니다 <br>
+- **Mapper** - pageStart (계산식: (page-1) * perPageNum)를 활용해 DB에서 해당 구간의 데이터만 조회합니다 <br>
+- **Calculation** - totalCount를 조회한 후 PageMaker에 주입하여 하단 페이징 버튼에 필요한 정보를 생성합니다. <br>
+- **View** - JSP에서 c:forEach와 c:if를 활용해 계산된 페이지 번호와 이전/다음 버튼을 동적으로 렌더링합니다. <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9a034d6c-bf5e-4f30-af9f-c56f4f6b4151" width="600" />
+  <br>
+  [Mapper (SQL)]
+</p>
+<br>
+
+### 6-4. 주요 특징 <br>
+- **검색 조건 유지** - 페이지를 이동하더라도 사용자가 선택한 검색 `타입(type)`과 `키워드(keyword)`가 input hidden 폼을 통해 계속 유지되도록 설계했습니다 <br>
+- **Pagination** - Bootstrap 4의 `.pagination` 클래스를 활용한 UI를 제공하며, 현재 페이지(active 상태)를 시각적으로 구분했습니다 <br>
+- **성능 최적화** - 전체 데이터를 가져오지 않고 MySQL의 `LIMIT 구문`을 사용하여 필요한 레코드만 조회함으로써 서버 부하를 최소화했습니다 <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/15f3b199-cb49-4e4f-9e0f-e9b3d1bbc8a5" width="900" />
+  <br>
+  [Pagination]
+</p>
+<br>
 
 
 
