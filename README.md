@@ -424,6 +424,30 @@ POST /api/brand/logo
   <img src="https://github.com/user-attachments/assets/87044bf3-e999-450f-9486-af74dd61c0b4" width="400" />
 </p>
 
+<br>
+
+## 6. 페이징 및 검색 시스템 (Paging & Search System) <br>
+### 6-1. 주요 클래스 구성 요소 <br>
+- **Criteria** - `현재 페이지(page)`, `페이지당 게시글 수(perPageNum)`, `검색 조건(type, keyword)` 등 사용자가 요청한 데이터를 담는 객체 <br>
+- **PageMaker** - 전체 게시글 수(totalCount)를 기반으로 `시작 페이지`, `끝 페이지`, `이전/다음 버튼 활성 여부`를 계산하는 페이징 연산 객체 <br>
+- **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d640720f-6e43-46ff-8c88-d161900171d2" width="400" />
+</p>
+
+
+
+### 5-2. [Server] 세션 핸들링 및 메시지 브로드캐스팅 <br>
+- **접속 관리** - 사용자가 연결되면 `ArrayList<WebSocketSession>`에 저장하고, 입장 메시지를 동일 그룹 사용자들에게 전달한다 <br>
+- **메시지 분기 처리** - 메시지 페이로드의 특정 접두사(`#$nickName_`)를 분석하여 입장 알림인지, 일반 채팅 메시지인지 판별하여 처리한다 <br>
+- **비정상 종료 대응** - 브라우저 닫기나 네트워크 단절 시 `afterConnectionClosed`를 통해 세션을 즉시 제거하고 퇴장 알림을 보냄으로써 세션 누수를 방지한다 <br>
+
+### 5-3. [Client] 동적 UI 및 웹소켓 이벤트 처리 <br>
+- **이벤트 리스너** - onopen, onmessage, onclose 이벤트를 각각 정의하여 서버와의 연결 상태에 따른 UI 변화를 구현 <br>
+- **조건부 렌더링** -서버로부터 받은 메시지가 '나'인 경우와 '타인'인 경우를 구분하여 말풍선 위치와 스타일을 다르게 렌더링 <br>
+
+
 
 
 
