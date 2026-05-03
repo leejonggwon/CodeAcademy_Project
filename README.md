@@ -510,7 +510,7 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ae6293ec-0f1d-4bdd-a34d-3745fedd6faf" width="900" />
   <br>
-  [좋아요 기능]
+  [좋아요 기능 및 실시간 반영]
 </p>
 
 
