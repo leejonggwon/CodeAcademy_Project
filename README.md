@@ -434,11 +434,10 @@ POST /api/brand/logo
 - **Mapper (SQL)** - MySQL의 `LIMIT #{pageStart}, #{perPageNum}`을 사용하여 필요한 범위의 데이터만 효율적으로 조회<br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d640720f-6e43-46ff-8c88-d161900171d2" width="250" />
+  <img src="https://github.com/user-attachments/assets/c995b28e-1319-4ea9-b82f-be5b243011fe"" width="250" />
   <br>
   [Criteria 클래스]
 </p>
-
 
 
 ### 5-2. [Server] 세션 핸들링 및 메시지 브로드캐스팅 <br>
