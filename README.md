@@ -337,6 +337,7 @@ POST /api/brand/logo
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/70bc813a-8006-45a8-b3f1-5617380fca6e" width="900" />
+  Criteria
 </p>
 
 <br>
