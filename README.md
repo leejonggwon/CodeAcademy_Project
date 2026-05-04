@@ -672,7 +672,28 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
   [회원가입 페이지]
 </p>
 
+<br>
 
+## 권한 기반 동적 사이드바 (Role-Based Dynamic Sidebar)
+
+### 1. 아이디 중복 확인(Ajax) / 닉네임 중복 확인 <br>
+회원가입 시 사용자의 편의성을 높이기 위해 페이지 새로고침 없이 실시간으로 아이디 중복 여부를 확인하는 기능을 구현했습니다 <br>
+
+- **핵심설계의도** <br>
+  - **비동기 처리 (Ajax)** - 사용자 경험(UX)을 저해하지 않도록 페이지 전환 없이 데이터를 검증함 <br>
+  - **Hybrid Architecture** - MyBatis를 활용해 DB 쿼리의 직관성을 높이고, Spring의 RestController 스타일로 응답을 처리함 <br>
+  - **데이터 무결성** - 서버 사이드에서 DB를 직접 조회하여 중복된 아이디 생성을 원천 차단함 <br>
+  
+
+
+
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/7ea77e61-55a5-4f7c-8819-2fcbde04f1e4" width="900" />
+</p>
+
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/b53300f3-1d58-4f21-bc19-5e6f15827a05" width="900" />
+</p>
 
 
 
