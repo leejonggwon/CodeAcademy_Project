@@ -705,10 +705,18 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 <p align="center">
   <img  src="https://github.com/user-attachments/assets/792d0833-0778-4c7b-8097-5367c79d50a6" width="900" />
    <br>
-  [강의 전용 게시판 ]
+  [강사 계정 - 강의 전용 게시판 ]
+  <br>
 </p>
 
-
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/c86ba9ca-4d4c-4b91-a2f0-695207bef100" width="900" />
+</p>
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/23331823-541c-45f6-a77a-85413378b905" width="900" />
+  <br>
+  [수강생 계정 - 강의 전용 게시판 ]
+</p>
 
 
   
