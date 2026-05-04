@@ -597,17 +597,19 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 <br>
 
-## 로그인 페이지 (Login Page)
-- **인증 중심 인터페이스** - 서비스 이용을 위한 사용자 인증의 관문으로, 로고와 로그인 폼을 중앙에 배치하여 시각적 집중도를 높였습니다 <br>
-- **사용자 편의 기능** - '비밀번호 보기/ 비밀번호 숨기기' 기능을 구현하여 사용자 경험(UX)을 개선하고 입력 오류를 줄일 수 있도록 설계했습니다 <br>
-- **유연한 동선** - 회원가입 페이지 및 메인 랜딩 페이지로의 빠른 이동 버튼을 제공하여 사용자 이탈을 방지했습니다 <br>
-<br>
+## 로그인 및 보안 시스템 (Login & Spring Security)
 
-### 사용 기술 및 구현 <br>
+Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Authorization) 시스템을 구축했습니다.
+
 - **Spring Security** - 사용자 인증 및 권한 부여(Authentication & Authorization)를 처리하며, 세션 관리를 통해 보안성을 확보했습니다<br>
-- **비밀번호 가시성 제어 (Show/Hide Password)** <br>
+- **Custom Login Form** - 시큐리티 기본 로그인 창 대신 프로젝트 테마에 맞춘 사용자 정의 로그인 페이지를 구현했습니다 <br>
+- **비밀번호 시각화 제어 로직 (Manual State Control)** <br>
   - `attr()` 함수를 사용하여 input 태그의 type 속성을 password와 text로 동적 전환하는 로직을 구현했습니다 <br>
   - 상태 변화에 따라 버튼의 텍스트("보이기"/"숨기기")와 Font Awesome 아이콘을 실시간으로 업데이트하여 사용자에게 직관적인 시각적 피드백을 제공합니다 <br>
+- **이미지 슬라이드(Carousel)** - Bootstrap4 Carousel을 활용하여 플랫폼의 주요 교육 과정(Back-End, AI 등)을 시각적으로 홍보하는 UI를 구성했습니다 <br>
+- **접근 제어 (RBAC)** - 페이지별 권한 설정을 통해 비로그인 사용자의 특정 메뉴 접근을 원천 차단했습니다. <br>
+
+<br>
 
 <p align="center">
   <img  src="https://github.com/user-attachments/assets/c30fd472-dc64-49a1-a798-668b4659bc60" width="600" />
@@ -618,7 +620,7 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 <br>
 
-## 회원가입폼 (Join Page)
+## 회원가입 (Join Page)
 
 ### 1. 아이디 중복 확인(Ajax) / 닉네임 중복 확인 <br>
 회원가입 시 사용자의 편의성을 높이기 위해 페이지 새로고침 없이 실시간으로 아이디 중복 여부를 확인하는 기능을 구현했습니다 <br>
