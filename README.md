@@ -674,6 +674,7 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 
 <br>
 
+
 ## 권한 기반 동적 사이드바 (Role-Based Dynamic Sidebar)
 
 ### 1. 아이디 중복 확인(Ajax) / 닉네임 중복 확인 <br>
@@ -686,14 +687,6 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
   
 
 
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/7ea77e61-55a5-4f7c-8819-2fcbde04f1e4" width="900" />
-</p>
-
-<p align="center">
-  <img  src="https://github.com/user-attachments/assets/b53300f3-1d58-4f21-bc19-5e6f15827a05" width="900" />
-</p>
 
 
 
