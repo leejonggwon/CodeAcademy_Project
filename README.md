@@ -718,6 +718,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 </p>
 
 <br>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/75bbada5-270a-48bb-b3d4-69b9192c9cd7" width="900" />
    <br>
