@@ -610,10 +610,11 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
   - 상태 변화에 따라 버튼의 텍스트("보이기"/"숨기기")와 Font Awesome 아이콘을 실시간으로 업데이트하여 사용자에게 직관적인 시각적 피드백을 제공합니다 <br>
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/e8b721d1-49b8-4a81-99ab-cdb2f3c02341" width="600" />
+  <img  src="https://github.com/user-attachments/assets/c30fd472-dc64-49a1-a798-668b4659bc60" width="600" />
    <br>
   [로그인페이지]
 </p>
+
 
 <br>
 
