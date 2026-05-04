@@ -698,6 +698,15 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
+### 게시글 수정 시 첨부파일 관리 <br>
+- **동적 버튼 렌더링** - 수정 폼 진입 시, 서버에서 가져온 attached_data(파일명)의 존재 여부를 확인하여 '삭제 버튼'을 동적으로 노출합니다<br>
+- **데이터 정합성 유지** <br>
+  - 사용자가 '삭제 버튼'을 클릭하면 jQuery의 `.remove()`를 사용하여 폼 내의 hidden input 요소를 즉시 제거합니다 <br>
+  - 이를 통해 submit 시 서버에 파일 정보가 전달되지 않도록 하여, 데이터베이스에서도 해당 파일 경로를 비우도록 연동했습니다 <br>
+- **사용자 피드백(UX)** - 삭제 버튼 클릭 후 버튼의 상태(텍스트, 스타일)를 즉시 변경하여 사용자가 삭제 작업이 완료되었음을 직관적으로 인지하게 했습니다 <br>
+
+<br>
+
 ### 비동기 인터랙션 (Interactive Experience) <br>
 - **AJAX 기반 SPI** - jQuery AJAX를 통해 페이지 리로드 없이 게시글 상세 보기, 실시간 댓글 로드, 공감 수 업데이트 등 매끄러운 사용자 인터페이스 구현 <br>
 - **동적 폼 제어** - 첨부파일 추가' 버튼 클릭 시 비동기적으로 추가 업로드 필드를 생성하여 사용자 편의성 증대. <br>
@@ -705,7 +714,14 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 <p align="center">
   <img  src="https://github.com/user-attachments/assets/792d0833-0778-4c7b-8097-5367c79d50a6" width="900" />
    <br>
-  [강사 계정 - 강의 전용 게시판 ]
+  [강사 계정 - 강의 전용 게시판 업로드 ]
+</p>
+
+<br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/75bbada5-270a-48bb-b3d4-69b9192c9cd7" width="900" />
+   <br>
+  [강사 계정 - 강의 전용 게시판 수정]
 </p>
 
 <br>
