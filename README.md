@@ -569,14 +569,14 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-### Role-Based Access Control (RBAC) & UI 맞춤화 <br>
+### 1. Role-Based Access Control (RBAC) & UI 맞춤화 <br>
 - **권한별 UI 차별화** - Spring Security의 Role 정보를 활용하여 화면 구성을 동적으로 제어합니다 <br>
 - **ADMIN / INSTRUCTOR (관리자/강사)** - 강의 콘텐츠 CRUD 및 영상/첨부파일 업로드 권한 보유. (업로드 UI 및 버튼 활성화) <br>
 - **STUDENT (수강생)** -학습 콘텐츠 열람, 댓글 작성, 좋아요(공감)를 통한 강의 평가 기능 수행 <br>
 
 <br>
 
-### 미디어 특화 업로드 시스템 (Security & Filtering) <br>
+### 2. 미디어 특화 업로드 시스템 (Security & Filtering) <br>
 - **2단계 영상 필터링** <br>
   - **HTML5 필터** - `accept="video/*"` 속성을 통해 파일 선택 단계에서 동영상 외 파일 원천 차단 <br>
   - **JavaScript 유효성 검사** - 파일 선택 후 file.type.startsWith("video/") 로직을 통해 영상 파일 여부를 재검증하여 데이터 정합성 보장. <br>
@@ -584,7 +584,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-### 게시글 수정 시 첨부파일 관리 <br>
+### 3. 게시글 수정 시 첨부파일 관리 <br>
 - **동적 버튼 렌더링** - 수정 폼 진입 시, 서버에서 가져온 attached_data(파일명)의 존재 여부를 확인하여 '삭제 버튼'을 동적으로 노출합니다<br>
 - **데이터 정합성 유지** <br>
   - 사용자가 '삭제 버튼'을 클릭하면 jQuery의 `.remove()`를 사용하여 폼 내의 hidden input 요소를 즉시 제거합니다 <br>
@@ -593,7 +593,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-### 비동기 인터랙션 (Interactive Experience) <br>
+### 4. 비동기 인터랙션 (Interactive Experience) <br>
 - **AJAX 기반 SPI** - jQuery AJAX를 통해 페이지 리로드 없이 게시글 상세 보기, 실시간 댓글 로드, 공감 수 업데이트 등 매끄러운 사용자 인터페이스 구현 <br>
 - **동적 폼 제어** - 첨부파일 추가' 버튼 클릭 시 비동기적으로 추가 업로드 필드를 생성하여 사용자 편의성 증대. <br>
 
