@@ -623,16 +623,16 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 회원가입 시 사용자의 편의성을 높이기 위해 페이지 새로고침 없이 실시간으로 아이디 중복 여부를 확인하는 기능을 구현했습니다 <br>
 
 - **핵심설계의도** <br>
-  - **비동기 처리 (Ajax)** - `attr()` 함수를 사용하여 input 태그의 type 속성을 password와 text로 동적 전환하는 로직을 구현했습니다 <br>
+  - **비동기 처리 (Ajax)** - 사용자 경험(UX)을 저해하지 않도록 페이지 전환 없이 데이터를 검증함 <br>
   - **Hybrid Architecture** - MyBatis를 활용해 DB 쿼리의 직관성을 높이고, Spring의 RestController 스타일로 응답을 처리함 <br>
   - **데이터 무결성** - 서버 사이드에서 DB를 직접 조회하여 중복된 아이디 생성을 원천 차단함 <br>
 
 - **동작 흐름** <br>
-사용자가 아이디 입력 후 '중복확인' 버튼 클릭 → <br>
-jQuery Ajax가 /registerCheck 경로로 입력된 username 전송 → <br>
-Controller에서 Service/Mapper를 통해 DB 조회 → <br>
-아이디 존재 여부에 따라 0 또는 1을 반환 → <br>
-브라우저에서 반환값에 따라 모달(Modal)창으로 결과 알림 → <br>
+1.사용자가 아이디 입력 후 '중복확인' 버튼 클릭 → <br>
+2.jQuery Ajax가 /registerCheck 경로로 입력된 username 전송 → <br>
+3.Controller에서 Service/Mapper를 통해 DB 조회 → <br>
+4.아이디 존재 여부에 따라 0 또는 1을 반환 → <br>
+5.브라우저에서 반환값에 따라 모달(Modal)창으로 결과 알림 → <br>
 
 
 
