@@ -703,7 +703,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 - **동적 폼 제어** - 첨부파일 추가' 버튼 클릭 시 비동기적으로 추가 업로드 필드를 생성하여 사용자 편의성 증대. <br>
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/792d0833-0778-4c7b-8097-5367c79d50a6" width="600" />
+  <img  src="https://github.com/user-attachments/assets/792d0833-0778-4c7b-8097-5367c79d50a6" width="900" />
    <br>
   [강의 전용 게시판 ]
 </p>
