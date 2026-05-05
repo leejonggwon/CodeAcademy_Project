@@ -625,7 +625,7 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 
 <br>
 
-## 강의 전용 게시판 
+## 교육과정별 강의 전용 게시판 
 Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를 공유하고, 수강생이 이를 소비하며 피드백을 주고받을 수 있는 강의 전용 게시판입니다 <br>
 
 - **목적** - 강사와 수강생 간의 원활한 학습 콘텐츠 공유 및 양방향 피드백 지원 <br>
@@ -688,7 +688,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-## Q&A 게시판 (Interactive Inquiry System)
+## 교육과정별 Q&A 게시판 (Interactive Inquiry System)
 수강생의 기술적 질의에 대해 강사와 관리자가 전문적인 피드백을 제공하는 양방향 소통 게시판입니다 <br>
 
 - **엄격한 권한 분리를 통한 답변 신뢰성 확보**  <br>
@@ -708,7 +708,23 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
   [Q&A 게시판 - 강사계정 ]
 </p>
 
+<br>
 
+## 교육과정별 커뮤니티 게시판 
+- 서비스 이용자 간 학습 경험을 공유하고, 서로 도움을 주고받는 자율적인 개발자 커뮤니티 환경을 제공하는 것을 목표로 합니다 <br>
+- 공지사항, 취업정보, 스터디 모집, 학습 공유 등 다양한 주제로 자유롭게 글을 작성하고 의견을 나눌 수 있습니다 <br>
+- 수업게시판 및 Q&A 게시판과 달리, 수강생 누구나 제약 없이 자유롭게 이용할 수 있습니다 <br>
+- 욕설, 비방, 광고 등 게시판 목적에 맞지 않는 글은 운영 정책에 따라 관리자가 게시글 및 댓글을 삭제할 수 있습니다 <br>
+
+
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/3d7d393d-4ce5-418e-b20c-5413e1209623" width="900" />
+</p>
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/ff09dea6-4bc6-4514-9e43-0a1dd9a80b86" width="900" />
+  <br>
+  [커뮤니티 게시판]
+</p>
 
 
 
