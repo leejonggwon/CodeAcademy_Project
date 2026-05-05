@@ -3,8 +3,6 @@
 - Coda Academy(코드아케데미)
 - Spring Boot Security와 JWT 기반의 RBAC(역할 기반 권한 제어)를 적용한 RESTful 코딩 교육 관리 플랫폼(LMS) <br>
 
-<br>
-
 ### 프로젝트 개요
 - CodeAcademy는 Spring Boot를 기반으로 설계된 차세대 코딩 교육 관리 시스템(LMS)입니다 <br>
 - 교육 현장에서 필수적인 역할별 권한 제어와 실시간 소통 기능을 RESTful API 환경에서 구현한 통합 플랫폼입니다 <br>
@@ -39,6 +37,7 @@
 - Lombok <br>
 - Spring DevTools <br><br>
 
+<br>
 
 # 3. Authentication & Security (Spring Security 스프링보안)
 - 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였습니다 <br>
@@ -73,6 +72,8 @@
 - **커스텀 로그인/로그아웃** - 우리가 만든 /member/login 폼을 사용하도록 설정 <br>
 - **CSRF 비활성화** - REST API 및 테스트 편의를 위해 설정 <br>
 
+<br>
+
 #### 2) UerDetailsServiceImpl
 - UserDetailsService 인터페이스를 구현 <br>
 - memberRepository를 통해 DB에서 username으로 회원 정보를 찾는다 <br>
@@ -80,12 +81,14 @@
  사용자가 없을 경우 `UsernameNotFoundException 발생` <br>
  탈퇴한 계정(enabled=false)일 경우 `DisabledException 발생` <br>
 
+ <br>
+
 #### 3) CustomUser (Security 전용 유저 객체)
 - Spring Security의 `User` 클래스를 상속받아 구현한다 <br>
 - DB의 Member 엔티티 정보를 Security의 Authentication 객체에 저장하기 위한 어댑터 역할을 한다 <br>
 - 사용자의 권한을 `ROLE_ADMIN`, `ROLE_INSTRUCTOR`, `ROLE_STUDENT`와 같은 형태로 변환하여 부여한다 <br>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="300" />
+  <img src="https://github.com/user-attachments/assets/9e16a972-3d3a-4698-b2d8-2b35d51916e2" width="450" />
 </p>
 
 <br>
@@ -109,8 +112,9 @@
 
 #### 4) 로그인/회원가입 프로세스 요약
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="500" />
+  <img src="https://github.com/user-attachments/assets/73445c71-e8fa-4752-8464-c2c141d8bc5e" width="600" />
 </p>
+
 <br>
 
 
@@ -119,21 +123,21 @@
 - **MyBatis 흐름** - Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="600" />
+  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="700" />
 </p>
 
 <br>
 
 # 5. DataBase E-R Diagram
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c518f700-e1cb-4a3b-9140-161e00fa2ed3" width="800" />
+  <img src="https://github.com/user-attachments/assets/c518f700-e1cb-4a3b-9140-161e00fa2ed3" width="900" />
 </p>
 <br>
 
 
 # 6. 서비스 흐름도
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="600" />
+  <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="800" />
 </p>
 
 
@@ -165,8 +169,7 @@
   [관리자 계정 - 관리자페이지]
 </p>
 
-
-
+<br>
 
 ### 2) 운영부(STAFF) <br> 
 - 학생 지원 서비스를 담당하는 권한 <br>
@@ -178,6 +181,7 @@
   [운영부 계정 - 커뮤니티 게시글 업로드 및 수정]
 </p>
 
+<br>
 
 ### 3) 강사 (INSTRUCTOR) <br> 
 - 학습 콘텐츠 생산 및 교육 서비스 제공을 담당하는 교육 권한 <br>
@@ -191,6 +195,7 @@
   [강사 계정 - 강의 게시글 업로드 및 수정]
 </p>
 
+<br>
 
 ### 4) 수강생 (STUDENT) <br> 
 - 학습 콘텐츠를 소비하고 커뮤니티 활동에 참여하는 핵심 사용자 <br>
@@ -259,9 +264,13 @@
 - 서버의 실제 저장 경로를 숨기고 가상 주소를 사용하여 외부의 직접적인 파일 시스템 접근을 차단하여 보안성을 높였습니다 <br>
 - `addResourceHandler` : 브라우저의 요청 주소에 따라 서버 내 실제 파일 위치를 찾아 연결해주는 브라우징 구조를 설계했습니다.<br>
 
+<br>
+
 ### 3-2. 안정적인 전송 환경 (인코딩 및 응답 제어) <br>
 - `UriUtils.encode`를 적용해 한글 파일명 깨짐 방지 처리하여 안정적으로 다운로드 가능하게 구현했습니다.<br>
 - Content-Disposition: attachment 설정을 통해 브라우저가 파일을 실행(이미지 미리보기 등)하지 않고 즉시 저장하도록 처리했습니다.<br>
+
+<br>
 
 ### 3-3. 사용자 중심의 파일명 복구 로직 <br>
 - 저장 시 사용된 `등호(=)`를 기준으로 문자열을 분리하여, 다운로드 시에는 시스템 식별자를 제외한 순수 원본 파일명만 추출하여 사용자에게 제공합니다.<br>
@@ -291,6 +300,7 @@
   <br>
   [관리자가 댓글 삭제시 "관리자에 의해 삭제된 댓글입니다." 메시지 출력]
 </p>
+<br>
 
 ### 4-2. DB 설계 및 로직 <br>
 - 계층형 구조를 구현하기 위해 `selectKey` 로직을 사용<br>
@@ -438,7 +448,6 @@
   [검색 및 필터링 기능]
 </p>
 
-
 <br>
 
 ## 8. 비동기 좋아요(Like) 시스템 <br>
@@ -478,6 +487,8 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 - **Multi-File Support** - 답글 작성 시에도 원본 글과 동일하게 최대 3개의 파일을 독립적으로 업로드할 수 있습니다 <br>
 - **Atomic Logic** - 기존 답글들의 순서를 한 단계씩 밀어내는 Update와 새로운 답글을 삽입하는 Insert를 하나의 트랜잭션으로 처리합니다<br>
 
+<br>
+
 ### 9-2. 핵심 메커니즘 (Core Logic) <br>
 답글이 달릴 때마다 전체 리스트의 정렬이 깨지지 않도록 로직을 수행합니다<br>
 
@@ -506,6 +517,8 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 - **비동기 데이터 로딩 (AJAX)** -체 페이지 리로드 없이 클릭한 사용자의 정보를 서버에서 실시간으로 조회하여 사용자 경험(UX)을 극대화했습니다<br>
 - **데이터 위임 처리** - 'data-writer'을 활용하여 리스트 렌더링 시점에 사용자 식별값(ID)을 미리 바인딩하고, 이벤트 발생 시 이를 활용해 정확한 데이터를 호출합니다. <br>
 - **동적 UI 렌더링** - 서버로부터 받은 JSON 데이터를 바탕으로 프로필 이미지(이미지 없을 시 기본 이미지 대체), 닉네임, 권한(Role) 등을 동적으로 화면에 매핑합니다<br>
+
+<br>
 
 ### 동작 흐름 <br>
 1. 사용자가 .writer 클래스를 가진 요소를 클릭합니다 → <br>
@@ -614,7 +627,6 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 - **UI/UX 편의 기능** - 영문/숫자 조합 및 글자 수(6~20자) 조건을 만족하는지 실시간 피드백 제공 <br>
 - **보안 데이터 처리** - 최종적으로 검증된 비밀번호만 hidden 타입의 password 필드에 담아 서버로 전송함. <br>
 
-<br>
 
 #### 3-2. 기술적 세부 사항 <br>
 - **정규 표현식 (Regex) 정책** - 비밀번호는 `영문 숫자 특수문자 포함 8~20자`를 만족해야 제출이 가능하도록 설계하였음 <br> 
