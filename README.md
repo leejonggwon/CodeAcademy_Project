@@ -315,6 +315,7 @@
 </p>
 <br>
 
+
 ## 5. 실시간 그룹 오픈채팅 시스템 (WebSocket) <br>
 ### 5-1. 주요 특징 (Key Features) <br>
 - **전이중 통신(Full-Duplex)** - 표준 `Native WebSocket API` 활용하여 서버와 클라이언트 간의 실시간 양방향 메시지 전송을 구현 <br>
@@ -463,6 +464,35 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
   [좋아요 기능 및 실시간 반영]
 </p>
 
+<br>
+
+## 9. 계층형 답글 기능 <br>
+원본 글(부모 글)에 대한 답변을 계층 구조로 시각화하고 관리할 수 있는 시스템입니다 <br>
+
+### 9-1. 주요 특징 <br>
+- **Threaded Structure** -`Group`, `Sequence`, `Level` 세 가지 필드를 활용하여 답글의 계층과 노출 순서를 정교하게 제어합니다<br>
+- **Multi-File Support** - 답글 작성 시에도 원본 글과 동일하게 최대 3개의 파일을 독립적으로 업로드할 수 있습니다 <br>
+- **Atomic Logic** - 기존 답글들의 순서를 한 단계씩 밀어내는 Update와 새로운 답글을 삽입하는 Insert를 하나의 트랜잭션으로 처리합니다<br>
+
+### 9-2. 핵심 메커니즘 (Core Logic) <br>
+답글이 달릴 때마다 전체 리스트의 정렬이 깨지지 않도록 로직을 수행합니다<br>
+
+- **부모 정보 상속** - 부모 글의 `Group` 번호를 물려받아 같은 그룹으로 묶습니다 <br>
+- **시퀀스 재정렬** - 부모 글보다 아래에 있는 기존 답글들의`Sequence`를 모두 +1 하여 공간을 확보합니다 (`replySeqUpdate`)<br>
+- **계층 심화** - 부모 글의 `Level`에 +1을 하여 리스트에서 들여쓰기 처리가 가능하도록 합니다 <br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9678f401-6cfa-41aa-b14c-ac99b120bfc2" width="400" />
+  <br>
+  [Reply Core Logic]
+</p>
+<br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ce5b062d-69b7-4b15-9d78-256247b7a859" width="400" />
+  <br>
+  [답글기능 - Q&A 게시판]
+</p>
 <br>
 
 
