@@ -1,4 +1,4 @@
-## 1. 서비스소개 
+# 1. 서비스소개 
 ### 서비스명
 - Coda Academy(코드아케데미)
 - Spring Boot Security와 JWT 기반의 RBAC(역할 기반 권한 제어)를 적용한 RESTful 코딩 교육 관리 플랫폼(LMS) <br>
@@ -16,7 +16,7 @@
 - 2026.02 ~ 2026.04 <br>
 <br>
 
-## 2. 기술스택 
+# 2. 기술스택 
 ### 2-1. Backend
 - **Framework** - Spring Boot 2.7.3 <br>
 - **Security** - Spring Security (Role-based Access Control) <br>
@@ -38,7 +38,7 @@
 - Spring DevTools <br><br>
 
 
-## 3. Authentication & Security (Spring Security 스프링보안)
+# 3. Authentication & Security (Spring Security 스프링보안)
 - 본 프로젝트는 Spring Security를 활용하여 인증 및 인가 시스템을 구축하였습니다 <br>
 - 사용자 데이터는 Spring Data JPA를 통해 관리하고 모든 비밀번호는 보안을 위해 암호화되어 저장됩니다 <br>
 
@@ -112,7 +112,7 @@
 <br>
 
 
-## 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
+# 4. 시스템 아키텍처 (하이브리드 데이터 접근 구조 : JPA + MyBatis)
 - **JPA 흐름** - Client → Controller → Service → Repository Interface(JPA) → DB <br>
 - **MyBatis 흐름** - Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
@@ -122,14 +122,14 @@
 
 <br>
 
-## 5. DataBase E-R Diagram
+# 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c518f700-e1cb-4a3b-9140-161e00fa2ed3" width="800" />
 </p>
 <br>
 
 
-## 6. 서비스 흐름도
+# 6. 서비스 흐름도
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="600" />
 </p>
@@ -137,7 +137,7 @@
 
 <br>
 
-# 주요기능설명 #
+# 7.주요기능설명 #
 
 ## 1. 권한별 기능 제어(Technical Description)
 ### 1-1. 핵심 기술 구현 요약 <br>
@@ -528,9 +528,9 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 <br>
 
-# 페이지별 기능 가이드 #
+# 8. 페이지별 기능 가이드 #
 
-## 메인 랜딩 페이지 (Main Landing Page)
+## 1. 메인 랜딩 페이지 (Main Landing Page)
 - **서비스소개** - Code Academy의 비전과 교육과정을 한눈에 확인할 수 있는 랜딩페이지입니다 <br>
 - **강의 카테고리 퀵 뷰** - Backend, Frontend, IT Startup 등 제공 중인 주요 교육과정을 카드 레이아웃으로 시각화하여 정보 접근성을 높였습니다 <br>
 - **사용자 인증 관문** - 로그인 및 문의하기 버튼을 상단에 배치하여 서비스 이용의 편의성을 제공합니다 <br>
@@ -549,7 +549,7 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 <br>
 
-## 로그인 및 보안 시스템 (Login & Spring Security)
+## 2. 로그인 및 보안 시스템 (Login & Spring Security)
 
 Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Authorization) 시스템을 구축했습니다.
 
@@ -573,7 +573,7 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 
 <br>
 
-## 회원가입 (Join Page)
+## 3. 회원가입 (Join Page)
 
 ### 1. 아이디 중복 확인(Ajax) / 닉네임 중복 확인 <br>
 회원가입 시 사용자의 편의성을 높이기 위해 페이지 새로고침 없이 실시간으로 아이디 중복 여부를 확인하는 기능을 구현했습니다 <br>
@@ -627,7 +627,7 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 
 <br>
 
-## 교육과정별 강의 전용 게시판 
+## 4. 강의 전용 게시판 
 Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를 공유하고, 수강생이 이를 소비하며 피드백을 주고받을 수 있는 강의 전용 게시판입니다 <br>
 
 - **목적** - 강사와 수강생 간의 원활한 학습 콘텐츠 공유 및 양방향 피드백 지원 <br>
@@ -690,7 +690,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-## 교육과정별 Q&A 게시판 (Interactive Inquiry System)
+## 5. Q&A 게시판 (Interactive Inquiry System)
 수강생의 기술적 질의에 대해 강사와 관리자가 전문적인 피드백을 제공하는 양방향 소통 게시판입니다 <br>
 
 - **엄격한 권한 분리를 통한 답변 신뢰성 확보**  <br>
@@ -712,7 +712,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-## 교육과정별 커뮤니티 게시판 
+## 6. 교육과정별 커뮤니티 게시판 
 - 서비스 이용자 간 학습 경험을 공유하고, 서로 도움을 주고받는 자율적인 개발자 커뮤니티 환경을 제공하는 것을 목표로 합니다 <br>
 - 공지사항, 취업정보, 스터디 모집, 학습 공유 등 다양한 주제로 자유롭게 글을 작성하고 의견을 나눌 수 있습니다 <br>
 - 수업게시판 및 Q&A 게시판과 달리, 수강생 누구나 제약 없이 자유롭게 이용할 수 있습니다 <br>
