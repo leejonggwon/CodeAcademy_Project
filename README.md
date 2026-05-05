@@ -153,13 +153,6 @@
 - **콘텐츠 정화** - 부적절한 게시글 및 댓글을 강제 삭제할 수 있으며, 삭제 시 데이터 무결성을 위해 "관리자에 의해 삭제된 게시글/댓글입니다"라는 안내 문구가 표기됩니다. <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3a9e9944-c521-45fd-8b01-7021b7700a56" width="900" />
-  <br>
-  [관리자 계정 - 관리자페이지]
-</p>
-<br>
-
-<p align="center">
   <img src="https://github.com/user-attachments/assets/3ac9a603-38ab-4ae8-a157-43162619b3ac" width="900" />
 </p>
 <p align="center">
