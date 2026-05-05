@@ -585,7 +585,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 ### 2. 미디어 특화 업로드 시스템 (Security & Filtering) <br>
 - **2단계 영상 필터링** <br>
   - **HTML5 필터** - `accept="video/*"` 속성을 통해 파일 선택 단계에서 동영상 외 파일 원천 차단 <br>
-  - **JavaScript 유효성 검사** - 파일 선택 후 file.type.startsWith("video/") 로직을 통해 영상 파일 여부를 재검증하여 데이터 정합성 보장. <br>
+  - **JavaScript 유효성 검사** - 파일 선택 후 `file.type.startsWith("video/")` 로직을 통해 영상 파일 여부를 재검증하여 데이터 정합성 보장. <br>
 - **멀티 첨부파일 구조** - 영상 파일 1개와 일반 학습 자료(첨부파일)를 분리하여 업로드할 수 있는 유연한 구조 설계<br>
 
 <br>
