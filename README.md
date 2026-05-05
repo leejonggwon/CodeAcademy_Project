@@ -805,8 +805,38 @@ Spring Security를 활용한 접근 제어 로직을 적용했습니다 <br>
   [관리자페이지]
 </p>
 
+<br>
 
+## 7. 회원정보수정 
+사용자가 본인의 프로필을 관리하고 정보를 최신화할 수 있는 기능을 제공합니다 <br>
+Spring Security의 인증 매커니즘을 활용하여 실시간 세션 동기화 하도록 구현하였습니다 <br>
 
+### 1. 세션 실시간 동기화 <br>
+- **문제상황** -  DataBase에서 회원 정보를 수정해도 세션 내 `Authentication 객체`는 수정 전 정보를 유지하고 있어 화면에 즉시 반영되지 않는 문제 발생 <br>
+- **해결과정** <br>  
+  1. 현재 세션의 Principal(CustomUser) 객체를 가져와 수정된 데이터를 직접 세팅 → <br>
+  2. 갱신된 정보를 바탕으로 새로운 `UsernamePasswordAuthenticationToken`을 생성 → <br>
+  3. SecurityContextHolder에 새 토큰을 꽂아줌으로써 사용자가 재로그인하지 않아도 수정된 정보가 즉시 반영되도록 구현<br>
+  <p align="center">
+    <img  src="https://github.com/user-attachments/assets/083e0041-adde-4a57-9a45-246c69e1c3eb" width="600" />
+  </p>
+<br>
+
+### 2. 주요 기능  <br>
+- **프로필 이미지 관리** <br>
+  - `accept="image/*"` 속성을 통해 이미지 파일만 선택 가능하도록 제한 <br>
+  - 파일 선택 여부를 실시간 감지하여 '업로드' 버튼을 활성화/비활성화하는 유효성 검사 적용 <br>
+  - '삭제' 버튼 클릭 시 기존 파일을 제거하고 기본 이미지로 복구하는 로직 구현 <br>  
+- **비동기 닉네임 중복 체크 (AJAX)** - 현재 사용 중인 닉네임과의 비교 및 DB 중복 조회를 AJAX로 처리하여, 페이지 전환 없이 실시간으로 사용 가능 여부를 확인할 수 있습니다 <br>  
+- **데이터 유효성 검사** - 이름, 성별, 이메일 등 필수 입력 항목에 대해 JavaScript에서 공백 및 형식 유효성 검사를 실시하여 비정상적인 데이터 입력을 원천 차단 <br>  
+
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/2be29091-fb95-459f-b482-352f00144f68" width="900" />
+  <br>
+  [회원정보수정]
+</p>
+
+<br>
 
 
 
