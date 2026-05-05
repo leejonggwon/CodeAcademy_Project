@@ -502,10 +502,11 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 <br>
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/c30fd472-dc64-49a1-a798-668b4659bc60" width="600" />
+  <img  src="https://github.com/user-attachments/assets/ac1a81ae-ee1c-4538-8ea8-dc8a0a41c74c" width="600" />
    <br>
   [로그인페이지]
 </p>
+
 
 
 <br>
