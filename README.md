@@ -558,12 +558,13 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 - **비밀번호 보이기/숨기기 (UX 개선)** - 비밀번호 입력 실수로 인한 로그인 실패를 줄이기 위해 토글 기능을 추가하여 `type="password"`와 `type="text"`를 동적으로 변경하며 아이콘과 버튼 스타일도 함께 변경되도록 구현했다 <br>
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/c65e963f-87cf-4894-b307-11757e2cf5ff" width="600" />
+  <img  src="https://github.com/user-attachments/assets/e2b31103-7f00-4901-ad81-965b5549f379" width="600" />
    <br>
   [회원가입 페이지]
 </p>
 
 <br>
+
 
 
 ## 강의 전용 게시판 
