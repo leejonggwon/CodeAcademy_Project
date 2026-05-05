@@ -768,7 +768,18 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 ## 7. 관리자 페이지 (Admin Management System) 
 플랫폼의 전체 사용자를 모니터링하고, 회원별 권한 및 교육과정을 실시간으로 제어할 수 있는 중앙 집중형 관리 시스템입니다 <br>
 
-### 주요 기능 (Key Functions) <br>
+### 1. 보안 및 접근 제어 <br>
+Spring Security를 활용한 접근 제어 로직을 적용했습니다 <br>
+- **권한 기반 URL 보호** <br>
+  - SecurityConfig 설정을 통해 /member/adminPage를 포함한 모든 관리자용 API와 페이지 접근을 ROLE_ADMIN 권한 소유자로 제한했습니다 <br>
+  - 권한이 없는 사용자(STUDENT, GUEST 등)가 URL을 직접 입력해 접속을 시도할 경우 로그인 페이지/메인 페이지로 강제 리다이렉트되도록 설계했습니다 <br>
+- **UI 동적 제어** <br>  
+  Spring Security 태그 라이브러리(`<sec:authorize access="hasRole('ADMIN')">`)를 사용하여, 관리자 메뉴 버튼 자체가 일반 사용자에게는 렌더링되지 않도록 처리했습니다 <br>
+ 
+<br>
+
+
+### 2. 주요 기능  <br>
 - **동적 회원 관리** <br>
   전체 회원 리스트를 비동기(AJAX)로 로드하며, 페이지 새로고침 없이 회원 상태 확인 및 정보 수정이 가능합니다. <br>
 - **역할 기반 권한 제어 (RBAC - Role Update)** <br>  
@@ -778,13 +789,12 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
   - **키워드 검색** - 이름, 아이디, 닉네임 기반의 상세 검색 기능을 제공합니다<br>
   - **권한별 필터링** - 특정 역할을 가진 회원들만 따로 모아볼 수 있는 전용 필터를 구현하여 관리 편의성을 높였습니다<br>
 
+<br>
   
-### 기술적 구현특징 <br>  
+### 3. 기술적 구현특징 <br>  
 - **Stateful Pagination** - 페이지 번호를 클릭하거나 검색을 수행할 때, 현재의 검색 타입(type)과 키워드(keyword) 값을 유지하면서 AJAX 통신을 수행합니다 <br>
 - **이벤트 위임 기반 렌더링** - `makeView` 함수를 통해 동적으로 생성되는 회원 리스트와 페이지네이션 버튼이 상호작용하며 유연하게 화면을 갱신합니다<br>
 - **권한별 시각화** - JavaScript의 `객체 매핑(roleClassMap)`을 활용하여 회원 권한에 따라 각기 다른 배경색을 동적으로 부여합니다 <br>
-   
-
 
 <p align="center">
   <img  src="https://github.com/user-attachments/assets/7cf759e3-bd42-43b0-9603-e326b1320c0c" width="900" />
