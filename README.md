@@ -489,7 +489,7 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ce5b062d-69b7-4b15-9d78-256247b7a859" width="400" />
+  <img src="https://github.com/user-attachments/assets/ce5b062d-69b7-4b15-9d78-256247b7a859" width="900" />
   <br>
   [답글기능 - Q&A 게시판]
 </p>
@@ -594,8 +594,6 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 </p>
 
 <br>
-
-
 
 ## 강의 전용 게시판 
 Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를 공유하고, 수강생이 이를 소비하며 피드백을 주고받을 수 있는 강의 전용 게시판입니다 <br>
