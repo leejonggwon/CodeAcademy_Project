@@ -507,12 +507,20 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 1. 사용자가 .writer 클래스를 가진 요소를 클릭합니다 → <br>
 2. jQuery AJAX가 클릭된 요소의 `data-writer` 속성값을 읽어 서버의 `/member/writerInfo` API로 전송합니다 → <br>
 3. 서버는 MyBatis를 통해 DB에서 해당 유저의 정보를 조회한 후 JSON 형태로 반환합니다 → <br>
-4. 반환된 데이터를 JavaScript로 가공하여 Bootstrap 모달의 각 필드(<img>, <p> 등)에 주입하고 모달을 띄웁니다 → <br>
+4. 반환된 데이터를 JavaScript로 가공하여 Bootstrap 모달의 각 필드에 데이터를 주입하고 모달을 띄웁니다 → <br>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4a6305aa-8cd5-44b9-8e8b-b30e05de7e1e" width="900" />
   <br>
   [작성자 프로필 카드 - 게시글 작성자 클릭시]
+</p>
+
+<br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6cd47731-2389-4d68-845a-b0bc3f41851e" width="900" />
+  <br>
+  [작성자 프로필 카드 - 댓글/대댓글 작성자 클릭시]
 </p>
 
 
