@@ -159,6 +159,18 @@
 </p>
 <br>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3ac9a603-38ab-4ae8-a157-43162619b3ac" width="900" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fc6cb045-7fff-4f4a-a86b-91f68bea9f7b" width="900" />
+  <br>
+  [관리자 계정 - 관리자페이지]
+</p>
+
+
+
+
 
 ### 2) 운영부(STAFF) <br> 
 - 학생 지원 서비스를 담당하는 권한 <br>
