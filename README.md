@@ -670,17 +670,13 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
   - JavaScript를 활용한 MIME 타입 사전 검증으로 이미지 외 불필요한 파일 업로드를 방지하여 서버 자원을 효율적으로 관리합니다 <br>
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/d85d3c61-8f06-44da-a20b-8b886e99d0f0" width="900" />
+  <img  src="https://github.com/user-attachments/assets/9b6b96b8-62a1-461c-8a0f-9dab863e0e71" width="900" />
 </p>
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/fa5d78f4-e655-4e18-a2ad-e454848ec64e" width="900" />
+  <img  src="https://github.com/user-attachments/assets/399d6bd4-305c-41e5-81b8-399062009afb" width="900" />
   <br>
-  [Q&A 게시판 ]
+  [Q&A 게시판 - 강사계정 ]
 </p>
-
-
-
-
 
 
 
