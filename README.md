@@ -1,3 +1,9 @@
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9c8e762f-d101-4937-bf1a-2e31378f52e1" width="900" />
+</p>
+
 # 1. 서비스소개 
 ### 서비스명
 - Coda Academy(코드아케데미)
