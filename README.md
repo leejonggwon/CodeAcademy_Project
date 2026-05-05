@@ -130,8 +130,9 @@
 
 ## 6. 서비스 흐름도
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0bfa8858-1c77-43ee-8fba-4231de1a9fe5" width="500" />
+  <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="600" />
 </p>
+
 
 <br>
 
