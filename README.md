@@ -30,14 +30,20 @@
 - **Build Tool** - Maven <br>
 - **ORM/Data Access** - Spring Data JPA, MyBatis <br>
 
+<br>
+
 ### 2-2. Database
 - **RDBMS** - MySQL <br>
 - **Connector** - MySQL Connector Java <br>
+
+<br>
 
 ### 2-3. Frontend & View
 - **View Engine** - JSP (Java Server Pages) <br>
 - **Library** - JSTL, Spring Security Taglibs (로그인 세션 정보 표시) <br>
 - **Embedded Server** - Tomcat (with Jasper for JSP rendering) <br>
+
+<br>
 
 ### 2-4. Tools & Utilities
 - Lombok <br>
@@ -106,15 +112,21 @@
 - **회원가입 컨트롤러** - @Autowired된 PasswordEncoder를 사용하여 가입 로직에서 즉시 암호화 처리한다 <br>
 - **로그인 검증** - 사용자가 입력한 평문 비밀번호와 DB에 저장된 암호화된 비밀번호를 Security가 내부적으로 비교하여 인증 수행한다 <br>
 
+<br>
+
 #### 2) 권한별 접근 제어 (Authorization)
 - 페이지별로 접근할 수 있는 권한을 다르게 설정하여 보안을 강화했습니다 <br>
 - **PermitAll** - 메인 페이지 및 회원 관련 기능`(/member/**)`은 비로그인 사용자도 접근 가능 <br>
 - **Authenticated** - 게시판 관련 기능`(/board/**)`은 로그인한 인증된 사용자만 접근 가능 <br>
 
+<br>
+
 #### 3) 커스텀 유저 디테일 서비스
 - 세션에 사용자 정보(이름, 이메일 등)를 효율적으로 보관하기 위해 `CustomUser`를 구현한다 <br>
 - `SecurityContextHolder`에 저장된 `CustomUser`를 통해 로그인한 사용자의 정보를 어디서든 편리하게 참조할 수 있다 <br>
 - 계정 활성화 여부(Enabled) 체크 로직을 포함하여, 탈퇴하거나 정지된 계정의 로그인을 차단한다 <br>
+
+<br>
 
 #### 4) 로그인/회원가입 프로세스 요약
 <p align="center">
@@ -613,8 +625,6 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 4. 아이디 존재 여부에 따라 0 또는 1을 반환 → <br>
 5. 브라우저에서 반환값에 따라 모달(Modal)창으로 결과 알림 → <br>
 
-<br>
-
 ### 2. 실시간 아이디 검증 시스템 <br>
 사용자가 폼을 제출하기 전에 실시간으로 아이디 형식을 확인하여, 잘못된 데이터 입력을 방지하고 서버의 부담을 줄이도록 구현했습니다 <br>
 
@@ -633,6 +643,7 @@ Spring Security를 활용하여 탄탄한 인증(Authentication) 및 인가(Auth
 - **UI/UX 편의 기능** - 영문/숫자 조합 및 글자 수(6~20자) 조건을 만족하는지 실시간 피드백 제공 <br>
 - **보안 데이터 처리** - 최종적으로 검증된 비밀번호만 hidden 타입의 password 필드에 담아 서버로 전송함. <br>
 
+<br>
 
 #### 3-2. 기술적 세부 사항 <br>
 - **정규 표현식 (Regex) 정책** - 비밀번호는 `영문 숫자 특수문자 포함 8~20자`를 만족해야 제출이 가능하도록 설계하였음 <br> 
