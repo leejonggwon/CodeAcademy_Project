@@ -778,23 +778,24 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
   - **키워드 검색** - 이름, 아이디, 닉네임 기반의 상세 검색 기능을 제공합니다<br>
   - **권한별 필터링** - 특정 역할을 가진 회원들만 따로 모아볼 수 있는 전용 필터를 구현하여 관리 편의성을 높였습니다<br>
 
-<br>
   
 ### 기술적 구현특징 <br>  
 - **Stateful Pagination** - 페이지 번호를 클릭하거나 검색을 수행할 때, 현재의 검색 타입(type)과 키워드(keyword) 값을 유지하면서 AJAX 통신을 수행합니다 <br>
 - **이벤트 위임 기반 렌더링** - `makeView` 함수를 통해 동적으로 생성되는 회원 리스트와 페이지네이션 버튼이 상호작용하며 유연하게 화면을 갱신합니다<br>
-- **권한별 시각화** - JavaScript의 객체 매핑(roleClassMap)을 활용하여 회원 권한에 따라 각기 다른 배경색을 동적으로 부여합니다 <br>
+- **권한별 시각화** - JavaScript의 `객체 매핑(roleClassMap)`을 활용하여 회원 권한에 따라 각기 다른 배경색을 동적으로 부여합니다 <br>
    
 
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/3d7d393d-4ce5-418e-b20c-5413e1209623" width="900" />
+  <img  src="https://github.com/user-attachments/assets/7cf759e3-bd42-43b0-9603-e326b1320c0c" width="900" />
 </p>
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/ff09dea6-4bc6-4514-9e43-0a1dd9a80b86" width="900" />
+  <img  src="https://github.com/user-attachments/assets/336e4de2-7521-47c0-9334-4bc6a988e44b" width="900" />
   <br>
-  [커뮤니티 게시판]
+  [관리자페이지]
 </p>
+
+
 
 
 
