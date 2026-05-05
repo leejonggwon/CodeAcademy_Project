@@ -35,7 +35,7 @@
 
 ### 2-4. Tools & Utilities
 - Lombok <br>
-- Spring DevTools <br><br>
+- Spring DevTools <br>
 
 <br>
 
