@@ -6,6 +6,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/78b50c53-f9e8-4c5b-b0ee-36822962f3b9" width=100% />
 </p>
+
 ### 서비스명
 - Coda Academy(코드아케데미)
 - Spring Boot Security와 JWT 기반의 RBAC(역할 기반 권한 제어)를 적용한 RESTful 코딩 교육 관리 플랫폼(LMS) <br>
