@@ -163,11 +163,10 @@
   <img src="https://github.com/user-attachments/assets/3ac9a603-38ab-4ae8-a157-43162619b3ac" width="900" />
 </p>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fc6cb045-7fff-4f4a-a86b-91f68bea9f7b" width="900" />
+  <img  src="https://github.com/user-attachments/assets/d84c120e-767a-457c-a3c2-0ea9487369d4" width="900" />
   <br>
   [관리자 계정 - 관리자페이지]
 </p>
-
 
 
 
