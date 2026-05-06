@@ -590,6 +590,8 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/dbd6b570-20af-4ff3-9bea-8e4b55e8b352" width=100% />
+  <br>
+  [메인 랜딩 페이지]
 </p>
 
 <br>
