@@ -101,6 +101,12 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.totalCount(cri);
 	}
 
+	//작성자정보조회
+	@Override
+	public Member writerInfo(String username) {
+		return mapper.writerInfo(username);
+	}
+
 	
 	
 	

@@ -434,6 +434,18 @@ public class MemberController {
 		}
 		
 		
+		// 작성자 정보 조회
+		@GetMapping("/writerInfo")
+		@ResponseBody
+		public Member writerInfo(@RequestParam String username) {  
+			
+			//JSON 형태로 반환된다 (memName, memProfile 등 포함)
+			Member writerInfo = service.writerInfo(username); 
+		    return writerInfo;
+		}
+		
+		
+		
 		
 		
 	

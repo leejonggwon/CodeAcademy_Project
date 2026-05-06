@@ -96,9 +96,9 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1><i class="fab fa-codepen" style="color: rgb(63, 32, 32);"></i>&nbsp;Code Academy<h1> 
-     
       <p class="lead text-muted">압도적 만족도의 IT 취업 부트캠프 코드아케데미 수강에서 취업까지, <br> 
       모든 과정에서 최고의 만족을 경험해 보세요</p>
+
       <p>
         <a href="${cpath}/member/login" class="btn btn-custom my-2">로그인</a>
         <a href="#" class="btn btn-secondary my-2">문의하기</a>

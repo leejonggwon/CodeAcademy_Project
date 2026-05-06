@@ -33,6 +33,10 @@
     line-height: 40px;    /* 세로 중앙 (height와 같은 값) */
 }
 
+.role-textSt-staff {
+    /*color: #1d517b;*/
+    /*background-color: #f0f7fe;*/ 
+}
 .role-textSt-instructor {
     /*color: #1d517b;*/
     background-color: #f0f7fe; 
@@ -44,7 +48,7 @@
 }
 .role-textSt-guest {  
     /*color: #d9d911;*/
-    background-color: #fcfcf2;    
+    background-color: #f7d3f6;    
 }
 .role-textSt-penalty {  
     /*color: #e75c59;*/
@@ -109,6 +113,7 @@
 										<option value="guest">GUEST (승인대기)</option>
 										<option value="student" >STUDENT (수강생)</option> 
 										<option value="instructor">INSTRUCTOR (강사)</option>
+										<option value="staff">STAFF (운영부)</option>
 										<option value="penalty">PENALTY (이용제한)</option>
 									</select>
 								</div>						
@@ -250,6 +255,7 @@
             // 1. 권한별 클래스 매칭 오브젝트 생성
             // 역할별 클래스 객체형태
             const roleClassMap = {
+            	'STAFF': 'role-textSt-staff',
                 'INSTRUCTOR': 'role-textSt-instructor',
                 'STUDENT': 'role-textSt-student',
                 'GUEST': 'role-textSt-guest',
@@ -268,9 +274,12 @@
 			listHtml += "<td>";
 			listHtml += "  <select id='role_" + obj.username + "' class='form-control'>";
 			// 각 옵션들을 추가하고, 현재 권한과 일치하면 selected 속성 부여한다
-			listHtml += "<option value='INSTRUCTOR' " 
-			         + (obj.role === 'INSTRUCTOR' ? "selected style='color:blue;font-weight:bold;'" : '') 
-			         + ">INSTRUCTOR (강사)</option>";		
+			listHtml += "<option value='STAFF' " 
+			         + (obj.role === 'STAFF' ? "selected style='color:blue;font-weight:bold;'" : '') 
+			         + ">STAFF (운영부)</option>";	
+            listHtml += "<option value='INSTRUCTOR' " 
+		             + (obj.role === 'INSTRUCTOR' ? "selected style='color:blue;font-weight:bold;'" : '') 
+		             + ">INSTRUCTOR (강사)</option>";	
 			listHtml += "<option value='STUDENT' " 
 			         + (obj.role === 'STUDENT' ? "selected style='color:blue;font-weight:bold;'" : '')  
 			         + ">STUDENT (수강생)</option>";		
@@ -414,7 +423,7 @@
 	
 	
 	
-	//페이지 버튼클릿시 페이지 이동하는 기능
+	//페이지 버튼클릭시 페이지 이동하는 기능
 	function search() {
 		
 	    let type = $("#search_type").val();

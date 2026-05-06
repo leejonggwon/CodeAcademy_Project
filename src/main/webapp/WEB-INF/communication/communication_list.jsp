@@ -36,14 +36,49 @@
     text-align: center;
 }
 .role-textSt-instructor {
-    color: #1d517b;
-    background-color: #eff5fa;
-    font-weight: bold;
+	color: #e75c59;
+    /*background-color: #f6dede;*/
+    /*font-weight: bold;*/
 }
-.role-textSt-admin {  
-    color: #e75c59;
-    background-color: #f6dede;
-    font-weight: bold;
+.role-textSt-admin {    
+    color: #1d517b;
+    /*background-color: #eff5fa;*/
+    /*font-weight: bold;*/
+}
+
+/*작성자 글씨효과*/
+.writer-link {
+   color: #000000; /* 원하는 색상 코드 */
+   text-decoration: none; /* 밑줄 없애고 싶을 때 */
+}
+/*작성자 글씨 호버효과*/  
+.writer-link:hover {
+   /*text-decoration: none;*/ /* 밑줄 없애고 싶을 때 */
+}
+
+/*제목 글씨효과*/
+.title-link {
+   color: #000000; /* 원하는 색상 코드 */
+   text-decoration: none; /* 밑줄 없애고 싶을 때 */
+}
+.title-link:hover  {
+   /*text-decoration: none;*/ /* 밑줄 없애고 싶을 때 */
+}
+
+/*모달 배경색 연하게*/
+.modal-backdrop {
+  opacity: 0.2 !important;
+}
+
+/*모달창 카드처럼*/
+#writerType {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.modal-body {
+  background-color: #f8f9fa;
 }
 </style>
 
@@ -89,6 +124,30 @@
 	    			<div class="card" style="min-height: 500px; max-height: 2000px;">
 	    				<div class="card-body">
 	    				<p>※ [백엔드] 커뮤니티 게시판입니다. 욕설 및 모욕적인 표현이 포함된 게시글은 운영 정책에 따라 삭제됩니다.</p>
+	    				
+	    				<!-- 검색옵션/키워드 -->
+						<div class="container">
+							<form class="form-inline justify-content-center" action="${cpath}/communication/list" method="post"> 
+								<!-- 검색옵션 -->
+								<div class="form-group">
+									<select name="type" class="form-control">
+										<!-- 이름을 선택하면 <option value="writer" selected>이름</option> 이 자동 선택된다 -->
+										<option value="writer" ${pageMaker.cri.type =='writer' ? 'selected' : ''} >작성자</option> 
+										<option value="title" ${pageMaker.cri.type =='title' ? 'selected' : ''} >제목</option>
+										<option value="content" ${pageMaker.cri.type =='content' ? 'selected' : ''} >내용</option>
+									</select>
+								</div>
+								&nbsp;
+								<!-- 검색키워드 -->	
+								<div class="form-group">
+									<input type="text" value="${pageMaker.cri.keyword}" class="form-control" name="keyword">
+								</div>
+								&nbsp;<button type="submit" class="btn btn-custom">검색</button>		
+								&nbsp;<a href="${cpath}/communication/communication_list" class="btn btn-outline-dark"><i class="fas fa-redo" style="color: rgb(0, 0, 0);"></i> 새로고침</a>									
+							</form>					
+						</div>
+						<br>
+
 	    					<table class="table table-bordered table-hover">
 	    						<thead class="table-cnt">
 	    							<th style="width: 9%;">번호</th>
@@ -131,7 +190,7 @@
 		    									
 	    										<!-- 삭제가 아닌경우 -->
 		    									<c:if test="${vo.board_available == '1'}"> 								    									
-		    										<a class="move" href="${vo.idx}" onclick="showCount('${vo.idx}')" >
+		    										<a class="move title-link" href="${vo.idx}" onclick="showCount('${vo.idx}')" >
 		    											<c:if test="${vo.board_level > 0}">
 		    												<c:forEach begin="0" end="${vo.board_level}" step="1">
 		    													<span style="padding-left:5px"></span>
@@ -144,16 +203,24 @@
 	    									</td> 		
 	    									<!-- 공감수 -->
 	    									<td class="table-cnt" id="likeCnt_${vo.idx}">${vo.like_count}</td>					
-	    									<td class="table-cnt">${vo.writer}</td>					
+	    									
+	    									<!-- 작성자 -->    										    									
+	    									<td class="table-cnt writer" data-writer="${vo.username}">
+											   <a href="#" class="writer-link"> ${vo.writer}</a>
+											</td>		
+	    												
 	    									<td class="table-cnt">
 											    <c:choose>
 											        <c:when test="${vo.role == 'ADMIN'}">
 											        	<span class="role-textSt-admin">관리자</span>
 											        </c:when>
+											        <c:when test="${vo.role == 'STAFF'}">
+											        	<span>운영부</span>
+											        </c:when>
 											        <c:when test="${vo.role == 'INSTRUCTOR'}">
 											        	<span class="role-textSt-instructor">강사</span>
 											        </c:when>											       
-											        <c:otherwise>학생</c:otherwise>
+											        <c:otherwise>수강생</c:otherwise>
 											    </c:choose>
 											</td>					
 	    									<td class="table-cnt"><fmt:formatDate value="${vo.indate}" pattern="yyyy.MM.dd HH:mm"/></td>
@@ -164,25 +231,7 @@
 	    						
 	    					</table>
 	    					
-	    					<!-- 검색옵션/키워드 -->
-							<div class="container">
-								<form class="form-inline justify-content-center" action="${cpath}/communication/list" method="post"> 
-									<!-- 검색옵션 -->
-									<div class="form-group">
-										<select name="type" class="form-control">
-											<!-- 이름을 선택하면 <option value="writer" selected>이름</option> 이 자동 선택된다 -->
-											<option value="writer" ${pageMaker.cri.type =='writer' ? 'selected' : ''} >작성자</option> 
-											<option value="title" ${pageMaker.cri.type =='title' ? 'selected' : ''} >제목</option>
-											<option value="content" ${pageMaker.cri.type =='content' ? 'selected' : ''} >내용</option>
-										</select>
-									</div>
-									<!-- 검색키워드 -->	
-									<div class="form-group">
-										<input type="text" value="${pageMaker.cri.keyword}" class="form-control" name="keyword">
-									</div>
-									&nbsp;<button type="submit" class="btn btn-custom">검색</button>									
-								</form>
-							</div>
+	    					
 							
 							<br>  				
 	    						<!-- 페이징버튼 -->									
@@ -292,7 +341,7 @@
 	    							</div>	
 	    							<div class="col">
 	    								<label></label><br>
-	    								<button id="addUploadFile_btn" type="button" onclick="addUploadFile()" class="btn btn-sm btn-outline-dark"> 첨부파일 추가하기</button> 	
+	    								<button id="addUploadFile_btn" type="button" onclick="addUploadFile()" class="btn btn-sm btn-outline-dark"> 첨부파일 추가</button> 	
 	    							</div>		    						
 	    						</div>    											    						
 	    						
@@ -450,6 +499,36 @@
     </div>
   </div>
   
+  <!-- 프로필정보 모달작동버튼 -->
+  <div id="writerOpenModal" data-toggle="modal" data-target="#myWriterModal"></div>
+  
+  <!-- 프로필정보 모달창 -->
+  <div class="modal fade" id="myWriterModal">
+    <div class="modal-dialog">
+      <div class="modal-content" id="writerType" >
+      
+        <div class="modal-header">
+          <h4 class="modal-title">작성자정보</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+          <img class="rounded-circle" id="writerImg" width="200" height="200"  src="#" >   
+          <br>  
+	        <p id="writerRole" style="font-size:18px; margin-bottom: 2px;"></p>
+	        <p id="writerNick_name" style="font-size:18px; margin-bottom: 2px; font-weight: bold;"></p>  
+	        <p id="writerName" style="font-size:18px; margin-bottom: 2px;"></p>
+	        <p id="writerUsername" style="font-size:18px; margin-bottom: 2px;"></p>           
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
   
   <script type="text/javascript">
   	$(document).ready(function(){
@@ -580,6 +659,7 @@
   				regForm.find("#title").attr("readonly", false).val(""); // .val("") : 기존작성된내용 ""로 변경
   				regForm.find("#content").attr("readonly", false).val("");
   				regForm.find("#writer").val("${user.member.nick_name}");
+  				regForm.find("#username").val("${user.member.username}"); //usrname을 변경해줘야한다
   				
   				$("#delete_attached_data_btn").hide(); //'첨부파일삭제버튼' 숨기기
   				$("#delete_attached_data_btn2").hide(); //'첨부파일삭제2버튼' 숨기기
@@ -626,6 +706,51 @@
   				error : function(){ alert("error"); }
   			});//ajax	
   		});//a태그클릭
+  		
+  		
+  		
+  	//게시글 작성자 클릭시 username를 도출하는 기능
+	//이전것: $(".writer").on("click", function(e) {		
+	//  댓글 작성자 클릭하면 이미 게시글 작성자와 바인딩시점차이로 프로필모달이 생성하지 않는다 
+	//  부모인 document가 .writer 들어오면 코드를 실행한다
+	$(document).on("click", ".writer", function(e) {	
+		e.preventDefault();
+	    var username = $(this).data("writer");
+	   
+	    $.ajax({
+	         url: "${cpath}/member/writerInfo",
+	         type: "get",
+	         data: { "username" : username},
+	         dataType: "json",
+	         success: function(writerInfo) {	        			        	
+	         	
+	         	$("#writerUsername").text("[ID] " + writerInfo.username);
+	         	$("#writerName").text("[Name] " + writerInfo.name);
+	         	$("#writerNick_name").text("[Nick Name] " + writerInfo.nick_name);
+	         	         	
+	         	$("#writerImg").attr("src",  writerInfo.profile            
+		            		? "${cpath}/profile_upload/" + writerInfo.profile 
+		            		: "${cpath}/resources/images/default.png");	
+	         	 		         	 
+	         	const roleMap = {
+	         	        'STUDENT': '수강생',
+	         	        'INSTRUCTOR': '강사',
+	         	        'ADMIN': '관리자',		  
+	         	        'STAFF': '운영부'
+	         	    };
+	         	
+	         	var roleKorean = roleMap[writerInfo.role] || writerInfo.role;	         	
+	         	$("#writerRole").text("[Role] " + roleKorean);
+	         	
+	            
+	         	$("#writerOpenModal").click();
+	         },
+	         error: function() {
+	             alert("작성자 정보를 가져오는데 실패했습니다.");
+	         }
+	    });
+	   
+	});
   		
 
   	});//end ready
@@ -886,11 +1011,12 @@
                ? "${cpath}/profile_upload/" + obj.profile 
                : "${cpath}/resources/images/default.png"; 
                
-            listHtml += "<td style='text-align:center; vertical-align:middle; width:10px;'>"
-            listHtml += "<img style='width:30px; height:30px;' class='rounded-circle' src='" + imgSrc + "' />";
+            listHtml += "<td style='text-align:center; vertical-align:middle; width:1px;'>"
+            listHtml += "<img style='width:50px; height:50px;' class='rounded-circle' src='" + imgSrc + "' />";
             listHtml += "</td>";  
                
-			listHtml += "<td style='text-align:center; vertical-align:middle; width:100px;'>" + obj.nick_name + "</td>";
+            listHtml += "<td class='writer' data-writer='" + obj.username + "' style='text-align:center; vertical-align:middle; width:100px;'>";
+			listHtml += "<a href='#' class='writer-link'>" + obj.nick_name + "</a></td>";
     
 			//삭제상태
 			if (obj.cmt_available == 'ADMIN') {		
@@ -923,7 +1049,7 @@
 			listHtml += "<td style='text-align:center; vertical-align:middle; width:100px;'>" + formatted + "</td>"; //댓글날짜		
 			
 			//대댓글버튼 (원본글만 댓글을 달수 있다 )
-			listHtml += "<td style='text-align:center; vertical-align:middle; width:90px;'>";	
+			listHtml += "<td style='text-align:center; vertical-align:middle; width:850px;'>";	
 			listHtml += "<button id='cmt_cmt_count_btn_" + obj.cmt_idx + "' type='button' class='btn btn-custom btn-sm'"; 		
 			listHtml += "onclick='cmtComment(" + obj.cmt_idx + ")'>대댓글 " + obj.cmt_cmt_count + "</button>";		
 			
@@ -1200,11 +1326,12 @@
                ? "${cpath}/profile_upload/" + obj.profile 
                : "${cpath}/resources/images/default.png"; 
                
-            listHtml += "<td style='text-align:center; vertical-align:middle; width:10px;'>"
-            listHtml += "<img style='width:30px; height:30px;' class='rounded-circle' src='" + imgSrc + "' />";
+            listHtml += "<td style='text-align:center; vertical-align:middle; width:1px;'>"
+            listHtml += "<img style='width:55px; height:55px;' class='rounded-circle' src='" + imgSrc + "' />";
             listHtml += "</td>";  
                
-			listHtml += "<td style='text-align:center; vertical-align:middle; width:100px;'>" + obj.nick_name + "</td>";
+            listHtml += "<td class='writer' data-writer='" + obj.username + "' style='text-align:center; vertical-align:middle; width:100px;'>";
+			listHtml += "<a href='#' class='writer-link'>" + obj.nick_name + "</a></td>";
     
 			//삭제상태
 			if (obj.cmt_available == 'ADMIN') {	//cmt_available == 'ADMIN' 경우
@@ -1499,6 +1626,14 @@
 	//첨부파일추가하기 버튼
 	function addUploadFile(){
 		$("#uploadFile3").toggle();
+		
+		var btnText = $("#addUploadFile_btn").text().trim(); // trim()으로 앞뒤 공백 제거
+
+		if (btnText === "첨부파일 추가") {
+		    $("#addUploadFile_btn").text("첨부파일 접기");
+		} else {
+		    $("#addUploadFile_btn").text("첨부파일 추가");
+		}
 	}
 
 

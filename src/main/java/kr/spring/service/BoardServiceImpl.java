@@ -81,8 +81,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		//답변저장기능 
 		mapper.replyInsert(vo); 
-		
-		
 	}
 
 	//전체게시글수

@@ -1,6 +1,6 @@
 package kr.spring.entity;
 
 public enum Role {
-	ADMIN, INSTRUCTOR, STUDENT, GUEST, PENALTY;
+	ADMIN, STAFF, INSTRUCTOR, STUDENT, GUEST, PENALTY;
 }
 

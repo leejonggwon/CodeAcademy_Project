@@ -32,7 +32,6 @@ class SpringMvc11ApplicationTests {
 	private LearningMapper learningMapper;
 	
 	
-	
 	//비밀번호 암호화 처리 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -41,25 +40,29 @@ class SpringMvc11ApplicationTests {
 	private BoardService boardService;
 
 
-	/*
+	
 	@Test
 	void registerMoreMembers() {
-		
-		Member m1 = new Member();
-		m1.setUsername("admin02");
-		m1.setPassword(passwordEncoder.encode("!2qqqqqq"));
-		m1.setRole(Role.ADMIN);
-		m1.setCourse("BACK");
-		m1.setName("코드아카데미 관리자");
-		m1.setNick_name("코드아케미 관리자02");
-		m1.setAge(30);
-		m1.setGender("남자");
-		m1.setEmail("codeAcademy02@gmail.com");
-		m1.setProfile("");
-		m1.setEnabled(true);
-		m1.setUser_code(generateRandomCode(5));
-		mapper.join(m1);
+	
+		// 취업지원부
+		Member m2 = new Member();
+		m2.setUsername("operation01");
+		m2.setPassword(passwordEncoder.encode("!2qqqqqq"));
+		m2.setRole(Role.STAFF);
+		m2.setCourse("BACK");
+		m2.setName("교육운영과");
+		m2.setNick_name("교육운영과");
+		m2.setAge(30);
+		m2.setGender("남자");
+		m2.setEmail("educationOperations@gmail.com");
+		m2.setProfile("");
+		m2.setEnabled(true);
+		m2.setUser_code(generateRandomCode(5));
+		mapper.join(m2);	
 	}
+	
+	
+	
 	
 	
 	
@@ -75,7 +78,9 @@ class SpringMvc11ApplicationTests {
         return sb.toString();
     }
 	
-	*/
+	
+	
+	
 	
 	/*
 	@Test
@@ -129,9 +134,12 @@ class SpringMvc11ApplicationTests {
 	
 	 */	
 	
-
-
 	
+	
+	
+
+
+	/*
 	@Test
 	void registerMoreLearningSpring() {
 	    String[] springTitles = {
@@ -164,7 +172,7 @@ class SpringMvc11ApplicationTests {
 	    }
 	}
 	
-
+    */
 	
 	
 

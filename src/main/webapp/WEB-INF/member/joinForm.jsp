@@ -53,6 +53,7 @@ input[type="radio"] {
 			<input type="hidden" name="enabled" value="true">
 			<input type="hidden" name="password" id="password" value="" > <!-- 두 password 비교 후 이값을 넘길것이다 -->
 			<input type="hidden" name="user_code" id="user_code"> 
+			<input type="hidden" name="role" value="GUEST"> 
 		
 			<table style="text-align: center; border: 1px solid #dddddd" class ="table table-bordered">
 				<tr>
@@ -94,6 +95,7 @@ input[type="radio"] {
 					<td style="width: 180px;"><button type="button" onclick="nick_nameCheck()" class="btn btn-custom">닉네임 중복확인</button></td>
 				</tr>
 		
+				<%-- 
 				<!-- 권한 체크박스 -->
 				<tr>
 					<td style="width: 110px; vertical-align: middle;">권한</td>
@@ -104,17 +106,20 @@ input[type="radio"] {
 					    <input type="radio" name="role" value="INSTRUCTOR"> INSTRUCTOR
 					    <input type="radio" name="role" value="ADMIN"> ADMIN
 					</td>
-				</tr>				
+				</tr>	
+				--%>			
 				<tr>
 					<td style="width: 110px; vertical-align: middle;">교육과정</td>
 					<td colspan="2">	
 						<!-- value값은 컬럼과 같게 해야한다 -->
-						<input type="radio" name="course" value="BACK" required="required"> 백엔드
-					    <input type="radio" name="course" value="FRONT"> 프론트엔드
-					    <input type="radio" name="course" value="DESIGN"> UX/UI 디자인
-					    <input type="radio" name="course" value="DATA"> 데이터분석
+						<input type="radio" name="course" value="BACK" required="required"> Java로 시작하는 Spring 백엔드
+					    <input type="radio" name="course" value="FRONT"> 프론트엔드 엔지니어
+					    <input type="radio" name="course" value="DESIGN"> UX/UI 디자이너
+					    <input type="radio" name="course" value="DATA"> 데이터 분석가
 					</td>
-				</tr>				
+				</tr>	
+				
+							
 				<tr>
 					<td style="width: 110px; vertical-align: middle;">나이</td>
 					<td colspan ="2"><input required="required" type="number" name="age" id="age" class="form-control" maxlength="20" placeholder="나이를 입력하세요"></td>				

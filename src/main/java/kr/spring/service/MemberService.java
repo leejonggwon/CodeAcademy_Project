@@ -34,6 +34,8 @@ public interface MemberService {
 
 	int totalCount(Criteria cri); //전체게시글수
 
+	Member writerInfo(String username);//작성자정보조회
+
 	
 
 }
