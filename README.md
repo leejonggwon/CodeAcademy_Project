@@ -77,7 +77,9 @@ adadadadadadadaadad <br>
 6. defaultSuccessUrl인 /board/list로 이동 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="800" />
+  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width=100% />
+  <br>
+  [Spring Boot Security Architecture]
 </p>
 
 <br>
@@ -153,7 +155,9 @@ adadadadadadadaadad <br>
 - **MyBatis 흐름** - Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="700" />
+  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width=100% />
+  <br>
+  [System Architecture]
 </p>
 
 <br>
@@ -161,6 +165,8 @@ adadadadadadadaadad <br>
 # 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c518f700-e1cb-4a3b-9140-161e00fa2ed3" width=100% />
+  <br>
+  [E-R Diagram]
 </p>
 <br>
 
@@ -168,6 +174,8 @@ adadadadadadadaadad <br>
 # 6. 서비스 흐름도
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="800" />
+  <br>
+  [서비스 흐름도]
 </p>
 
 
