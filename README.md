@@ -77,7 +77,9 @@ adadadadadadadaadad <br>
 6. defaultSuccessUrl인 /board/list로 이동 <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width="800" />
+  <img src="https://github.com/user-attachments/assets/a051a59d-f7cf-45c0-8b7a-957b6aa7b26f" width=100% />
+  <br>
+  [Spring Boot Security Architecture]
 </p>
 
 <br>
@@ -153,7 +155,9 @@ adadadadadadadaadad <br>
 - **MyBatis 흐름** - Client → Controller → Service → Mapper Interface → Mapper.xml → DB <br>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width="700" />
+  <img src="https://github.com/user-attachments/assets/e8366817-ec03-4683-8404-595ad5d63551" width=100% />
+  <br>
+  [System Architecture]
 </p>
 
 <br>
@@ -161,6 +165,8 @@ adadadadadadadaadad <br>
 # 5. DataBase E-R Diagram
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c518f700-e1cb-4a3b-9140-161e00fa2ed3" width=100% />
+  <br>
+  [E-R Diagram]
 </p>
 <br>
 
@@ -168,12 +174,14 @@ adadadadadadadaadad <br>
 # 6. 서비스 흐름도
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="800" />
+  <br>
+  [서비스 흐름도]
 </p>
 
 
 <br>
 
-# 7.주요기능설명 #
+# 7. 핵심기능설명 #
 
 ## 1. 권한별 기능 제어(Technical Description)
 ### 1-1. 핵심 기술 구현 요약 <br>
@@ -347,7 +355,8 @@ adadadadadadadaadad <br>
 <br>
 
 ### 4-4. 대댓글 동적 UI 렌더링 (jQuery) <br>
-- 서버에서 받은 JSON 데이터를 바탕으로 $.each 반복문을 돌려 HTML을 생성하며, 대댓글 작성 폼은 `toggle()` 함수를 이용해 필요할 때만 나타나도록 구현<br>
+- 서버에서 받은 JSON 데이터를 바탕으로 `$.each` 반복문을 돌려 HTML을 생성하며, 대댓글 작성 폼은 `toggle()` 함수를 이용해 필요할 때만 나타나도록 구현<br>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/91bd1a5d-5e53-438e-bff2-590cf848c0f5" width="250" />
 </p>
@@ -357,6 +366,27 @@ adadadadadadadaadad <br>
   <br>
   [댓글과 대댓글 기능]
 </p>
+<br>
+
+### 4-5. 대댓글 실시간 카운트 업데이트 기능 <br>
+- 대댓글을 작성할 때 화면 전체를 새로고침하지 않고, 해당 부모 댓글의 대댓글 개수 버튼만 실시간으로 업데이트하여 사용자 경험(UX)을 극대화했습니다 <br>
+
+#### 1) 기술적 특징 <br>
+- **성능 최적화** -  `Count` 데이터만 별도로 가져와 특정 DOM 요소의 텍스트만 변경합니다 <br>
+- **데이터 정합성** - `BT_COMMENT` 테이블에 `CMT_CMT_COUNT` 컬럼을 설계하여, 쿼리 시점에 매번 대댓글 수를 계산(Count)하고 업데이트 쿼리로 관리합니다 <br>
+- **고유 타겟팅** - 각 댓글 버튼에 `cmt_idx`를 포함한 고유 ID를 부여해 정확한 위치에 데이터를 반영합니다<br>
+
+#### 2) 로직흐름 <br>
+- **DB 업데이트** -  대댓글 등록 시 부모 댓글의 `CMT_CMT_COUNT`를 +1 증가시킵니다 <br>
+- **비동기 요청** - 대댓글 전송이 완료(success)되면 곧바로 해당 댓글의 최신 카운트를 서버에 요청합니다 <br>
+- **UI 반영** - 서버에서 응답받은 숫자 데이터를 jQuery를 활용해 해당 버튼의 텍스트로 치환합니다<br>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c60cd039-4ef7-4eed-ad0b-93a6d6c1bb86" width="400" />
+  <br>
+  [대댓글 실시간 카운트 업데이트 기능]
+</p>
+
 <br>
 
 
@@ -544,7 +574,7 @@ Ajax를 활용하여 페이지 새로고침 없이 실시간으로 작동하는 
 ## 10. 작성자 프로필 카드 <br>
 게시글 리스트나 댓글 창에서 작성자의 이름을 클릭하면, 비동기 통신을 통해 해당 사용자의 상세 정보를 모달 형태로 제공하는 기능입니다 <br>
 
-- **비동기 데이터 로딩 (AJAX)** -체 페이지 리로드 없이 클릭한 사용자의 정보를 서버에서 실시간으로 조회하여 사용자 경험(UX)을 극대화했습니다<br>
+- **비동기 데이터 로딩 (AJAX)** - 페이지 리로드 없이 클릭한 사용자의 정보를 서버에서 실시간으로 조회하여 사용자 경험(UX)을 극대화했습니다<br>
 - **데이터 위임 처리** - 'data-writer'을 활용하여 리스트 렌더링 시점에 사용자 식별값(ID)을 미리 바인딩하고, 이벤트 발생 시 이를 활용해 정확한 데이터를 호출합니다. <br>
 - **동적 UI 렌더링** - 서버로부터 받은 JSON 데이터를 바탕으로 프로필 이미지(이미지 없을 시 기본 이미지 대체), 닉네임, 권한(Role) 등을 동적으로 화면에 매핑합니다<br>
 
@@ -757,7 +787,7 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-## 6. 교육과정별 커뮤니티 게시판 
+## 6. 커뮤니티 게시판 
 - 서비스 이용자 간 학습 경험을 공유하고, 서로 도움을 주고받는 자율적인 개발자 커뮤니티 환경을 제공하는 것을 목표로 합니다 <br>
 - 공지사항, 취업정보, 스터디 모집, 학습 공유 등 다양한 주제로 자유롭게 글을 작성하고 의견을 나눌 수 있습니다 <br>
 - 수업게시판 및 Q&A 게시판과 달리, 수강생 누구나 제약 없이 자유롭게 이용할 수 있습니다 <br>
@@ -775,7 +805,31 @@ Spring Boot와 AJAX를 활용하여 강사가 강의 영상 및 학습 자료를
 
 <br>
 
-## 7. 관리자 페이지 (Admin Management System) 
+## 7. 게시글 수정 시 첨부파일 가변 관리 시스템
+게시글 수정 과정에서 기존에 업로드된 교육 자료 및 영상/이미지 파일을 선택적으로 파싱하고 삭제할 수 있는 관리 인터페이스를 구현했습니다<br>
+
+### 1. 주요 구현 특징 <br>
+- **파일명 파싱 및 최적화 노출** - 서버 스토리지 저장 규칙(`=`)에 따라 저장된 파일명에서 실제 파일 이름만을 추출하여 사용자에게 직관적으로 표시합니다 <br>
+- **가변적 UI 렌더링** - 수정 페이지 진입 시 기존 첨부파일의 유무를 판단하여, 파일이 존재할 경우에만 해당 파일 전용 삭제 버튼을 동적으로 활성화합니다 <br>
+- **비동기적 폼 데이터 정제** - 용자가 특정 파일의 삭제를 요청할 경우, 해당 input 요소를 폼 데이터에서 즉시 제거하고 UI 상태를 업데이트하여 데이터 무결성을 유지합니다 <br>
+
+<br>
+
+### 2. 핵심 로직 설명 <br>
+- JavaScript의 `includes()`와 `substring()`을 활용하여 서버 측 고유 식별자가 포함된 파일명에서`=`이후의 실제 파일명을 분리해 화면에 렌더링합니다 <br>
+- jQuery를 사용하여 특정 파일 삭제 시 관련 버튼의 스타일을 변경하고 텍스트를 갱신함으로써 사용자에게 명확한 작업 피드백을 제공합니다 <br>
+- `.remove()`를 통해 폼(Form) 내의 `input` 태그를 직접 제거함으로써, 수정 완료 시 서버로 불필요한 기존 파일 정보가 전송되지 않도록 방지합니다 <br>
+
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/baa93975-6854-4089-8c17-1b8d19228ec7" width=100% />
+  <br>
+  [게시글 수정 시 첨부파일 가변 관리 시스템]
+</p>
+
+
+<br>
+
+## 8. 관리자 페이지 (Admin Management System) 
 플랫폼의 전체 사용자를 모니터링하고, 회원별 권한 및 교육과정을 실시간으로 제어할 수 있는 중앙 집중형 관리 시스템입니다 <br>
 
 ### 1. 보안 및 접근 제어 <br>
@@ -817,7 +871,7 @@ Spring Security를 활용한 접근 제어 로직을 적용했습니다 <br>
 
 <br>
 
-## 7. 회원정보수정 
+## 9. 회원정보수정 
 사용자가 본인의 프로필을 관리하고 정보를 최신화할 수 있는 기능을 제공합니다 <br>
 Spring Security의 인증 매커니즘을 활용하여 실시간 세션 동기화 하도록 구현하였습니다 <br>
 
@@ -843,14 +897,14 @@ Spring Security의 인증 매커니즘을 활용하여 실시간 세션 동기�
 - **데이터 유효성 검사** - 이름, 성별, 이메일 등 필수 입력 항목에 대해 JavaScript에서 공백 및 형식 유효성 검사를 실시하여 비정상적인 데이터 입력을 원천 차단 <br>  
 
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/2be29091-fb95-459f-b482-352f00144f68" width=100% />
+  <img  src="https://github.com/user-attachments/assets/914e07db-291e-4257-adef-77d524960dbb" width=100% />
   <br>
   [회원정보수정]
 </p>
 
 <br>
 
-## 8. 비밀번호 수정 및 탈퇴 
+## 10. 비밀번호 수정 및 탈퇴 
 사용자의 민감한 정보 변경 및 회원 탈퇴 시, 보안을 강화하기 위해 실제 기능 페이지 진입 전 '현재 비밀번호 재확인' 절차를 거치도록 설계하였습니다 <br>
 
 ### 1. 현재 비밀번호 일치 여부 확인 <br>
@@ -888,15 +942,16 @@ Spring Security의 인증 매커니즘을 활용하여 실시간 세션 동기�
   <br>
 
   <p align="center">
-    <img src="https://github.com/user-attachments/assets/a7c4ffa3-cbc7-437c-a21e-d5c3f1cc3778" width=100% />
+    <img src="https://github.com/user-attachments/assets/e4493bc5-f6f6-48aa-a779-b981f7f0c4fb" width=100% />
     <br>
     [비밀번호수정 및 탈퇴 페이지 진입 전 '현재 비밀번호 재확인 절차']
   </p>
-  
+ 
+
   <br>
 
    <p align="center">
-    <img src="https://github.com/user-attachments/assets/e8a34adb-c2e5-480a-a61d-65f4a61fb327" width=100% />
+    <img src="https://github.com/user-attachments/assets/5119210a-41ad-4adb-befe-6a44c306cb56" width=100% />
     <br>
     [비밀번호수정 및 탈퇴 페이지]
   </p>
