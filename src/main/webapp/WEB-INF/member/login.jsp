@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Boot Academy</title>
+<title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -35,6 +35,11 @@
 .carousel-inner > .item > a > img {
 	width: 70%;
 	margin: auto;
+}
+
+/*모달 배경색 연하게*/
+.modal-backdrop {
+  opacity: 0.2 !important;
 }
 </style>
 </head>

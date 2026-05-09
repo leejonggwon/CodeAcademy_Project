@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -68,7 +68,7 @@
 	    		<div class= "col-lg-10">
 	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
 	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기상태</strong> 입니다. 관리자의 승인 후 서비스 이용이 가능합니다</p>
+	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기</strong> 상태입니다. 관리자의 승인 후 서비스 이용이 가능합니다.</p>
 	    				</div>
 	    			</div>			
 	    		</div>		
@@ -113,8 +113,8 @@
 	    		</div>	
     		
 	    		<!-- 세번째칸 -->	
-	    		<div class= "col-lg-5">
-	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
+	    		<div class= "col-lg-5">    		
+	    			<div>
 	    				<div class="card-body">
 	    				
 	    				</div>

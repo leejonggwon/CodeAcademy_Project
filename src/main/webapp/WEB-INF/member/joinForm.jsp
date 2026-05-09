@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>Code Academy</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -38,6 +38,11 @@
 input[type="radio"] {
 	margin-left: 7px;   /* (버튼을 기준)왼쪽 간격 */
 	margin-right: 1px;  /* (버튼을 기준)라디오 버튼과 글자 사이 간격 */
+}
+
+/*모달 배경색 연하게*/
+.modal-backdrop {
+  opacity: 0.2 !important;
 }
 
 </style>
@@ -290,6 +295,9 @@ input[type="radio"] {
 				if(data == 1){
 					$("#checkMessage").text(username + "는 이미 사용중인 아이디 입니다");
 					$("#checkType").find(".modal-header").attr("class", "modal-header bg-danger text-white");
+					$("#username").val("");		
+					$("#usernamePassMessage").html("")
+					
 				}else if (data == 0){
 					$("#checkMessage").text(username + " 는 사용 가능한 아이디 입니다");			
 					$("#checkType").find(".modal-header").attr("class", "modal-header bg-primary text-white");
@@ -326,7 +334,7 @@ input[type="radio"] {
 				if(data == 1){
 					$("#checkMessage").text(nick_name + " 는 이미 사용중인 닉네임 입니다");;
 					$("#checkType").find(".modal-header").attr("class", "modal-header bg-danger text-white");
-					
+					$("#nick_name").val("");
 				}else{
 					$("#checkMessage").text(nick_name + " 는 사용 가능한 닉네임 입니다");		
 					$("#checkType").find(".modal-header").attr("class", "modal-header bg-primary text-white");				

@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${cpath}/resources/css/btnStyle.css">
@@ -143,7 +143,7 @@ input[type="radio"] {
     		
     		<!-- 세번째칸 -->
     		<div class= "col-lg-5">
-    			<div class="card" style="min-height: 636px; max-height: 1000px;">
+    			<div>
     				<div class="card-body">
 											
     				</div>

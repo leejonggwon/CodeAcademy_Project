@@ -38,31 +38,65 @@ class SpringMvc11ApplicationTests {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	
+	
+	@Test
+	void registerMoreMembers() {
+	    
 
+	    // 5. 이동현 (queryking875)
+	    Member m5 = new Member();
+	    m5.setUsername("queryking875");
+	    m5.setPassword(passwordEncoder.encode("!2qqqqqq"));
+	    m5.setRole(Role.STUDENT);
+	    m5.setCourse("BACK");
+	    m5.setName("이동현");
+	    m5.setNick_name("쿼리마법사");
+	    m5.setAge(27);
+	    m5.setGender("남자");
+	    m5.setEmail("dbmaster@gmail.com");
+	    m5.setProfile("");
+	    m5.setEnabled(true);
+	    m5.setUser_code(generateRandomCode(5));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
+/*
 	
 	@Test
 	void registerMoreMembers() {
 	
-		// 취업지원부
 		Member m2 = new Member();
-		m2.setUsername("operation01");
+		m2.setUsername("likespring23");
 		m2.setPassword(passwordEncoder.encode("!2qqqqqq"));
-		m2.setRole(Role.STAFF);
+		m2.setRole(Role.STUDENT);
 		m2.setCourse("BACK");
-		m2.setName("교육운영과");
-		m2.setNick_name("교육운영과");
-		m2.setAge(30);
-		m2.setGender("남자");
-		m2.setEmail("educationOperations@gmail.com");
+		m2.setName("김지원");
+		m2.setNick_name("스프링꿈나무");
+		m2.setAge(23);
+		m2.setGender("여자");
+		m2.setEmail("cocococoding23@gmail.com");
 		m2.setProfile("");
 		m2.setEnabled(true);
 		m2.setUser_code(generateRandomCode(5));
 		mapper.join(m2);	
 	}
 	
-	
-	
+	*/
 	
 	
 	

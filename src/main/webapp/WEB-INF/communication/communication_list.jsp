@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${cpath}/resources/css/logoStyle.css">
@@ -110,7 +110,7 @@
 	    		<div class= "col-lg-10">
 	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
 	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기상태</strong> 입니다. 관리자의 승인 후 서비스 이용이 가능합니다</p>
+	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기</strong> 상태입니다. 관리자의 승인 후 서비스 이용이 가능합니다.</p>
 	    				</div>
 	    			</div>			
 	    		</div>		
@@ -127,7 +127,7 @@
 	    				
 	    				<!-- 검색옵션/키워드 -->
 						<div class="container">
-							<form class="form-inline justify-content-center" action="${cpath}/communication/list" method="post"> 
+							<form class="form-inline justify-content-center" action="${cpath}/communication/communication_list" method="post"> 
 								<!-- 검색옵션 -->
 								<div class="form-group">
 									<select name="type" class="form-control">
@@ -596,11 +596,16 @@
   			}else if(oper == "reset"){ //취소
   				regForm[0].reset();
   			}else if(oper == "list"){ //목록
-  			  	location.href ="${cpath}/communication/list";  
+  			  	location.href ="${cpath}/communication/communication_list";  
   			}else if(oper == "remove"){ //삭제			
-  				regForm.attr("action", "${cpath}/communication/remove");
-  				regForm.attr("method", "get");
-  			    regForm.submit();
+  				if (confirm("게시글을 삭제하시겠습니까?")) {
+  			        regForm.attr("action", "${cpath}/communication/remove");
+  			        regForm.attr("method", "post");
+  			        regForm.submit();
+  			    } else {
+  			        // '취소'를 눌렀을 때 실행될 로직 (필요 없으면 비워둬도 돼)
+  			        return false;
+  			    }
   			}else if(oper == "updateForm"){ //게시글 수정폼					
   				regForm.find("#title").attr("readonly", false);
   				regForm.find("#content").attr("readonly", false);
@@ -1049,7 +1054,7 @@
 			listHtml += "<td style='text-align:center; vertical-align:middle; width:100px;'>" + formatted + "</td>"; //댓글날짜		
 			
 			//대댓글버튼 (원본글만 댓글을 달수 있다 )
-			listHtml += "<td style='text-align:center; vertical-align:middle; width:850px;'>";	
+			listHtml += "<td style='text-align:center; vertical-align:middle; width:85px;'>";	
 			listHtml += "<button id='cmt_cmt_count_btn_" + obj.cmt_idx + "' type='button' class='btn btn-custom btn-sm'"; 		
 			listHtml += "onclick='cmtComment(" + obj.cmt_idx + ")'>대댓글 " + obj.cmt_cmt_count + "</button>";		
 			
@@ -1150,7 +1155,7 @@
 		//확인/취소창 
 		var role = "${user.member.role}";
 		
-		if(!confirm("댓글을 삭제하겠습니까?")) {
+		if(!confirm("댓글을 삭제하시겠습니까?")) {
 	        return; //취소를 누르면 함수종료 된다
 	    }	
 	
@@ -1170,7 +1175,7 @@
 		//alert("delete에 들어간 cmt_idx " + cmt_idx +" 부모idx값: " +parent_idx );		
 		var role = "${user.member.role}";	
 		
-		if(!confirm("대댓글을 삭제하겠습니까?")) {
+		if(!confirm("대댓글을 삭제하시겠습니까?")) {
 	        return; //취소를 누르면 함수종료 된다
 	    }	
 	

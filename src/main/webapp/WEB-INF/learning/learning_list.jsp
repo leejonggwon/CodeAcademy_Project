@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${cpath}/resources/css/logoStyle.css">
@@ -99,7 +99,7 @@
 	    		<div class= "col-lg-10">
 	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
 	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>이용제한(패널티) 상태</strong> 입니다. 입니다. 관리센터에 문의 주세요.</p>
+	    					<p>※ ${user.member.nick_name} 님은 운영 정책에 따라 현재 <strong>이용제한</strong> 상태입니다. 관리센터에 문의 주세요.</p>
 	    				</div>
 	    			</div>			
 	    		</div>			
@@ -110,7 +110,7 @@
 	    		<div class= "col-lg-10">
 	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
 	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-	    					<p>※ ${user.member.nick_name} 님은 운영 정책에 따라 현재 <strong>승인대기상태 </strong> 입니다. 관리자의 승인 후 서비스 이용이 가능합니다.</p>
+	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기</strong> 상태입니다. 관리자의 승인 후 서비스 이용이 가능합니다.</p>
 	    				</div>
 	    			</div>			
 	    		</div>			
@@ -307,8 +307,18 @@
 	    		
 	    		<!-- 세번째칸 -->
 	    		<div class= "col-lg-5">
-	    			<div class="card" style="min-height: 500px; max-height: 5000px;">
+	    		
+	    		<c:choose>						 
+				    <c:when test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">			    		
+				   		<div class="card" style="min-height: 720px; max-height: 5000px;"> 
+				    </c:when>						
+				    <c:otherwise>
+				    	<div id="card">  	
+				    </c:otherwise>
+				</c:choose>	
+
 	    				<div class="card-body">
+	    				
 							<form id="regForm">					
 								<input type="hidden" id="idx" name="idx" value="">	
 								<input type="hidden" id="attached_data" name="attached_data" value="${vo.attached_data}">									
@@ -323,38 +333,93 @@
 								<!-- 검색정보 -->
 								<input type="hidden" id="type" name="type" value="${pageMaker.cri.type}">
 								<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
-								
-								<!-- 강의선택 -->				
-								<div class="form-group">
-									<label for="lecture"></label> 
-									<div class="form-inline justify-content-start"> 
-										<select id="lecture" name="lecture" class="form-control">
-											<option value="">강의선택</option>
-									        <option value="Spring">Spring</option>
-									        <option value="JSP&Servlet">JSP&Servlet</option>
-									        <option value="Java">Java</option>
-									        <option value="DataBase">DataBase</option>
-										</select>
-									</div>
-								</div>	
-							
-	    						<div class="form-group">
-	    							<label for="title">제목</label> 
-	    							<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" >
-	    						</div>
 
-	    						<div class="form-group">
-	    							<label for="content">내용</label>
-	    							<!-- 비디오 보이는부분-->
-		    						<div id="video_container" style="display: none;">
-			    						<video video id="main_video" controls width=100% >
-										    <source id="video_src" type="video/mp4">
-										    이 브라우저는 동영상 재생을 지원하지 않습니다
-										</video>
-									</div>
-	    							<textarea id="content" name="content" class="form-control" placeholder="Enter Content" rows="4" cols=""></textarea> 
-	    						</div>
-	    						
+
+								<!-- 수강생이면 강의게시판 세번째 칸에 아무것도 나오지 않는다  -->
+								<c:choose>						 
+								    <c:when test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
+								    	<!-- 강의선택 -->				
+										<div class="form-group">
+											<label for="lecture"></label> 
+											<div class="form-inline justify-content-start"> 
+												<select id="lecture" name="lecture" class="form-control">
+													<option value="">강의선택</option>
+											        <option value="Spring">Spring</option>
+											        <option value="JSP&Servlet">JSP&Servlet</option>
+											        <option value="Java">Java</option>
+											        <option value="DataBase">DataBase</option>
+												</select>
+											</div>
+										</div>	
+								    	    
+								        <div class="form-group">
+								            <label for="title">제목</label> 
+		    								<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" >
+								        </div>
+								        
+								        <div class="form-group">
+			    							<label for="content">내용</label>
+			    							<!-- 비디오 보이는부분-->
+				    						<div id="video_container" style="display: none;">
+					    						<video video id="main_video" controls width=100% >
+												    <source id="video_src" type="video/mp4">
+												    이 브라우저는 동영상 재생을 지원하지 않습니다
+												</video>
+											</div>
+			    							<textarea id="content" name="content" class="form-control" placeholder="Enter Content" rows="4" cols=""></textarea> 
+		    							</div>
+		    							
+		    							<div id="hide_title" class="form-group">
+			    							<label for="writer">작성자</label>
+			    							<input value="<sec:authentication property='principal.member.nick_name'/>" 
+			    							type="text" class="form-control" id="writer" name="writer" readonly="readonly">
+			    						</div>
+								    </c:when>
+								
+								    <c:otherwise>
+								        
+								        <div id="noneGroups" style="display: none;">
+									        <div class="form-group">
+									            <label for="title">제목</label> 
+			    								<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" >
+									        </div>
+									        
+									        <!-- 강의선택 -->				
+											<div class="form-group">
+												<label for="lecture"></label> 
+												<div class="form-inline justify-content-start"> 
+													<select id="lecture" name="lecture" class="form-control">
+														<option value="">강의선택</option>
+												        <option value="Spring">Spring</option>
+												        <option value="JSP&Servlet">JSP&Servlet</option>
+												        <option value="Java">Java</option>
+												        <option value="DataBase">DataBase</option>
+													</select>
+												</div>
+											</div>	
+											
+											<div class="form-group">
+				    							<label for="content">내용</label>
+				    							<!-- 비디오 보이는부분-->
+					    						<div id="video_container" style="display: none;">
+						    						<video video id="main_video" controls width=100% >
+													    <source id="video_src" type="video/mp4">
+													    이 브라우저는 동영상 재생을 지원하지 않습니다
+													</video>
+												</div>
+				    							<textarea id="content" name="content" class="form-control" placeholder="Enter Content" rows="4" cols=""></textarea> 
+			    							</div>
+			    							
+			    							<div id="hide_title" class="form-group">
+				    							<label for="writer">작성자</label>
+				    							<input value="<sec:authentication property='principal.member.nick_name'/>" 
+				    							type="text" class="form-control" id="writer" name="writer" readonly="readonly">
+				    						</div>
+			    						</div>
+								    </c:otherwise>
+								</c:choose>
+							
+					
 	    						<!-- 첨부된 파일삭제버튼 -->								
 	    						<div id="delete_attached_data_btn" class="form-group" style="display: none">				
 	    							<button onclick="delete_attached_data()" type="button"></button> 	
@@ -397,12 +462,7 @@
 	    							<label>첨부파일</label><br>
 	    							<a id="download_link2" href="#"></a>					       
 	    						</div>
-	    										
-	    						<div id="hide_title" class="form-group">
-	    							<label for="writer">작성자</label>
-	    							<input value="<sec:authentication property='principal.member.nick_name'/>" 
-	    							type="text" class="form-control" id="writer" name="writer" readonly="readonly">
-	    						</div>
+	    					
 	    						
 	    						<!-- 게시글등록시 버튼 -->
 	    						<c:if test="${user.member.role =='ADMIN' || user.member.role =='INSTRUCTOR'}">
@@ -440,6 +500,8 @@
 	    							
 	    						</div> 										
 	    					</form>		
+	    					
+	    					
 	 			
 	    				</div> <!--end class="card-body" -->
 	    				
@@ -645,28 +707,20 @@
   				regForm.attr("method", "post");
   			    regForm.attr("enctype", "multipart/form-data");
   				regForm.submit();
-  				
+
   			}else if(oper == "reset"){ //취소
   				regForm[0].reset();
   			}else if(oper == "list"){ //목록  
   			  	location.href ="${cpath}/learning/learning_list"; 			  
-  			}else if(oper == "remove"){ //삭제  				
-  				regForm.attr("action", "${cpath}/learning/remove");
-  				regForm.attr("method", "get");
-  			    regForm.submit();
-  								
-  				regForm.find("#title").attr("readonly", false);
-  				regForm.find("#content").attr("readonly", false);
-  			 					
-  				$("#update").hide(); // '수정' 버튼 숨기기
-  				$("#reply").hide();  // '답글쓰기' 버튼 숨기기
-  			    $("#updateComplete").show(); // '수정완료' 버튼 보이기
-  			    
-  			  
-  			    $("#uploadFile").show();   // 파일첨부 버튼 보이기 	
-  			    
-  				$("#cmt").hide(); //댓글전체폼 숨긴다
-	    			
+  			}else if(oper == "remove"){ //삭제			
+  				if (confirm("게시글을 삭제하시겠습니까?")) {
+  			        regForm.attr("action", "${cpath}/learning/remove");
+  			        regForm.attr("method", "post");
+  			        regForm.submit();
+  			    } else {
+  			        // '취소'를 눌렀을 때 실행될 로직 (필요 없으면 비워둬도 돼)
+  			        return false;
+  			    }
   			}else if(oper == "updateForm"){ //수정폼	
   				$("#lecture").prop("disabled", false);
   							
@@ -839,6 +893,15 @@
   		regForm.find("#content").val(vo.content);
   		regForm.find("#writer").val(vo.writer);	
   		
+	
+  		const role = "${user.member.role}";
+  			
+   		if(role !== 'ADMIN' || role !== 'INSTRUCTOR') {
+   			$("#noneGroups").show();     //수강생이면 강의페이지 3번째칸에 아무것도 안보이게 하는 기능 
+   			$("#card").addClass("card"); //수강생이면 강의페이지 3번째칸에 카드선 안보이게 하는 기능
+   	    }
+  		
+   		
   		//regForm 안에 input, textarea 태그를 찾아서 readonly → true로 속성을 추가
   		regForm.find("input").attr("readonly", true);
   		regForm.find("textarea").attr("readonly", true);
@@ -1226,7 +1289,7 @@
 		//확인/취소창 
 		var role = "${user.member.role}";
 		
-		if(!confirm("댓글을 삭제하겠습니까?")) {
+		if(!confirm("댓글을 삭제하시겠습니까?")) {
 	        return; //취소를 누르면 함수종료 된다
 	    }	
 		
@@ -1246,7 +1309,7 @@
 		//alert("delete에 들어간 cmt_idx " + cmt_idx +" 부모idx값: " +parent_idx );		
 		var role = "${user.member.role}";	
 		
-		if(!confirm("대댓글을 삭제하겠습니까?")) {
+		if(!confirm("대댓글을 삭제하시겠습니까?")) {
 	        return; //취소를 누르면 함수종료 된다
 	    }	
 	

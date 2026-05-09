@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${cpath}/resources/css/logoStyle.css">
@@ -117,7 +117,7 @@
 	    		<div class= "col-lg-10">
 	    			<div class="card" style="min-height: 500px; max-height: 1000px;">
 	    				<div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기상태</strong> 입니다. 관리자의 승인 후 서비스 이용이 가능합니다</p>
+	    					<p>※ ${user.member.nick_name} 님은 현재 <strong>승인대기</strong> 상태입니다. 관리자의 승인 후 서비스 이용이 가능합니다.</p>
 	    				</div>
 	    			</div>			
 	    		</div>		
@@ -630,10 +630,16 @@
   				regForm[0].reset();
   			}else if(oper == "list"){ //목록
   			  	location.href ="${cpath}/board/list";  
+  			  	  	
   			}else if(oper == "remove"){ //삭제			
-  				regForm.attr("action", "${cpath}/board/remove");
-  				regForm.attr("method", "get");
-  			    regForm.submit();
+  				if (confirm("게시글을 삭제하시겠습니까?")) {
+  			        regForm.attr("action", "${cpath}/board/remove");
+  			        regForm.attr("method", "post");
+  			        regForm.submit();
+  			    } else {
+  			        // '취소'를 눌렀을 때 실행될 로직 (필요 없으면 비워둬도 돼)
+  			        return false;
+  			    }
   			}else if(oper == "updateForm"){ //게시글 수정폼			
   				$("#lecture").prop("disabled", false);
   			
@@ -1217,7 +1223,7 @@
 		//확인/취소창 
 		var role = "${user.member.role}";
 		
-		if(!confirm("댓글을 삭제하겠습니까?")) {
+		if(!confirm("댓글을 삭제하시겠습니까?")) {
 	        return; //취소를 누르면 함수종료 된다
 	    }	
 	

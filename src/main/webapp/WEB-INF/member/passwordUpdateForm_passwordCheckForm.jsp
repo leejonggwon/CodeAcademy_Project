@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -90,7 +90,7 @@ input[type="radio"] {
 								</tr>										
 								<tr>
 									<td colspan="3">								
-										<button type="button" data-oper="passwordCheck" class="btn btn-custom pull-right" >확인</button>									
+										<button type="button" id="passwordCheckEnter" data-oper="passwordCheck" class="btn btn-custom pull-right" >확인</button>									
 									</td>
 								</tr>
 							</table>		
@@ -102,7 +102,7 @@ input[type="radio"] {
     		
     		<!-- 세번째칸 -->
     		<div class= "col-lg-5">
-    			<div class="card" style="min-height: 500px; max-height: 1000px;">
+    			<div>
     				<div class="card-body">  							
     				</div>
     			</div>

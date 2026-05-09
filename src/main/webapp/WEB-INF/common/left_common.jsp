@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -305,7 +305,7 @@
 					</form>		
 					
 					<form action="${cpath}/member/passwordUpdateForm_passwordCheckForm" class="btn_gap">
-						<button id="passwordUpdateForm" class="form-control btn btn-outline-dark btn-sm">비밀번호수정 및 탈퇴</button>
+						<button id="passwordUpdateForm" class="form-control btn btn-outline-dark btn-sm">비밀번호변경 및 탈퇴</button>
 					</form>	
 					<br>	
 					

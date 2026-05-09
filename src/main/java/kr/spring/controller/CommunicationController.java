@@ -189,7 +189,7 @@ public class CommunicationController {
 	}
 	
 	//삭제기능
-	@GetMapping("/remove") 
+	@PostMapping("/remove") 
 	public String remove(@RequestParam("idx") Long idx, @RequestParam("role") String role, Criteria cri, RedirectAttributes rttr) {
 		service.delete(idx, role);
 		

@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Code Academy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -56,6 +56,11 @@
     /*font-weight: bold;*/
 }
 
+/*모달 배경색 연하게*/
+.modal-backdrop {
+  opacity: 0.2 !important;
+}
+
 </style>
 <body>
  
@@ -89,7 +94,8 @@
 								&nbsp;
 								<!-- 검색키워드 -->	
 								<div class="form-group">
-									<input id="search_keyword" type="text" class="form-control" name="keyword">
+								    <input id="search_keyword" type="text" class="form-control" name="keyword" 
+								           onkeypress="if(event.keyCode==13){ search(); }">
 								</div>
 								&nbsp;
 								<button type="button" onclick="search()" class="btn btn-custom">검색</button>	
