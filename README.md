@@ -381,6 +381,12 @@ adadadadadadadaadad <br>
 - **비동기 요청** - 대댓글 전송이 완료(success)되면 곧바로 해당 댓글의 최신 카운트를 서버에 요청합니다 <br>
 - **UI 반영** - 서버에서 응답받은 숫자 데이터를 jQuery를 활용해 해당 버튼의 텍스트로 치환합니다<br>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c60cd039-4ef7-4eed-ad0b-93a6d6c1bb86" width="400" />
+  <br>
+  [대댓글 실시간 카운트 업데이트 기능]
+</p>
+
 <br>
 
 
