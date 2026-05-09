@@ -181,7 +181,7 @@ adadadadadadadaadad <br>
 
 <br>
 
-# 7.주요기능설명 #
+# 7.핵심기능설명 #
 
 ## 1. 권한별 기능 제어(Technical Description)
 ### 1-1. 핵심 기술 구현 요약 <br>
