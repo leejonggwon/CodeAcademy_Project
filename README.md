@@ -31,7 +31,7 @@
 <br>
 
 ### 시연영상
-adadadadadadadaadad <br>
+ad(https://youtu.be/Y0j87ToXwpw <br>
 <br>
 
 # 2. 기술스택 
