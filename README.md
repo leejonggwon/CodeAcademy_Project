@@ -31,7 +31,7 @@
 <br>
 
 ### 시연영상
-ad(https://youtu.be/Y0j87ToXwpw <br>
+https://youtu.be/Y0j87ToXwpw <br>
 <br>
 
 # 2. 기술스택 
