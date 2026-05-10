@@ -8,7 +8,7 @@
 </p>
 
 ### 서비스명
-- Coda Academy(코드아케데미)
+- Code Academy(코드아케데미)
 - Spring Boot Security와 JWT 기반의 RBAC(역할 기반 권한 제어)를 적용한 RESTful 코딩 교육 관리 플랫폼(LMS) <br>
 
 <br>
