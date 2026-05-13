@@ -171,7 +171,7 @@ https://youtu.be/Y0j87ToXwpw <br>
 <br>
 
 
-# 6. 서비스 흐름도
+# 6. 기능구조도
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b502355a-d0b0-46e6-858a-24df2dc94103" width="800" />
   <br>
