@@ -9,7 +9,7 @@
 
 ### 서비스명
 - Code Academy(코드아케데미)
-- Spring Boot Security와 RBAC(역할 기반 권한 제어)를 적용한 코딩 교육 관리 플랫폼(LMS) <br>
+- Spring Boot Security와 RBAC(역할 기반 권한 제어)를 적용한 온라인 교육 관리 플랫폼LMS(Learning Management Systemm) <br>
 
 <br>
 
